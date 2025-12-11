@@ -540,6 +540,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 12
   height: 13
+  minPathLength: 100
 --- !u!4 &1111705664
 Transform:
   m_ObjectHideFlags: 0

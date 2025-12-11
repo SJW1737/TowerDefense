@@ -18,6 +18,6 @@ public class Node
     {
         this.x = x;
         this.y = y;
-        isBlocked = false;
+        isBlocked = true;
     }
 }
