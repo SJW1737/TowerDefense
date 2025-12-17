@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class GridManager : MonoSingleton<GridManager>
 {
-    public int width;
-    public int height;
-    public int minPathLength;
+    private int width;
+    private int height;
+    private int minPathLength;
 
     public Node[,] grid;
 
-    protected override void Awake()
+    protected override void Init()
     {
-        base.Awake();
+        width = 12;
+        height = 13;
+        minPathLength = 100;
+
         InitGrid();
     }
 

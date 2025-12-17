@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Singleton<T> where T : new()
@@ -20,9 +19,9 @@ public class Singleton<T> where T : new()
     protected Singleton() { }
 }
 
-public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
+public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
 {
-    private static T instance;
+    protected static T instance;
     public static T Instance
     {
         get
@@ -33,8 +32,8 @@ public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
 
                 if (instance == null)
                 {
-                    GameObject obj = new GameObject(typeof(T).Name);
-                    instance = obj.AddComponent<T>();
+                    var go = new GameObject(typeof(T).Name);
+                    instance = go.AddComponent<T>();
                 }
             }
             return instance;
@@ -43,13 +42,18 @@ public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
 
     protected virtual void Awake()
     {
-        if (instance == null)
-        {
-            instance = this as T;
-        }
-        else if (instance != this)
+        if (instance != null && instance != this)
         {
             Destroy(gameObject);
+            return;
         }
+
+        instance = (T)this;
+        Init();
     }
+
+    /// <summary>
+    /// Awake 이후 초기화 지점
+    /// </summary>
+    protected virtual void Init() { }
 }
