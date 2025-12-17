@@ -45,28 +45,6 @@ public class GridManager : MonoSingleton<GridManager>
         int x = start.x;
         int y = height - 1;
 
-        int a = -1;
-        int b = 1;
-
-        // i = 0,1,2,3,4,5
-        for (int i = 0; i < width / 2; i++) // width에 맞게 할려고 하는거임 ㅋㅋ
-        {
-            if ((Mathf.Abs(x - (width / 2))) > (width / 2 - i)) // 6, 5, 4, 3,2,1
-            {
-                if (x - (width / 2) > 0)
-                {
-                    a -= (width / 2 - i) / 2;
-                }
-                else
-                {
-                    b += (width / 2 - i) / 2;
-                }
-            }
-        }
-        // 1. 얼마나 떨어져있냐 > 6
-        // 2. 얼머나 떨어져있냐 > 5
-        
-
         path.Add(start);
         grid[x, y].isBlocked = false;
 
@@ -84,29 +62,27 @@ public class GridManager : MonoSingleton<GridManager>
             }
 
             int side;
-            int randomSide = Random.Range(7, 11);
+            int randomSide = Random.Range(3, 11);
 
-            int randomDir = Random.Range(a, b);
-            if (randomDir < 0)
+            int randomDir = Random.Range(0, 2);
+            if (randomDir == 0)
             {
                 side = -1;
-                b += 1;
             }
             else
             {
                 side = 1;
-                a -= 1;
             }
 
-                for (int i = 1; i <= randomSide; i++)
+            for (int i = 1; i <= randomSide; i++)
+            {
+                if (0 <= x + side && x + side <= width - 1)
                 {
-                    if (0 <= x + side && x + side <= width - 1)
-                    {
-                        path.Add(grid[x + side, y]);
-                        grid[x + side, y].isBlocked = false;
-                        x += side;
-                    }
+                    path.Add(grid[x + side, y]);
+                    grid[x + side, y].isBlocked = false;
+                    x += side;
                 }
+            }
         }
 
         path.Add(end);
