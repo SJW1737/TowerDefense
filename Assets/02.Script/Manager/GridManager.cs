@@ -65,7 +65,7 @@ public class GridManager : MonoSingleton<GridManager>
             }
 
             int side;
-            int randomSide = Random.Range(3, 11);
+            int randomSide = Random.Range(8, 11);
 
             int randomDir = Random.Range(0, 2);
             if (randomDir == 0)
@@ -75,6 +75,15 @@ public class GridManager : MonoSingleton<GridManager>
             else
             {
                 side = 1;
+            }
+
+            if (x <= 0)
+            {
+                side = 1;
+            }
+            else if (x >= width - 1)
+            {
+                side = -1;
             }
 
             for (int i = 1; i <= randomSide; i++)
