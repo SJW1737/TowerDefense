@@ -10,6 +10,11 @@ public class GridManager : MonoSingleton<GridManager>
 
     public Node[,] grid;
 
+    protected override void Awake()
+    {
+        base.Awake();
+    }
+
     protected override void Init()
     {
         width = 12;
