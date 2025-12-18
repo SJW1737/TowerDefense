@@ -45,10 +45,8 @@ public class GridManager : MonoSingleton<GridManager>
         List<Node> path = new List<Node>();
 
         int startX = Random.Range(0, width);
-        int endX = Random.Range(0, width);
 
         Node start = grid[startX, height - 1];
-        Node end = grid[endX, 0];
 
         int x = start.x;
         int y = height - 1;
@@ -56,7 +54,7 @@ public class GridManager : MonoSingleton<GridManager>
         path.Add(start);
         grid[x, y].isBlocked = false;
 
-        while (path.Count < minPathLength && y > 0)
+        while (path.Count < minPathLength && y > 1)
         {
             int down = -1;
             for (int i = 0; i <= 1; i++)
@@ -67,6 +65,10 @@ public class GridManager : MonoSingleton<GridManager>
                     grid[x, y + down].isBlocked = false;
                     y += down;
                 }
+            }
+            if (y == 0)
+            {
+                return path;
             }
 
             int side;
@@ -101,8 +103,6 @@ public class GridManager : MonoSingleton<GridManager>
                 }
             }
         }
-
-        path.Add(end);
 
         return path;
     }
