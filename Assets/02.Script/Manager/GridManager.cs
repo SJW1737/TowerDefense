@@ -104,6 +104,8 @@ public class GridManager : MonoSingleton<GridManager>
             }
         }
 
+        Node end = path[path.Count - 1];
+
         return path;
     }
 
