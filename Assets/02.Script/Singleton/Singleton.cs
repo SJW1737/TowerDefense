@@ -1,4 +1,4 @@
-using Unity.VisualScripting;
+ï»¿using Unity.VisualScripting;
 using UnityEngine;
 
 public class Singleton<T> where T : new()
@@ -53,7 +53,7 @@ public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T
     }
 
     /// <summary>
-    /// Awake ÀÌÈÄ ÃÊ±âÈ­ ÁöÁ¡
+    /// Awake ì´í›„ ì´ˆê¸°í™” ì§€ì 
     /// </summary>
     protected virtual void Init() { }
 }

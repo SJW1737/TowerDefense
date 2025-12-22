@@ -1,12 +1,10 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using UnityEngine;
 
 public class Pathfinder : Singleton<Pathfinder>
 {
-    public GridManager grid;
-
     private readonly int[,] directions =
     {
         { 1, 0 },
@@ -15,8 +13,18 @@ public class Pathfinder : Singleton<Pathfinder>
         { 0, -1 }
     };
 
+    public GridManager Grid => GridManager.Instance;
+
     public List<Node> FindPath(Node start, Node goal)
     {
+        //노드값 초기화
+        foreach (Node node in Grid.grid)
+        {
+            node.gCost = int.MaxValue;
+            node.hCost = 0;
+            node.parent = null;
+        }
+
         List<Node> openList = new List<Node>();
         HashSet<Node> closedList = new HashSet<Node>();
 
@@ -45,7 +53,7 @@ public class Pathfinder : Singleton<Pathfinder>
 
             for (int i = 0; i < 4; i++)
             {
-                Node neighbor = grid.GetNode(current.x + directions[i, 0], current.y + directions[i, 1]);
+                Node neighbor = Grid.GetNode(current.x + directions[i, 0], current.y + directions[i, 1]);
 
                 if (neighbor == null || neighbor.isBlocked || closedList.Contains(neighbor))
                     continue;
