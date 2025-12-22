@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 42ac32f0924ff934c9fc53c7e0f07744, type: 3}
-  m_Name: MonsterData
+  m_Name: NormalMonsterData
   m_EditorClassIdentifier: 
-  monsterName: normal
+  monsterName: Normal
   monsterType: 0
-  description: dd
+  description: 
   maxHP: 5
   damage: 5
   moveSpeed: 5
