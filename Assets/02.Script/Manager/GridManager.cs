@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class GridManager : MonoSingleton<GridManager>
@@ -9,6 +10,9 @@ public class GridManager : MonoSingleton<GridManager>
     private int minPathLength;
 
     public Node[,] grid;
+
+    public Node startNode;
+    public Node endNode;
 
     protected override void Awake()
     {
@@ -38,7 +42,15 @@ public class GridManager : MonoSingleton<GridManager>
         RandomPath();
     }
 
-    public Node GetNode(int x, int y) => grid[x, y];
+    public Node GetNode(int x, int y)
+    {
+        if (x < 0 || x >= width || y < 0 || y >= height)
+        {
+            return null;
+        }
+
+        return grid[x, y];
+    }
 
     public List<Node> RandomPath()
     {
@@ -46,12 +58,12 @@ public class GridManager : MonoSingleton<GridManager>
 
         int startX = Random.Range(0, width);
 
-        Node start = grid[startX, height - 1];
+        startNode = grid[startX, height - 1];
 
-        int x = start.x;
+        int x = startNode.x;
         int y = height - 1;
 
-        path.Add(start);
+        path.Add(startNode);
         grid[x, y].isBlocked = false;
 
         while (path.Count < minPathLength && y > 1)
@@ -66,9 +78,10 @@ public class GridManager : MonoSingleton<GridManager>
                     y += down;
                 }
             }
+
             if (y == 0)
             {
-                return path;
+                break;
             }
 
             int side;
@@ -104,8 +117,7 @@ public class GridManager : MonoSingleton<GridManager>
             }
         }
 
-        Node end = path[path.Count - 1];
-
+        endNode = path[path.Count - 1];
         return path;
     }
 
@@ -131,23 +143,27 @@ public class GridManager : MonoSingleton<GridManager>
             );
         }
 
-        if (grid != null)
+        for (int x = 0; x < width; x++)
         {
-            for (int x = 0; x < width; x++)
+            for (int y = 0; y < height; y++)
             {
-                for (int y = 0; y < height; y++)
-                {
-                    Node node = grid[x, y];
+                Node node = grid[x, y];
 
-                    // isBlocked에 따라 색 다르게
-                    if (node.isBlocked)
-                        Gizmos.color = new Color(0.7f, 0.7f, 0.7f, 0.5f);   // 회색 (타워 설치 가능)
-                    else
-                        Gizmos.color = new Color(0f, 0.5f, 1f, 0.5f);         // 파란색 (몬스터 길)
+                // 기본 색
+                if (node.isBlocked)
+                    Gizmos.color = new Color(0.7f, 0.7f, 0.7f, 0.5f);
+                else
+                    Gizmos.color = new Color(0f, 0.5f, 1f, 0.5f);
 
-                    // 각 노드의 중앙 위치에 정사각형 그리기
-                    Gizmos.DrawCube(new Vector3(x + 0.5f, y + 0.5f, 0), new Vector3(1, 1, 0));
-                }
+                if (node == startNode)
+                    Gizmos.color = Color.green;
+                else if (node == endNode)
+                    Gizmos.color = Color.red;
+
+                Gizmos.DrawCube(
+                    new Vector3(x + 0.5f, y + 0.5f, 0),
+                    Vector3.one
+                );
             }
         }
     }

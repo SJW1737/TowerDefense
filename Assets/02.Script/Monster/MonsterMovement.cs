@@ -12,6 +12,7 @@ public class MonsterMovement : MonoBehaviour
     private List<Node> path;
 
     Pathfinder pathfinder;
+    GridManager gridManager;
 
     public void Setpath()
     {
