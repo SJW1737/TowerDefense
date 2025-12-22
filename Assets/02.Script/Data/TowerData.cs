@@ -1,22 +1,22 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public enum TowerType
 {
-    Melee,  // ±Ù°Å¸®
-    Ranged, // ¿ø°Å¸®
-    DeBuff  // ½½·Î¿ì or ½ºÅÏ (µğ¹öÇÁ Å¸¿ö)
+    Melee,  // ê·¼ê±°ë¦¬
+    Ranged, // ì›ê±°ë¦¬
+    DeBuff  // ìŠ¬ë¡œìš° or ìŠ¤í„´ (ë””ë²„í”„ íƒ€ì›Œ)
 }
 
 
 [CreateAssetMenu(fileName = "TowerData", menuName = "NewTower" )]
 public class TowerData : ScriptableObject
 {
-    [Header("Å¸¿ö ±âº» µ¥ÀÌÅÍ")]
-    public string towerName;     // ÀÌ¸§
-    public TowerType towerType;  // Á¾·ù
-    public string description;   // ¼³¸í
-    public int atkPower;         // °ø°İ·Â
-    public int atkSpeed;         // °ø°İ ¼Óµµ
-    public int atkRange;         // °ø°İ »ç°Å¸®
-    public int cost;             // °¡°İ
+    [Header("íƒ€ì›Œ ê¸°ë³¸ ë°ì´í„°")]
+    public string towerName;     // ì´ë¦„
+    public TowerType towerType;  // ì¢…ë¥˜
+    public string description;   // ì„¤ëª…
+    public int atkPower;         // ê³µê²©ë ¥
+    public int atkSpeed;         // ê³µê²© ì†ë„
+    public int atkRange;         // ê³µê²© ì‚¬ê±°ë¦¬
+    public int cost;             // ê°€ê²©
 }
