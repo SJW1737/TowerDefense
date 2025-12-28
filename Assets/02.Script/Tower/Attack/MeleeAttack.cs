@@ -1,14 +1,8 @@
 public class MeleeAttack : ITowerAttack
 {
-    private Tower tower;
-
-    public MeleeAttack(Tower tower)
+    public void Execute(Monster target)
     {
-        this.tower = tower;
-    }
-
-    public void Trick()
-    {
-
+        // "근접 공격 방식" 여기에 등록
+        // 타겟 찾고 타격
     }
 }
