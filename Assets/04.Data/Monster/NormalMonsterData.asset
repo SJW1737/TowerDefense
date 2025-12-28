@@ -16,6 +16,6 @@ MonoBehaviour:
   monsterType: 0
   description: 
   maxHP: 5
-  damage: 5
-  moveSpeed: 5
+  damage: 20
+  moveSpeed: 10
   rewardGold: 10
