@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.WSA;
+using System;
 
 public class MonsterMovement : MonoBehaviour
 {
+    public event Action OnReachedEnd;
+
     private float moveSpeed;
 
     private Queue<Node> pathQueue;
@@ -51,12 +54,6 @@ public class MonsterMovement : MonoBehaviour
             transform.position = targetpos;
         }
 
-        OnArrived();
-    }
-
-    private void OnArrived()
-    {
-        Debug.Log("몬스터 도착 및 공격");
-        Destroy(gameObject);
+        OnReachedEnd?.Invoke();
     }
 }
