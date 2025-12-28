@@ -11,13 +11,11 @@ public enum TowerType
 [CreateAssetMenu(menuName = "Tower/TowerData")]
 public class TowerData : ScriptableObject
 {
-    [Header("타워 기본 데이터")]
-    public string towerName;     // 이름
-    public TowerType type;       // 종류
-    public string description;   // 설명
-    public int atkPower;         // 공격력
-    public int atkSpeed;         // 공격 속도
-    public int projectileSpeed;  // 투사체 속도
-    public int atkRange;         // 공격 사거리
-    public int cost;             // 가격
+    [Header("기본 정보")]
+    public string towerName;
+    public int cost;
+
+    [Header("전투 공통")]
+    public float attackInterval; // 공격 주기
+    public float range;          // 사거리
 }

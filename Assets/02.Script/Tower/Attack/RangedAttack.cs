@@ -1,14 +1,7 @@
 public class RangedAttack : ITowerAttack
 {
-    private Tower tower;
-
-    public RangedAttack(Tower tower)
+    public void Execute(Monster target)
     {
-        this.tower = tower;
-    }
-
-    public void Trick()
-    {
-
+        
     }
 }

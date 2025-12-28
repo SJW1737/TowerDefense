@@ -1,4 +1,4 @@
 public interface ITowerAttack
 {
-    void Trick();
+    void Execute(Monster target);
 }

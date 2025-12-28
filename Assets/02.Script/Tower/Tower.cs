@@ -3,16 +3,42 @@ using UnityEngine;
 public class Tower : MonoBehaviour
 {
     public TowerData data;
-    private ITowerAttack attackTrick;
 
-    public void Init(TowerData data)
-    {
-        this.data = data;
-        attackTrick = TowerAttackFactory.Create(this, data.type);
-    }
+    private ITowerAttack attack;
+    private float attackTimer;
 
     private void Update()
     {
-        attackTrick?.Trick();
+        attackTimer += Time.deltaTime;
+
+        if (attackTimer >= data.attackInterval)
+        {
+            Monster target = FindTarget();
+
+            if (target != null)
+            {
+                attackTimer = 0;
+                attack?.Execute(target);
+            }
+        }
+    }
+
+    private Monster FindTarget()
+    {
+        Collider[] hits = Physics.OverlapSphere(transform.position, data.range);
+
+        foreach (var hit in hits)
+        {
+            if (hit.TryGetComponent(out Monster monster))
+            {
+                return monster; // 가장 먼저 찾은 적
+            }
+        }
+
+        return null;
+    }
+    public void SetAttack(ITowerAttack attack)
+    {
+        this.attack = attack;
     }
 }
