@@ -7,6 +7,8 @@ public class Tower : MonoBehaviour
     private ITowerAttack attack;
     private float attackTimer;
 
+    [SerializeField] private LayerMask monsterLayer;
+
     private void Start()
     {
         TowerFactory.SetupTower(this);
@@ -16,7 +18,9 @@ public class Tower : MonoBehaviour
     {
         attackTimer += Time.deltaTime;
 
-        if (attackTimer >= data.attackInterval)
+        float attackInterval = 1f / data.attackSpeed;
+
+        if (attackTimer >= attackInterval)
         {
             Monster target = FindTarget();
 
@@ -30,17 +34,25 @@ public class Tower : MonoBehaviour
 
     private Monster FindTarget()
     {
-        Collider[] hits = Physics.OverlapSphere(transform.position, data.range);
+        Collider[] hits = Physics.OverlapSphere(transform.position, data.range, monsterLayer);
+
+        Monster closest = null;
+        float minDist = float.MaxValue;
 
         foreach (var hit in hits)
         {
             if (hit.TryGetComponent(out Monster monster))
             {
-                return monster; // 가장 먼저 찾은 적
+                float dist = Vector3.Distance(transform.position, monster.transform.position);
+                if (dist < minDist)
+                {
+                    minDist = dist;
+                    closest = monster;
+                }
             }
         }
 
-        return null;
+        return closest;
     }
 
     public void SetAttack(ITowerAttack attack)

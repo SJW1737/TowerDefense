@@ -22,7 +22,7 @@ public class TowerData : ScriptableObject
     public int cost;
 
     [Header("전투 공통")]
-    public float attackInterval; // 공격 주기
+    public float attackSpeed; // 공격 주기
     public float range;          // 사거리
 
     [Header("효과")]
