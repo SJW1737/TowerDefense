@@ -17,5 +17,5 @@ MonoBehaviour:
   description: 
   maxHP: 50
   damage: 20
-  moveSpeed: 3
+  moveSpeed: 15
   rewardGold: 10
