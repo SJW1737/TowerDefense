@@ -15,7 +15,7 @@ MonoBehaviour:
   monsterName: Normal
   monsterType: 0
   description: 
-  maxHP: 5
+  maxHP: 50
   damage: 20
-  moveSpeed: 10
+  moveSpeed: 3
   rewardGold: 10

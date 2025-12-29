@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5542814763747129057}
   - component: {fileID: 1499590747294714047}
   - component: {fileID: 4968381097565834505}
+  - component: {fileID: 2866881815706476118}
   m_Layer: 0
   m_Name: BossMonster
   m_TagString: Untagged
@@ -112,6 +113,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f197384cb8839c4593c757b5c0f600b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2866881815706476118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031709059401727802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d14140190e5fbe489f4b84653a091cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterData: {fileID: 11400000, guid: 969bffa86a7adfa48822b2b2610161d0, type: 2}
+  MonsterHelathBarUI: {fileID: 404375957087667320}
 --- !u!1 &3691409495756505165
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,6 +338,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e3a7c0fa859b4e44b113198e60ac79d, type: 3}
+--- !u!114 &404375957087667320 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -3049052009443278423, guid: 8e3a7c0fa859b4e44b113198e60ac79d, type: 3}
+  m_PrefabInstance: {fileID: 5779022740134168017}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b69069add13724daf5e2d4b82b717a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &4979146509268383132 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1525116974719004749, guid: 8e3a7c0fa859b4e44b113198e60ac79d, type: 3}

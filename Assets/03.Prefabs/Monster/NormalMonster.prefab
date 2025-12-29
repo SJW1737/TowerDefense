@@ -114,6 +114,7 @@ GameObject:
   - component: {fileID: 5542814763747129057}
   - component: {fileID: 1499590747294714047}
   - component: {fileID: 4968381097565834505}
+  - component: {fileID: 3646340295616951274}
   m_Layer: 0
   m_Name: NormalMonster
   m_TagString: Untagged
@@ -135,6 +136,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6430407484567627933}
+  - {fileID: 6797420923048625475}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5542814763747129057
@@ -212,6 +214,64 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f197384cb8839c4593c757b5c0f600b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3646340295616951274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031709059401727802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d14140190e5fbe489f4b84653a091cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterData: {fileID: 11400000, guid: ca4ddf02a555cae4eba80f59dd67a442, type: 2}
+  MonsterHelathBarUI: {fileID: 7832215355849915206}
+--- !u!1 &8594029910875152890
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6797420923048625475}
+  - component: {fileID: 7316144820021072841}
+  m_Layer: 0
+  m_Name: MonsterHpTest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6797420923048625475
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8594029910875152890}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 12.178001, y: -16.264877, z: -0.12524274}
+  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8966116768495338082}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7316144820021072841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8594029910875152890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af6f9e486c365dd429c6be7bed001941, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &4115737024709425903
@@ -328,3 +388,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1525116974719004749, guid: 8e3a7c0fa859b4e44b113198e60ac79d, type: 3}
   m_PrefabInstance: {fileID: 4115737024709425903}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7832215355849915206 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -3049052009443278423, guid: 8e3a7c0fa859b4e44b113198e60ac79d, type: 3}
+  m_PrefabInstance: {fileID: 4115737024709425903}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b69069add13724daf5e2d4b82b717a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
