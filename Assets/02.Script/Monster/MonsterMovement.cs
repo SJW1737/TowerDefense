@@ -10,8 +10,10 @@ public class MonsterMovement : MonoBehaviour
     public event Action OnReachedEnd;
 
     private float moveSpeed;
+    private float currentSpeed;
 
     private Queue<Node> pathQueue;
+    private Coroutine slowCoroutine;
 
     private Pathfinder pathfinder;
     private GridManager gridManager;
@@ -25,6 +27,22 @@ public class MonsterMovement : MonoBehaviour
     public void SetSpeed(float speed)
     {
         moveSpeed = speed;
+        currentSpeed = speed;
+    }
+
+    public void ApplySlow(float ratio, float duration)
+    {
+        if (slowCoroutine != null)
+            StopCoroutine(slowCoroutine);
+
+        slowCoroutine = StartCoroutine(SlowRoutine(ratio, duration));
+    }
+
+    private IEnumerator SlowRoutine(float ratio, float duration)
+    {
+        currentSpeed = moveSpeed * (1f - ratio);
+        yield return new WaitForSeconds(duration);
+        currentSpeed = moveSpeed;
     }
 
     public void Setpath()
@@ -47,7 +65,7 @@ public class MonsterMovement : MonoBehaviour
 
             while (Vector3.Distance(transform.position, targetpos) > 0.01f)
             {
-                transform.position = Vector3.MoveTowards(transform.position, targetpos, moveSpeed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, targetpos, currentSpeed * Time.deltaTime);
                 yield return null;
             }
 

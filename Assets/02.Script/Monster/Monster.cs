@@ -27,6 +27,16 @@ public class Monster : MonoBehaviour
         monsterMovement.OnReachedEnd += OnArrivedAtCastle;
     }
 
+    public void TakeDamage(int damage)
+    {
+        monsterHealth.TakeDamage(damage);
+    }
+
+    public void ApplySlow(float slowRatio, float duration)
+    {
+        monsterMovement.ApplySlow(slowRatio, duration);
+    }
+
     private void OnArrivedAtCastle()
     {
         Debug.Log("몬스터 도착 및 성 체력 감소");
