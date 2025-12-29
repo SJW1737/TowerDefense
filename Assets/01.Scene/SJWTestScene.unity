@@ -268,6 +268,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BossMonster
       objectReference: {fileID: 0}
+    - target: {fileID: 1104070475708924273, guid: b9ca5f3568e446c4883b92877d9b32ed, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1104070475708924273, guid: b9ca5f3568e446c4883b92877d9b32ed, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8966116768495338082, guid: b9ca5f3568e446c4883b92877d9b32ed, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.78
@@ -439,7 +447,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 10, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &327176886
 MonoBehaviour:
@@ -814,6 +822,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TankMonster
       objectReference: {fileID: 0}
+    - target: {fileID: 4421435641850626215, guid: a360f7f53e5eaf547a28664b685a57ad, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4421435641850626215, guid: a360f7f53e5eaf547a28664b685a57ad, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8966116768495338082, guid: a360f7f53e5eaf547a28664b685a57ad, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.16
@@ -893,7 +909,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -10, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1372451432
 GameObject:
@@ -1084,6 +1100,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: FastMonster
       objectReference: {fileID: 0}
+    - target: {fileID: 8275361089817809396, guid: c5e7c523da2acad489d5f7950bb51c58, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8275361089817809396, guid: c5e7c523da2acad489d5f7950bb51c58, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8966116768495338082, guid: c5e7c523da2acad489d5f7950bb51c58, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.77
@@ -1216,7 +1240,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.43
+  m_Value: 0.452
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
