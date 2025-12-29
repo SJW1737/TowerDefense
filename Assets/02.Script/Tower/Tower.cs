@@ -7,6 +7,11 @@ public class Tower : MonoBehaviour
     private ITowerAttack attack;
     private float attackTimer;
 
+    private void Start()
+    {
+        TowerFactory.SetupTower(this);
+    }
+
     private void Update()
     {
         attackTimer += Time.deltaTime;
@@ -17,7 +22,7 @@ public class Tower : MonoBehaviour
 
             if (target != null)
             {
-                attackTimer = 0;
+                attackTimer = 0f;
                 attack?.Execute(target);
             }
         }
@@ -37,6 +42,7 @@ public class Tower : MonoBehaviour
 
         return null;
     }
+
     public void SetAttack(ITowerAttack attack)
     {
         this.attack = attack;
