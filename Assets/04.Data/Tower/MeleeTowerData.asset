@@ -15,7 +15,7 @@ MonoBehaviour:
   towerName: MeleeTower
   towerType: 0
   cost: 10
-  attackInterval: 0.3
+  attackSpeed: 3
   range: 2
   effectType: 0
   damage: 1
