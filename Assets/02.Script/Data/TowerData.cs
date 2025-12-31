@@ -21,6 +21,9 @@ public class TowerData : ScriptableObject
     public TowerType towerType;
     public int cost;
 
+    [Header("프리팹")]
+    public GameObject towerPrefab;
+
     [Header("전투 공통")]
     public float attackSpeed; // 공격 주기
     public float range;          // 사거리

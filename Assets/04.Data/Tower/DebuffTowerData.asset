@@ -15,6 +15,7 @@ MonoBehaviour:
   towerName: DebuffTower
   towerType: 2
   cost: 10
+  towerPrefab: {fileID: 5323560347674312808, guid: 3f34f2e7afd65194bb225bbf6251d230, type: 3}
   attackSpeed: 1
   range: 3
   effectType: 1

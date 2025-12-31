@@ -15,6 +15,7 @@ MonoBehaviour:
   towerName: MeleeTower
   towerType: 0
   cost: 10
+  towerPrefab: {fileID: 5323560347674312808, guid: 3f34f2e7afd65194bb225bbf6251d230, type: 3}
   attackSpeed: 3
   range: 2
   effectType: 0

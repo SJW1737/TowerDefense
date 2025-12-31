@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 672ead0af4d219a47af50a0b29adc91f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 36baf441f693c0f4b9dde33940d5fb0b, type: 2}
+  data: {fileID: 11400000, guid: 1561b59738151594eb94a6f5b2afe987, type: 2}
   firePoint: {fileID: 6642393634751146490}
   projectilePrefab: {fileID: 2917975267322545158, guid: 3b381826fd4c7164d9a527153e1f40f0, type: 3}
   monsterLayer:
