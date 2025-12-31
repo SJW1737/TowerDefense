@@ -4,6 +4,9 @@ public class Tower : MonoBehaviour
 {
     public TowerData data;
 
+    public Transform firePoint;      // 발사 위치
+    public GameObject projectilePrefab;
+
     private ITowerAttack attack;
     private float attackTimer;
 

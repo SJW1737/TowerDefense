@@ -7,12 +7,12 @@ public static class TowerFactory
         TowerData data = tower.data;
 
         List<ITowerEffect> effects = CreateEffects(data);
-        ITowerAttack attack = CreateAttack(data, effects);
+        ITowerAttack attack = CreateAttack(tower, data, effects);
 
         tower.SetAttack(attack);
     }
 
-    private static ITowerAttack CreateAttack(TowerData data, List<ITowerEffect> effects)
+    private static ITowerAttack CreateAttack(Tower tower, TowerData data, List<ITowerEffect> effects)
     {
         switch (data.towerType)
         {
@@ -20,7 +20,7 @@ public static class TowerFactory
                 return new MeleeAttack(effects);
 
             case TowerType.Ranged:
-                return new RangedAttack(effects, data.projectileSpeed);
+                return new RangedAttack(effects, data.projectileSpeed, tower.projectilePrefab, tower.firePoint);
 
             default:
                 return null;
