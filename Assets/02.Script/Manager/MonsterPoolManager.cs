@@ -4,32 +4,52 @@ using UnityEngine;
 
 public class MonsterPoolManager : MonoSingleton<MonsterPoolManager>
 {
-    public GameObject monsterPrefab;
-    public int poolSize = 20;
+    public List<MonsterPoolData> poolDatas;
 
-    private Queue<GameObject> pool = new Queue<GameObject>();
+    private Dictionary<MonsterType, Queue<GameObject>> poolDict;
+    private Dictionary<MonsterType, GameObject> prefabDict;
+
+    public int AliveMonsterCount { get; private set; }
 
     protected override void Init()
     {
-        for (int i = 0; i < poolSize; i++)
+        poolDict = new Dictionary<MonsterType, Queue<GameObject>>();
+        prefabDict = new Dictionary<MonsterType, GameObject>();
+
+        foreach (var data in poolDatas)
         {
-            GameObject monster = Instantiate(monsterPrefab);
-            monster.SetActive(false);
-            pool.Enqueue(monster);
+            Queue<GameObject> pool = new Queue<GameObject>();
+
+            for (int i = 0; i < data.poolSize; i++)
+            {
+                GameObject monster = Instantiate(data.prefab);
+                monster.SetActive(false);
+                pool.Enqueue(monster);
+            }
+
+            poolDict.Add(data.type, pool);
+            prefabDict.Add(data.type, data.prefab);
         }
+
+        AliveMonsterCount = 0;
     }
 
-    public GameObject GetMonster(Vector3 position)
+    public GameObject GetMonster(MonsterType type, Vector3 position)
     {
+        if (!poolDict.ContainsKey(type))
+        {
+            return null;
+        }
+
         GameObject monster;
 
-        if (pool.Count > 0)
+        if (poolDict[type].Count > 0)
         {
-            monster = pool.Dequeue();
+            monster = poolDict[type].Dequeue();
         }
         else
         {
-            monster = Instantiate(monsterPrefab);
+            monster = Instantiate(prefabDict[type]);
         }
 
         monster.transform.position = position;
@@ -37,12 +57,15 @@ public class MonsterPoolManager : MonoSingleton<MonsterPoolManager>
 
         monster.GetComponent<Monster>().Activate();
 
+        AliveMonsterCount++;
         return monster;
     }
 
-    public void ReturnMonster(GameObject monster)
+    public void ReturnMonster(MonsterType type, GameObject monster)
     {
         monster.SetActive(false);
-        pool.Enqueue(monster);
+        poolDict[type].Enqueue(monster);
+
+        AliveMonsterCount--;
     }
 }

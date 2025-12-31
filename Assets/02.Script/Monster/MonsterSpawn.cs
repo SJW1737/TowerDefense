@@ -4,25 +4,25 @@ using UnityEngine;
 
 public class MonsterSpawn : MonoBehaviour
 {
-    public int spawnCount = 5;              //스폰 수
-    public float spawnInterval = 1f;      //스폰 간격
-
-    private void Start()
+    public void StartWave(WaveData waveData)
     {
-        StartCoroutine(SpawnMonsters());
+        StartCoroutine(SpawnWave(waveData));
     }
 
-    IEnumerator SpawnMonsters()
+    IEnumerator SpawnWave(WaveData waveData)
     {
         Node startNode = GridManager.Instance.startNode;
 
         Vector3 spawnPos = new Vector3(startNode.x + 0.5f, startNode.y + 0.5f, 0);
 
-        for (int i = 0; i < spawnCount; i++)
+        foreach (var monster in waveData.monsters)
         {
-            MonsterPoolManager.Instance.GetMonster(spawnPos);
+            for (int i = 0; i < monster.count; i++)
+            {
+                MonsterPoolManager.Instance.GetMonster(monster.type, spawnPos);
 
-            yield return new WaitForSeconds(spawnInterval);
+                yield return new WaitForSeconds(waveData.spawnInterval);
+            }
         }
     }
 }

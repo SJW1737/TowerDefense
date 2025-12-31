@@ -21,7 +21,7 @@ public class MonsterHealth : Health
 
     protected override void Die()
     {
-        MonsterPoolManager.Instance.ReturnMonster(gameObject);
+        GetComponent<Monster>().OnDie();
     }
 
     public void ResetHealth()

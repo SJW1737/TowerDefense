@@ -48,9 +48,14 @@ public class Monster : MonoBehaviour
         ReturnToPool();
     }
 
+    public void OnDie()
+    {
+        MonsterPoolManager.Instance.ReturnMonster(monsterData.monsterType, gameObject);
+    }
+
     private void ReturnToPool()
     {
-        MonsterPoolManager.Instance.ReturnMonster(gameObject);
+        MonsterPoolManager.Instance.ReturnMonster(monsterData.monsterType, gameObject);
     }
 
     private void OnDisable()
