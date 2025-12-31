@@ -37,7 +37,7 @@ public class Tower : MonoBehaviour
 
     private Monster FindTarget()
     {
-        Collider[] hits = Physics.OverlapSphere(transform.position, data.range, monsterLayer);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, data.range, monsterLayer);
 
         Monster closest = null;
         float minDist = float.MaxValue;
@@ -46,7 +46,7 @@ public class Tower : MonoBehaviour
         {
             if (hit.TryGetComponent(out Monster monster))
             {
-                float dist = Vector3.Distance(transform.position, monster.transform.position);
+                float dist = Vector2.Distance(transform.position, monster.transform.position);
                 if (dist < minDist)
                 {
                     minDist = dist;
@@ -61,5 +61,14 @@ public class Tower : MonoBehaviour
     public void SetAttack(ITowerAttack attack)
     {
         this.attack = attack;
+    }
+
+    // 사거리 체크
+    private void OnDrawGizmosSelected()
+    {
+        if (data == null) return;
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, data.range);
     }
 }
