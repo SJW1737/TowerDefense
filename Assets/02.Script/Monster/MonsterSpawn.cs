@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MonsterSpawn : MonoBehaviour
 {
-    public GameObject monsterPrefab;
     public int spawnCount = 5;              //스폰 수
     public float spawnInterval = 1f;      //스폰 간격
 
@@ -21,7 +20,7 @@ public class MonsterSpawn : MonoBehaviour
 
         for (int i = 0; i < spawnCount; i++)
         {
-            Instantiate(monsterPrefab, spawnPos, Quaternion.identity);
+            MonsterPoolManager.Instance.GetMonster(spawnPos);
 
             yield return new WaitForSeconds(spawnInterval);
         }

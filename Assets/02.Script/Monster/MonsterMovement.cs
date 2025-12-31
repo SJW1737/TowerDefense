@@ -73,4 +73,9 @@ public class MonsterMovement : MonoBehaviour
 
         OnReachedEnd?.Invoke();
     }
+
+    public void ResetMovement()
+    {
+        StopAllCoroutines();
+    }
 }

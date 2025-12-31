@@ -21,6 +21,12 @@ public class MonsterHealth : Health
 
     protected override void Die()
     {
-        Destroy(gameObject);
+        MonsterPoolManager.Instance.ReturnMonster(gameObject);
+    }
+
+    public void ResetHealth()
+    {
+        Init(monsterData.maxHP);
+        MonsterHelathBarUI.UpdateUI();
     }
 }

@@ -19,12 +19,14 @@ public class Monster : MonoBehaviour
         castleHealth = FindObjectOfType<CastleHealth>();
     }
 
-    private void Start()
+    private void OnEnable()
     {
-        monsterMovement.SetSpeed(monsterData.moveSpeed);
-        monsterMovement.Setpath();
-
         monsterMovement.OnReachedEnd += OnArrivedAtCastle;
+    }
+
+    public void Activate()
+    {
+        ResetMonster();
     }
 
     public void TakeDamage(int damage)
@@ -43,15 +45,29 @@ public class Monster : MonoBehaviour
         //성 체력 감소
         castleHealth.TakeDamage(monsterData.damage);
         //몬스터 제거
-        Destroy(gameObject);
+        ReturnToPool();
     }
 
-    private void OnDestroy()
+    private void ReturnToPool()
+    {
+        MonsterPoolManager.Instance.ReturnMonster(gameObject);
+    }
+
+    private void OnDisable()
     {
         //이벤트 해제
         if (monsterMovement != null)
         {
             monsterMovement.OnReachedEnd -= OnArrivedAtCastle;
         }
+    }
+
+    public void ResetMonster()
+    {
+        monsterHealth.ResetHealth();
+        monsterMovement.ResetMovement();
+
+        monsterMovement.SetSpeed(monsterData.moveSpeed);
+        monsterMovement.Setpath();
     }
 }
