@@ -22,4 +22,4 @@ MonoBehaviour:
   damage: 4
   slowRatio: 0
   slowDuration: 0
-  projectileSpeed: 0.5
+  projectileSpeed: 10
