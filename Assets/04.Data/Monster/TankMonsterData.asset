@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: TankMonsterData
   m_EditorClassIdentifier: 
   monsterName: Tank
-  monsterType: 0
-  description: dd
-  maxHP: 5
-  damage: 5
-  moveSpeed: 5
+  monsterType: 2
+  description: 
+  maxHP: 10
+  damage: 1
+  moveSpeed: 1.5
   rewardGold: 10

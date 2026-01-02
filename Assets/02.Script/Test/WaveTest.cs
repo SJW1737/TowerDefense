@@ -11,28 +11,34 @@ public class WaveTest : MonoBehaviour
 
     private IEnumerator WaveFlowTest()
     {
-        Debug.Log("=== Wave Test Start ===");
-
-        // Wave 1 시작
+        //Wave 1 시작
         WaveManager.Instance.StartFirstWave();
         Debug.Log("Wave 1 시작");
 
-        // Wave 1 몬스터 전부 죽을 때까지 대기
         yield return WaitUntilAllMonsterDead();
 
         Debug.Log("Wave 1 종료");
 
-        // 약간 딜레이
+        //딜레이
         yield return new WaitForSeconds(3f);
 
-        // Wave 2 시작
+        //Wave 2 시작
         WaveManager.Instance.StartNextWave();
         Debug.Log("Wave 2 시작");
 
         yield return WaitUntilAllMonsterDead();
 
         Debug.Log("Wave 2 종료");
-        Debug.Log("=== Wave Test End ===");
+
+        yield return new WaitForSeconds(3f);
+
+        // Wave 3 시작
+        WaveManager.Instance.StartNextWave();
+        Debug.Log("Wave 3 시작");
+
+        yield return WaitUntilAllMonsterDead();
+        Debug.Log("Wave 3 종료");
+
     }
 
     private IEnumerator WaitUntilAllMonsterDead()

@@ -50,6 +50,11 @@ public class Monster : MonoBehaviour
 
     public void OnDie()
     {
+        if (monsterData.isBoss)
+        {
+            DifficultyManager.Instance.OnBossDefeated();
+        }
+
         MonsterPoolManager.Instance.ReturnMonster(monsterData.monsterType, gameObject);
     }
 
@@ -69,7 +74,10 @@ public class Monster : MonoBehaviour
 
     public void ResetMonster()
     {
-        monsterHealth.ResetHealth();
+        float hpMultiplier = DifficultyManager.Instance.HpMultiplier;
+        int finalHp = Mathf.RoundToInt(monsterData.maxHP * hpMultiplier);
+        
+        monsterHealth.ResetHealth(finalHp);
         monsterMovement.ResetMovement();
 
         monsterMovement.SetSpeed(monsterData.moveSpeed);

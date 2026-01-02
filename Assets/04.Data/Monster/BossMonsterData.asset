@@ -15,7 +15,8 @@ MonoBehaviour:
   monsterName: Boss
   monsterType: 3
   description: 
-  maxHP: 5
-  damage: 5
-  moveSpeed: 5
+  maxHP: 1
+  damage: 10
+  moveSpeed: 3
   rewardGold: 10
+  isBoss: 1

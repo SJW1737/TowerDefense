@@ -9,7 +9,6 @@ public class MonsterHealth : Health
 
     private void Start()
     {
-        Init(monsterData.maxHP);
         MonsterHelathBarUI.Bind(this);
     }
 
@@ -24,9 +23,9 @@ public class MonsterHealth : Health
         GetComponent<Monster>().OnDie();
     }
 
-    public void ResetHealth()
+    public void ResetHealth(int maxHp)
     {
-        Init(monsterData.maxHP);
+        Init(maxHp);
         MonsterHelathBarUI.UpdateUI();
     }
 }

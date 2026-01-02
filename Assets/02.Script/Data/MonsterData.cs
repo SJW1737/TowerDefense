@@ -22,4 +22,7 @@ public class MonsterData : ScriptableObject
     public int damage;                  // 타워에 주는 피해량
     public float moveSpeed;             // 이동속도
     public int rewardGold;              // 처치보상
+
+    [Header("보스 설정")]
+    public bool isBoss;
 }

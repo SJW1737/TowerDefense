@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: FastMonsterData
   m_EditorClassIdentifier: 
   monsterName: Fast
-  monsterType: 0
-  description: dd
-  maxHP: 5
-  damage: 5
-  moveSpeed: 5
+  monsterType: 1
+  description: 
+  maxHP: 3
+  damage: 1
+  moveSpeed: 3.5
   rewardGold: 10
