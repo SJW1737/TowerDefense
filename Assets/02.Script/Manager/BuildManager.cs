@@ -11,6 +11,12 @@ public class BuildManager : MonoSingleton<BuildManager>
         base.Awake();
     }
 
+    protected override void Init()
+    {
+        towerBuildUI = TowerBuildUI.Instance;
+        goldManager = GoldManager.Instance;
+    }
+
     public void SelectTile(TowerTile tile)
     {
         selectedTile = tile;
