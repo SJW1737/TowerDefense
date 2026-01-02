@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 6642393634751146490}
   - component: {fileID: 2352935387430974200}
   - component: {fileID: 1399749000301225058}
+  - component: {fileID: -426065573514723833}
   m_Layer: 7
-  m_Name: Tower
+  m_Name: DebuffTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.7586336, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -97,9 +98,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 672ead0af4d219a47af50a0b29adc91f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 1561b59738151594eb94a6f5b2afe987, type: 2}
+  data: {fileID: 11400000, guid: db7c281b72ca1b845a333aac94594f14, type: 2}
   firePoint: {fileID: 6642393634751146490}
   projectilePrefab: {fileID: 2917975267322545158, guid: 3b381826fd4c7164d9a527153e1f40f0, type: 3}
   monsterLayer:
     serializedVersion: 2
     m_Bits: 64
+--- !u!58 &-426065573514723833
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5323560347674312808}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5

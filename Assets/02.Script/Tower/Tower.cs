@@ -64,11 +64,11 @@ public class Tower : MonoBehaviour
     }
 
     // 사거리 체크
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
         if (data == null) return;
 
-        Gizmos.color = Color.red;
+        Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, data.range);
     }
 }
