@@ -14,13 +14,16 @@ public static class TowerFactory
 
     private static ITowerAttack CreateAttack(Tower tower, TowerData data, List<ITowerEffect> effects)
     {
-        switch (data.towerType)
+        switch (data.attackType)
         {
-            case TowerType.Melee:
-                return new MeleeAttack(effects);
+            case AttackType.ProjectileSingle:
+                return new ProjectileAttack(effects, data.projectileSpeed, tower.projectilePrefab, tower.firePoint);
 
-            case TowerType.Ranged:
-                return new RangedAttack(effects, data.projectileSpeed, tower.projectilePrefab, tower.firePoint);
+            case AttackType.ProjectileAOE:
+                return new ExplosionAttack(effects);
+
+            case AttackType.Beam:
+                return new BeamAttack();
 
             default:
                 return null;
@@ -38,7 +41,7 @@ public static class TowerFactory
         }
 
         // ½½·Î¿ì
-        if (data.slowRatio > 0 && data.slowRatio < 1f)
+        if (data.slowRatio > 0f)
         {
             effects.Add(new SlowEffect(data.slowRatio, data.slowDuration));
         }

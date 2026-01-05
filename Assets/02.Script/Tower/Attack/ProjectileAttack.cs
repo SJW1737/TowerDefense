@@ -1,14 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RangedAttack : ITowerAttack
+public class ProjectileAttack : ITowerAttack
 {
     private List<ITowerEffect> effects;
     private float projectileSpeed;
     private GameObject projectilePrefab;
     private Transform firePoint;
 
-    public RangedAttack(List<ITowerEffect> effects, float projectileSpeed, GameObject projectilePrefab, Transform firePoint)
+    public ProjectileAttack(List<ITowerEffect> effects, float projectileSpeed, GameObject projectilePrefab, Transform firePoint)
     {
         this.effects = effects;
         this.projectileSpeed = projectileSpeed;

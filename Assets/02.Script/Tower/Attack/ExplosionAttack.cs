@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 
-public class MeleeAttack : ITowerAttack
+public class ExplosionAttack : ITowerAttack
 {
     private List<ITowerEffect> effects;
 
-    public MeleeAttack(List<ITowerEffect> effects)
+    public ExplosionAttack(List<ITowerEffect> effects)
     {
         this.effects = effects;
     }

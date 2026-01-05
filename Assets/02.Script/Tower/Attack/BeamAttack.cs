@@ -1,4 +1,4 @@
-public class DebuffAttack : ITowerAttack
+public class BeamAttack : ITowerAttack
 {
     public void Execute(Monster target)
     {
