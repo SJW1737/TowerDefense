@@ -4,37 +4,56 @@ using UnityEngine;
 
 public class WaveManager : MonoSingleton<WaveManager>
 {
-    public List<WaveData> waves;
-
-    private int currentWaveIndex = 0;
     private MonsterSpawn monsterSpawn;
+
+    private int currentWave = 1;
+    private bool isRunning;
 
     protected override void Init()
     {
         monsterSpawn = FindObjectOfType<MonsterSpawn>();
     }
 
-    public void StartFirstWave()
+    public void StartGame()
     {
-        currentWaveIndex = 0;
-        StartCurrentWave();
+        if (isRunning) return;
+        isRunning = true;
+
+        StartCoroutine(WaveLoop());
     }
 
-    public void StartCurrentWave()
+    public void ResetWave()
     {
-        if (currentWaveIndex >= waves.Count)
+        StopAllCoroutines();
+        currentWave = 1;
+        isRunning = false;
+    }
+
+    private IEnumerator WaveLoop()
+    {
+        while (true)
         {
-            Debug.Log("모든 웨이브 종료");
-            return;
-        }
+            Debug.Log($"Wave {currentWave} 시작");
 
-        WaveData wave = waves[currentWaveIndex];
-        monsterSpawn.StartWave(wave);
+            WaveData waveData = WaveGenerator.Generate(currentWave);
+
+            monsterSpawn.StartWave(waveData);
+
+            yield return WaitUntilAllMonsterDead();
+
+            Debug.Log($"Wave {currentWave} 종료");
+
+            currentWave++;
+
+            yield return new WaitForSeconds(3f);
+        }
     }
 
-    public void StartNextWave()
+    private IEnumerator WaitUntilAllMonsterDead()
     {
-        currentWaveIndex++;
-        StartCurrentWave();
+        while (monsterSpawn.IsWaveSpawning || MonsterPoolManager.Instance.AliveMonsterCount > 0)
+        {
+            yield return null;
+        }
     }
 }

@@ -50,6 +50,10 @@ public class Monster : MonoBehaviour
 
     public void OnDie()
     {
+        int rewardGold = monsterData.rewardGold + DifficultyManager.Instance.GoldBonus;
+
+        GoldManager.Instance.Add(rewardGold);
+
         if (monsterData.isBoss)
         {
             DifficultyManager.Instance.OnBossDefeated();
