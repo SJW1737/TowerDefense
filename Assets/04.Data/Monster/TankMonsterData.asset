@@ -18,4 +18,5 @@ MonoBehaviour:
   maxHP: 10
   damage: 1
   moveSpeed: 1.5
-  rewardGold: 10
+  rewardGold: 2
+  isBoss: 0

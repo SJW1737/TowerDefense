@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MonsterSpawn : MonoBehaviour
 {
+    public bool IsWaveSpawning { get; private set; }
+
     public void StartWave(WaveData waveData)
     {
         StartCoroutine(SpawnWave(waveData));
@@ -11,6 +13,8 @@ public class MonsterSpawn : MonoBehaviour
 
     IEnumerator SpawnWave(WaveData waveData)
     {
+        IsWaveSpawning = true;
+
         Node startNode = GridManager.Instance.startNode;
 
         Vector3 spawnPos = new Vector3(startNode.x + 0.5f, startNode.y + 0.5f, 0);
@@ -24,5 +28,7 @@ public class MonsterSpawn : MonoBehaviour
                 yield return new WaitForSeconds(waveData.spawnInterval);
             }
         }
+
+        IsWaveSpawning = false;
     }
 }
