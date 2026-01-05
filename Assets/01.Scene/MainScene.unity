@@ -973,7 +973,16 @@ MonoBehaviour:
   poolDatas:
   - type: 0
     prefab: {fileID: 1031709059401727802, guid: 48fa5bd2776d6214a84281c26b121273, type: 3}
-    poolSize: 10
+    poolSize: 8
+  - type: 1
+    prefab: {fileID: 1031709059401727802, guid: c5e7c523da2acad489d5f7950bb51c58, type: 3}
+    poolSize: 5
+  - type: 2
+    prefab: {fileID: 1031709059401727802, guid: a360f7f53e5eaf547a28664b685a57ad, type: 3}
+    poolSize: 5
+  - type: 3
+    prefab: {fileID: 1031709059401727802, guid: b9ca5f3568e446c4883b92877d9b32ed, type: 3}
+    poolSize: 3
 --- !u!4 &809639480
 Transform:
   m_ObjectHideFlags: 0
@@ -1442,50 +1451,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1540549333}
   m_CullTransparentMesh: 1
---- !u!1 &1667113212
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1667113214}
-  - component: {fileID: 1667113213}
-  m_Layer: 0
-  m_Name: WaveTest
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1667113213
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1667113212}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eea0c483da0d4144f913f4dfbad11b73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1667113214
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1667113212}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.309001, y: 4.367561, z: -0.12524274}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1696710542
 GameObject:
   m_ObjectHideFlags: 0
@@ -2426,6 +2391,5 @@ SceneRoots:
   - {fileID: 356716027}
   - {fileID: 809639480}
   - {fileID: 496976074}
-  - {fileID: 1667113214}
   - {fileID: 2034547894}
   - {fileID: 164486387}
