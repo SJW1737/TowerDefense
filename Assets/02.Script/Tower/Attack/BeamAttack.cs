@@ -6,18 +6,21 @@ public class BeamAttack : ITowerAttack
 {
     private readonly List<ITowerEffect> effects;
 
+    private readonly float stackInterval;
+    private readonly int maxStack;
+
     private DamageEffect damageEffect;
 
     private Monster currentTarget;
     private float stackTimer;
     private int stackCount;
 
-    private const float stackInterval = 0.2f;
-    private const int maxStack = 10;
-
-    public BeamAttack(List<ITowerEffect> effects)
+    public BeamAttack(List<ITowerEffect> effects, float stackInterval, int maxStack)
     {
         this.effects = effects;
+        this.stackInterval = stackInterval;
+        this.maxStack = maxStack;
+
         damageEffect = effects.OfType<DamageEffect>().FirstOrDefault();
     }
 

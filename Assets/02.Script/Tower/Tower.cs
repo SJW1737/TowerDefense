@@ -21,7 +21,7 @@ public class Tower : MonoBehaviour
     {
         attackTimer += Time.deltaTime;
 
-        float attackInterval = 1f / data.attackSpeed;
+        float attackInterval = 1f / data.attackInterval;
 
         if (attackTimer >= attackInterval)
         {

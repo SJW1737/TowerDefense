@@ -13,13 +13,12 @@ MonoBehaviour:
   m_Name: DebuffTowerData
   m_EditorClassIdentifier: 
   towerName: DebuffTower
-  towerType: 2
-  attackType: 0
   cost: 10
+  towerType: 2
   towerPrefab: {fileID: 5323560347674312808, guid: edd67df298be7214dba2b824a1e16acf, type: 3}
-  attackSpeed: 1
+  attackInterval: 1
   range: 3
-  projectileSpeed: 10
-  damage: 1
-  slowRatio: 0.3
-  slowDuration: 3
+  attackData: {fileID: 11400000, guid: 8dd7d937d766d214ea32c111f86c4392, type: 2}
+  effects:
+  - {fileID: 11400000, guid: c0d2e240c1ba9da4793f6df785b12665, type: 2}
+  - {fileID: 11400000, guid: 793486ee942a2f04e8b19fc8a49b51d8, type: 2}

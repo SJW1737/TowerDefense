@@ -13,13 +13,11 @@ MonoBehaviour:
   m_Name: RangedTowerData
   m_EditorClassIdentifier: 
   towerName: RangedTower
-  towerType: 1
-  attackType: 0
   cost: 10
+  towerType: 1
   towerPrefab: {fileID: 5323560347674312808, guid: 0e9ec979436809549a0814c7cba3d60c, type: 3}
-  attackSpeed: 1.5
+  attackInterval: 1.5
   range: 4
-  projectileSpeed: 6
-  damage: 4
-  slowRatio: 0
-  slowDuration: 0
+  attackData: {fileID: 11400000, guid: 5ed37235f9e5ddc41bdc2a113342ebd6, type: 2}
+  effects:
+  - {fileID: 11400000, guid: 4cdd27ab7b8a88a4e94a0d57035012df, type: 2}

@@ -22,13 +22,14 @@ public class Projectile : MonoBehaviour
             return;
         }
 
-        Vector2 dir = (target.transform.position - transform.position).normalized;
-        transform.position += (Vector3)(dir * speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.TryGetComponent(out Monster monster))
+            return;
+        if (monster != target)
             return;
 
         foreach (var effect in effects)
