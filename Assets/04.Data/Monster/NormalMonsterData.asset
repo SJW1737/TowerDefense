@@ -17,6 +17,6 @@ MonoBehaviour:
   description: 
   maxHP: 8
   damage: 1
-  moveSpeed: 2
+  moveSpeed: 12.4
   rewardGold: 2
   isBoss: 0

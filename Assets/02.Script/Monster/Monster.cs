@@ -29,7 +29,7 @@ public class Monster : MonoBehaviour
         ResetMonster();
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         monsterHealth.TakeDamage(damage);
     }
@@ -59,7 +59,7 @@ public class Monster : MonoBehaviour
             DifficultyManager.Instance.OnBossDefeated();
         }
 
-        MonsterPoolManager.Instance.ReturnMonster(monsterData.monsterType, gameObject);
+        ReturnToPool();
     }
 
     private void ReturnToPool()

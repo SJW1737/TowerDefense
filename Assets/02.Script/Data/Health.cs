@@ -15,7 +15,12 @@ public abstract class Health : MonoBehaviour
 
     public virtual void TakeDamage(int damage)
     {
-        CurrentHp -= damage;
+        TakeDamage((float)damage);
+    }
+
+    public virtual void TakeDamage(float damage)
+    {
+        CurrentHp -= Mathf.RoundToInt(damage);
         CurrentHp = Mathf.Max(CurrentHp, 0);
 
         if (CurrentHp <= 0)
