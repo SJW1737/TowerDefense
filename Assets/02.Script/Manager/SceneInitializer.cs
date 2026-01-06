@@ -8,6 +8,8 @@ public class SceneInitializer : MonoBehaviour
         _ = BuildManager.Instance;
         _ = TowerBuildUI.Instance;
         _ = GoldManager.Instance;
+        _ = DifficultyManager.Instance;
+        _ = WaveManager.Instance;
     }
 
     private void Start()
