@@ -4,19 +4,18 @@ using UnityEngine;
 
 public class CastleHealth : Health
 {
-    [SerializeField] private int castleMaxHP = 100;
+    [SerializeField] private int castleMaxHP = 20;
     [SerializeField] private CastleHealthBarUI CastleHealthBarUI;
 
-    private void Start()
+    private void Awake()
     {
         Init(castleMaxHP);
         CastleHealthBarUI.Bind(this);
     }
 
-    public override void TakeDamage(int damage)
+    public override void TakeDamage(float damage)
     {
         base.TakeDamage(damage);
-
         CastleHealthBarUI.UpdateUI();
     }
 

@@ -359,6 +359,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2609758427029937585, guid: 0d6f811b348cbe247992b8ae2b96fa6d, type: 3}
+      propertyPath: castleMaxHP
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2609758427029937585, guid: 0d6f811b348cbe247992b8ae2b96fa6d, type: 3}
+      propertyPath: CastleHealthBarUI
+      value: 
+      objectReference: {fileID: 1407810431}
     - target: {fileID: 5657926811363311625, guid: 0d6f811b348cbe247992b8ae2b96fa6d, type: 3}
       propertyPath: m_Name
       value: Castle
@@ -1242,6 +1250,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3318552349652523751, guid: ef61d6411951de340b22c6254da76e4d, type: 3}
   m_PrefabInstance: {fileID: 1407810429}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1407810431 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5155646526823163783, guid: ef61d6411951de340b22c6254da76e4d, type: 3}
+  m_PrefabInstance: {fileID: 1407810429}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b62c365f596006499e0b4747114d128, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1534996125
 GameObject:
   m_ObjectHideFlags: 0
