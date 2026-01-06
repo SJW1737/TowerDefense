@@ -23,7 +23,7 @@ public static class TowerFactory
                 return new ExplosionAttack(effects);
 
             case AttackType.Beam:
-                return new BeamAttack();
+                return new BeamAttack(effects);
 
             default:
                 return null;

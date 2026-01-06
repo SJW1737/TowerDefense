@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class DamageEffect : ITowerEffect
 {
-    private int damage;
+    private int baseDamage;
+    private int bonusDamage;
 
-    public DamageEffect(int damage)
+    public DamageEffect(int baseDamage)
     {
-        this.damage = damage;
+        this.baseDamage = baseDamage;
+    }
+
+    public void SetBonusDamage(int bonus)
+    {
+        bonusDamage = bonus;
     }
 
     public void Apply(Monster target)
     {
-        target.TakeDamage(damage);
+        target.TakeDamage(baseDamage + bonusDamage);
     }
 }
