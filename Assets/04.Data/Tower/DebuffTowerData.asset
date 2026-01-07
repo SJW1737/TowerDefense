@@ -22,3 +22,7 @@ MonoBehaviour:
   effects:
   - {fileID: 11400000, guid: c0d2e240c1ba9da4793f6df785b12665, type: 2}
   - {fileID: 11400000, guid: 793486ee942a2f04e8b19fc8a49b51d8, type: 2}
+  tier: 1
+  maxUpgradeCount: 3
+  upgradeCosts: 0a0000000f00000014000000
+  evolveTargets: []

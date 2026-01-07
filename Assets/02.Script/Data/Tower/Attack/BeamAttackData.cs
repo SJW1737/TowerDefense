@@ -6,9 +6,10 @@ public class BeamAttackData : AttackData
 {
     public float stackInterval;
     public int maxStack;
+    public int beamDamagePerStack;
 
     public override ITowerAttack CreateAttack(Tower tower, List<ITowerEffect> effects)
     {
-        return new BeamAttack(effects, stackInterval, maxStack);
+        return new BeamAttack(effects, stackInterval, maxStack, beamDamagePerStack);
     }
 }

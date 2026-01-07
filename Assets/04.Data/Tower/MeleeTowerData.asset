@@ -21,3 +21,7 @@ MonoBehaviour:
   attackData: {fileID: 11400000, guid: 2ff972fcd7b4f944892b0c3ae8828079, type: 2}
   effects:
   - {fileID: 11400000, guid: a371e5779ddad904f8c4053cf634100e, type: 2}
+  tier: 1
+  maxUpgradeCount: 3
+  upgradeCosts: 0a0000000f00000014000000
+  evolveTargets: []
