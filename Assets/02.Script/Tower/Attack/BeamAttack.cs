@@ -9,17 +9,20 @@ public class BeamAttack : ITowerAttack
     private readonly float stackInterval;
     private readonly int maxStack;
 
+    private int beamDamagePerStack;
+
     private DamageEffect damageEffect;
 
     private Monster currentTarget;
     private float stackTimer;
     private int stackCount;
 
-    public BeamAttack(List<ITowerEffect> effects, float stackInterval, int maxStack)
+    public BeamAttack(List<ITowerEffect> effects, float stackInterval, int maxStack, int beamDamagePerStack)
     {
         this.effects = effects;
         this.stackInterval = stackInterval;
         this.maxStack = maxStack;
+        this.beamDamagePerStack = beamDamagePerStack;
 
         damageEffect = effects.OfType<DamageEffect>().FirstOrDefault();
     }
@@ -47,7 +50,8 @@ public class BeamAttack : ITowerAttack
             stackCount = Mathf.Min(stackCount + 1, maxStack);
         }
 
-        damageEffect.SetBonusDamage(stackCount);
+        int beamBonusDamage = stackCount * beamDamagePerStack;
+        damageEffect.SetBeamBonus(beamBonusDamage);
 
         foreach (var effect in effects)
         {
@@ -55,10 +59,15 @@ public class BeamAttack : ITowerAttack
         }
     }
 
+    public void IncreaseBeamDamagePerStack(int amount)
+    {
+        beamDamagePerStack += amount;
+    }
+
     private void ResetStack()
     {
         stackTimer = 0f;
         stackCount = 0;
-        damageEffect?.SetBonusDamage(0);
+        damageEffect?.SetBeamBonus(0);
     }
 }

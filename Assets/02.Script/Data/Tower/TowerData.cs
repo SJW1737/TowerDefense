@@ -25,4 +25,10 @@ public class TowerData : ScriptableObject
     [Header("공격, 효과 데이터")]
     public AttackData attackData;
     public List<EffectData> effects;
+
+    [Header("강화 / 진화")]
+    public int tier;                      // 1, 2
+    public int maxUpgradeCount;           // 3
+    public List<int> upgradeCosts;        // 단계별 비용
+    public List<TowerData> evolveTargets; // Tier2
 }
