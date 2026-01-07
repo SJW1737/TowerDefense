@@ -9,6 +9,8 @@ public class WaveManager : MonoSingleton<WaveManager>
     private int currentWave = 1;
     private bool isRunning;
 
+    public int CurrentWave => currentWave;
+
     protected override void Init()
     {
         monsterSpawn = FindObjectOfType<MonsterSpawn>();
