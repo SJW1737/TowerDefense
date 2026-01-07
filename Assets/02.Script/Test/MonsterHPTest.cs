@@ -4,19 +4,26 @@ using UnityEngine;
 
 public class MonsterHPTest : MonoBehaviour
 {
-    private Monster monster;
-
-    private void Awake()
-    {
-        monster = FindObjectOfType<Monster>();
-    }
+    [SerializeField] private float damage = 10f;
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.K))
         {
-            Debug.Log("K 키 입력 몬스터 데미지");
-            monster.TakeDamage(10);
+            Monster[] monsters = FindObjectsOfType<Monster>();
+
+            int hitCount = 0;
+
+            foreach (var m in monsters)
+            {
+                if (m != null && m.gameObject.activeInHierarchy)
+                {
+                    m.TakeDamage(damage);
+                    hitCount++;
+                }
+            }
+
+            Debug.Log($"K 키 입력: 몬스터 {hitCount}마리에게 {damage} 데미지");
         }
     }
 }
