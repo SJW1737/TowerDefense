@@ -11,6 +11,11 @@ public class TitleMenuUI : MonoBehaviour
 
     [Header("Buttons")]
     [SerializeField] private Button startButton;
+    [SerializeField] private Button settingButton;
+
+    [Header("UI")]
+    [SerializeField] private SettingPanelUI settingPanelUI;
+
 
     public void OnClickStart()
     {
@@ -18,5 +23,11 @@ public class TitleMenuUI : MonoBehaviour
             startButton.interactable = false;
 
         SceneManager.LoadScene(gameSceneName);
+    }
+
+    public void OnClickSetting()
+    {
+        if (settingPanelUI != null)
+            settingPanelUI.Open();
     }
 }

@@ -11,6 +11,9 @@ public class GameOverUI : MonoBehaviour
     [Header("Panel")]
     [SerializeField] private GameObject gameOverPanel;
 
+    [Header("Dim")]
+    [SerializeField] private GameObject dim;
+
     [Header("Texts (TMP)")]
     [SerializeField] private TextMeshProUGUI scoreAndBestText;
 
@@ -29,6 +32,9 @@ public class GameOverUI : MonoBehaviour
         if (gameOverPanel != null)
             gameOverPanel.SetActive(false);
 
+        if (dim != null)
+            dim.SetActive(false);
+
         if (restartButton != null) restartButton.onClick.AddListener(Restart);
         if (backButton != null) backButton.onClick.AddListener(BackToTitle);
     }
@@ -37,6 +43,9 @@ public class GameOverUI : MonoBehaviour
     {
         if (isShown) return;
         isShown = true;
+
+        if (dim != null)
+            dim.SetActive(true);
 
         if (gameOverPanel != null)
             gameOverPanel.SetActive(true);
