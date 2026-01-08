@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a8ccd690911b1f4c9762b68daa29760, type: 3}
   m_Name: MachineGunTowerData
   m_EditorClassIdentifier: 
-  towerName: 
-  cost: 0
+  towerName: MachineGunTower
+  cost: 30
   towerType: 0
   towerPrefab: {fileID: 0}
   attackInterval: 0

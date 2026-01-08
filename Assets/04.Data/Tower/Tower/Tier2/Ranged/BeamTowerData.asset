@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: BeamTowerData
   m_EditorClassIdentifier: 
   towerName: BeamTower
-  cost: 0
-  towerType: 0
+  cost: 30
+  towerType: 1
   towerPrefab: {fileID: 0}
   attackInterval: 0
   range: 0
