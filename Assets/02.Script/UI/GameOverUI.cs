@@ -27,6 +27,8 @@ public class GameOverUI : MonoBehaviour
 
     private bool isShown;
 
+    private const string KEY_BEST_WAVE = "BEST_WAVE";
+
     private void Awake()
     {
         if (gameOverPanel != null)
@@ -50,9 +52,17 @@ public class GameOverUI : MonoBehaviour
         if (gameOverPanel != null)
             gameOverPanel.SetActive(true);
 
+        int bestWave = PlayerPrefs.GetInt(KEY_BEST_WAVE, 0);
+        if (waveScore > bestWave)
+        {
+            bestWave = waveScore;
+            PlayerPrefs.SetInt(KEY_BEST_WAVE, bestWave);
+            PlayerPrefs.Save();
+        }
+
         if (scoreAndBestText != null)
         {
-            scoreAndBestText.text = $"Score : {waveScore} Wave\n" + $"Best : ?? Wave";
+            scoreAndBestText.text = $"Score : {waveScore} Wave\n" + $"Best : {bestWave} Wave";
         }
 
         Time.timeScale = 0f;
@@ -61,12 +71,14 @@ public class GameOverUI : MonoBehaviour
     private void Restart()
     {
         Time.timeScale = 1f;
+        if (WaveManager.Instance != null) WaveManager.Instance.ResetWave();
         SceneManager.LoadScene(gameScene);
     }
 
     private void BackToTitle()
     {
         Time.timeScale = 1f;
+        if (WaveManager.Instance != null) WaveManager.Instance.ResetWave();
         SceneManager.LoadScene(titleScene);
     }
 }
