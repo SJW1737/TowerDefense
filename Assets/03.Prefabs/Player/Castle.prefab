@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4aa62e13ebd31a4988bdcf1550f427b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  castleMaxHP: 100
-  CastleHealthBarUI: {fileID: 5155646526823163783, guid: ef61d6411951de340b22c6254da76e4d, type: 3}
+  castleMaxHP: 20
+  CastleHealthBarUI: {fileID: 0}
