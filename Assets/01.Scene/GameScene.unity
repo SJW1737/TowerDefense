@@ -3228,14 +3228,14 @@ GameObject:
   - component: {fileID: 1328495963}
   - component: {fileID: 1328495966}
   - component: {fileID: 1328495965}
-  - component: {fileID: 1328495964}
+  - component: {fileID: 1328495967}
   m_Layer: 5
   m_Name: TowerUpgradeEvolutionPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1328495963
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3263,25 +3263,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 235}
   m_Pivot: {x: 0.5, y: 0}
---- !u!114 &1328495964
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1328495962}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ae44d5c735d4fc4884aa3d35076cfe7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  panel: {fileID: 1328495962}
-  meleeBuyButton: {fileID: 203321240}
-  rangedBuyButton: {fileID: 1084342749}
-  debuffBuyButton: {fileID: 628659710}
-  meleeTowerData: {fileID: 11400000, guid: 36baf441f693c0f4b9dde33940d5fb0b, type: 2}
-  rangedTowerData: {fileID: 11400000, guid: 1561b59738151594eb94a6f5b2afe987, type: 2}
-  debuffTowerData: {fileID: 11400000, guid: db7c281b72ca1b845a333aac94594f14, type: 2}
 --- !u!114 &1328495965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3320,6 +3301,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1328495962}
   m_CullTransparentMesh: 1
+--- !u!114 &1328495967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1328495962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e0a834dc34fb8747bb4015e92ef77d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeButton: {fileID: 203321240}
+  tier2EvolutionImages:
+  - {fileID: 1802968275}
+  - {fileID: 563575624}
+  - {fileID: 1856526248}
+  tier2EvolutionButtons:
+  - {fileID: 622243507}
+  - {fileID: 1084342749}
+  - {fileID: 628659710}
 --- !u!1001 &1407810429
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5133,6 +5135,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerTilePrefab: {fileID: 5255528455363091740, guid: b6beb44b66e3c104dbe743ecd8e4a75f, type: 3}
   pathTilePrefab: {fileID: 5926962020925906858, guid: a3aa5016291b6db4687a083777b3d027, type: 3}
+--- !u!1 &2056522804
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2056522806}
+  - component: {fileID: 2056522805}
+  m_Layer: 0
+  m_Name: TowerSelector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2056522805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056522804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf36028c6d3af5e47b8c7d96f2feb807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &2056522806
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056522804}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2119807194
 GameObject:
   m_ObjectHideFlags: 0
@@ -5490,6 +5536,7 @@ SceneRoots:
   - {fileID: 619394802}
   - {fileID: 1955082047}
   - {fileID: 2009595906}
+  - {fileID: 2056522806}
   - {fileID: 1810144865}
   - {fileID: 790448015}
   - {fileID: 374650976}

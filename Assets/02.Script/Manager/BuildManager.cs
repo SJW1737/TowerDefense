@@ -34,4 +34,12 @@ public class BuildManager : MonoSingleton<BuildManager>
         selectedTile = null;
         towerBuildUI.Close();
     }
+
+    public void EvolveTower(Tower tower, int evolutionIndex)
+    {
+        // TODO
+        // tower.data.tier2EvolutionTargets[evolutionIndex]
+        // 扁粮 鸥况 力芭
+        // 货 Tier2 鸥况 积己
+    }
 }
