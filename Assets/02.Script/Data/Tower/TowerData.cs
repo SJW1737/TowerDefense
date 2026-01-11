@@ -30,5 +30,5 @@ public class TowerData : ScriptableObject
     public int tier;                      // 1, 2
     public int maxUpgradeCount;           // 3
     public List<int> upgradeCosts;        // 단계별 비용
-    public List<TowerData> evolveTargets; // Tier2
+    public List<TowerData> tier2EvolutionTargets; // Tier2
 }
