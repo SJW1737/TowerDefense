@@ -31,4 +31,17 @@ public class MonsterSpawn : MonoBehaviour
 
         IsWaveSpawning = false;
     }
+
+    public void SpawnSingle(MonsterData monsterData)
+    {
+        if (monsterData == null)
+        {
+            return;
+        }
+
+        Node startNode = GridManager.Instance.startNode;
+        Vector3 spawnPos = new Vector3(startNode.x + 0.5f, startNode.y + 0.5f, 0);
+
+        MonsterPoolManager.Instance.GetMonster(monsterData, spawnPos);
+    }
 }

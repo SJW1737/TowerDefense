@@ -54,7 +54,7 @@ public class Monster : MonoBehaviour
 
         GoldManager.Instance.Add(rewardGold);
 
-        if (monsterData.isBoss)
+        if (monsterData.monsterType == MonsterType.Boss)
         {
             DifficultyManager.Instance.OnBossDefeated();
         }
@@ -64,7 +64,15 @@ public class Monster : MonoBehaviour
 
     private void ReturnToPool()
     {
-        MonsterPoolManager.Instance.ReturnMonster(monsterData.monsterType, gameObject);
+        //미니보스
+        if (MonsterPoolManager.Instance.HasMonsterDataPool(monsterData))
+        {
+            MonsterPoolManager.Instance.ReturnMonster(monsterData, gameObject);
+        }
+        else//일반 몬스터
+        {
+            MonsterPoolManager.Instance.ReturnMonster(monsterData.monsterType, gameObject);
+        }
     }
 
     private void OnDisable()

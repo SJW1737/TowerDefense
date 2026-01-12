@@ -6,6 +6,7 @@ using UnityEngine;
 public class MonsterPoolData
 {
     public MonsterType type;
+    public MonsterData monsterData;
     public GameObject prefab;
     public int poolSize;
 }

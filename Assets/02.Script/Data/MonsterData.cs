@@ -7,7 +7,8 @@ public enum MonsterType
     Normal,     //기본
     Fast,       //체력이 낮고 빠른
     Tank,       //체력이 높고 느린
-    Boss        //보스
+    Boss,       //보스
+    MiniBoss    //미니보스
 }
 
 

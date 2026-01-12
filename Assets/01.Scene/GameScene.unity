@@ -2800,15 +2800,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolDatas:
   - type: 0
+    monsterData: {fileID: 11400000, guid: ca4ddf02a555cae4eba80f59dd67a442, type: 2}
     prefab: {fileID: 1031709059401727802, guid: 48fa5bd2776d6214a84281c26b121273, type: 3}
     poolSize: 8
   - type: 1
+    monsterData: {fileID: 11400000, guid: 002894c7d7b0a184387496f337a23da9, type: 2}
     prefab: {fileID: 1031709059401727802, guid: c5e7c523da2acad489d5f7950bb51c58, type: 3}
     poolSize: 5
   - type: 2
+    monsterData: {fileID: 11400000, guid: 4910c0b6ce1aa3c4b8859ae4f031e3fe, type: 2}
     prefab: {fileID: 1031709059401727802, guid: a360f7f53e5eaf547a28664b685a57ad, type: 3}
     poolSize: 5
   - type: 3
+    monsterData: {fileID: 11400000, guid: 969bffa86a7adfa48822b2b2610161d0, type: 2}
+    prefab: {fileID: 1031709059401727802, guid: b9ca5f3568e446c4883b92877d9b32ed, type: 3}
+    poolSize: 3
+  - type: 4
+    monsterData: {fileID: 11400000, guid: 52e735d13d2361c4090b60f5fbeedaf4, type: 2}
+    prefab: {fileID: 1031709059401727802, guid: b9ca5f3568e446c4883b92877d9b32ed, type: 3}
+    poolSize: 3
+  - type: 4
+    monsterData: {fileID: 11400000, guid: 4fd63f2171c004041a2eda087f63c13b, type: 2}
+    prefab: {fileID: 1031709059401727802, guid: b9ca5f3568e446c4883b92877d9b32ed, type: 3}
+    poolSize: 3
+  - type: 4
+    monsterData: {fileID: 11400000, guid: 5b4ef9c7f900ac24f92b07e205c12d9e, type: 2}
     prefab: {fileID: 1031709059401727802, guid: b9ca5f3568e446c4883b92877d9b32ed, type: 3}
     poolSize: 3
 --- !u!4 &809639480
@@ -2821,6 +2837,54 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.309001, y: 4.367561, z: -0.12524274}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &938182709
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 938182711}
+  - component: {fileID: 938182710}
+  m_Layer: 0
+  m_Name: MiniBossSpawnController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &938182710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938182709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ec8ae5625edd594592fa685671cb916, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  miniBossList:
+  - {fileID: 11400000, guid: 0b3bb01b3939c624da9b0b5d390b4381, type: 2}
+  - {fileID: 11400000, guid: f7f66dde808ba324583fbd400ae7779e, type: 2}
+  - {fileID: 11400000, guid: b2151e5aa6495cd46a4985bddc7c44f6, type: 2}
+--- !u!4 &938182711
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938182709}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 218.4995, y: 569.52277, z: -7.7725854}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5495,34 +5559,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8475460896095635414, guid: 79545c9939a3ff546b8d7a962f2d2b97, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8475460896095635414, guid: 79545c9939a3ff546b8d7a962f2d2b97, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8475460896095635414, guid: 79545c9939a3ff546b8d7a962f2d2b97, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 517932428}
-    - target: {fileID: 8475460896095635414, guid: 79545c9939a3ff546b8d7a962f2d2b97, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8475460896095635414, guid: 79545c9939a3ff546b8d7a962f2d2b97, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Hide
-      objectReference: {fileID: 0}
-    - target: {fileID: 8475460896095635414, guid: 79545c9939a3ff546b8d7a962f2d2b97, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: MiniBossListUI, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 8475460896095635414, guid: 79545c9939a3ff546b8d7a962f2d2b97, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5544,3 +5580,4 @@ SceneRoots:
   - {fileID: 356716027}
   - {fileID: 164486387}
   - {fileID: 1608396743}
+  - {fileID: 938182711}

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5737007631981804826}
   - component: {fileID: 5784187517684082129}
   - component: {fileID: 7017551914745162066}
+  - component: {fileID: 2959661803497158637}
   m_Layer: 5
   m_Name: SpawnButton
   m_TagString: Untagged
@@ -120,7 +121,33 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5784187517684082129}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2959661803497158637}
+        m_TargetAssemblyTypeName: MiniBossButtonUI, Assembly-CSharp
+        m_MethodName: OnClickSpawn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2959661803497158637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590143456830496597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc4f6db67ad382943a233e3654d50eaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  miniBossData: {fileID: 11400000, guid: b2151e5aa6495cd46a4985bddc7c44f6, type: 2}
+  button: {fileID: 7017551914745162066}
 --- !u!1 &2362035093733907241
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,6 +727,7 @@ GameObject:
   - component: {fileID: 4051938750729431717}
   - component: {fileID: 3288424002820988422}
   - component: {fileID: 5538757721614388977}
+  - component: {fileID: 1829397833682144788}
   m_Layer: 5
   m_Name: SpawnButton
   m_TagString: Untagged
@@ -808,7 +836,33 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3288424002820988422}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1829397833682144788}
+        m_TargetAssemblyTypeName: MiniBossButtonUI, Assembly-CSharp
+        m_MethodName: OnClickSpawn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1829397833682144788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4477411796968929409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc4f6db67ad382943a233e3654d50eaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  miniBossData: {fileID: 11400000, guid: f7f66dde808ba324583fbd400ae7779e, type: 2}
+  button: {fileID: 5538757721614388977}
 --- !u!1 &4664728031488485861
 GameObject:
   m_ObjectHideFlags: 0
@@ -821,6 +875,7 @@ GameObject:
   - component: {fileID: 6330012132681044448}
   - component: {fileID: 1775873250807326725}
   - component: {fileID: 1942302912419488346}
+  - component: {fileID: 168535067286936801}
   m_Layer: 5
   m_Name: SpawnButton
   m_TagString: Untagged
@@ -929,7 +984,33 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1775873250807326725}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 168535067286936801}
+        m_TargetAssemblyTypeName: MiniBossButtonUI, Assembly-CSharp
+        m_MethodName: OnClickSpawn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &168535067286936801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4664728031488485861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc4f6db67ad382943a233e3654d50eaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  miniBossData: {fileID: 11400000, guid: 0b3bb01b3939c624da9b0b5d390b4381, type: 2}
+  button: {fileID: 1942302912419488346}
 --- !u!1 &4759453146641616627
 GameObject:
   m_ObjectHideFlags: 0
@@ -1933,7 +2014,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2349228885301035786}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4654997795097222399}
+        m_TargetAssemblyTypeName: MiniBossListUI, Assembly-CSharp
+        m_MethodName: Hide
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8446006589687205277
 GameObject:
   m_ObjectHideFlags: 0
