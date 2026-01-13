@@ -15,7 +15,7 @@ MonoBehaviour:
   towerName: MachineGunTower
   cost: 30
   towerType: 0
-  towerPrefab: {fileID: 0}
+  towerPrefab: {fileID: 4323069816014903991, guid: 8b9ac785dd5b63348bb75550a508c68c, type: 3}
   attackInterval: 0
   range: 0
   attackData: {fileID: 0}
@@ -23,4 +23,4 @@ MonoBehaviour:
   tier: 0
   maxUpgradeCount: 0
   upgradeCosts: 
-  evolveTargets: []
+  tier2EvolutionTargets: []

@@ -15,7 +15,7 @@ MonoBehaviour:
   towerName: BeamTower
   cost: 30
   towerType: 1
-  towerPrefab: {fileID: 0}
+  towerPrefab: {fileID: 4323069816014903991, guid: c595976a82cb1d2429fbe008697d5c40, type: 3}
   attackInterval: 0
   range: 0
   attackData: {fileID: 0}
@@ -23,4 +23,4 @@ MonoBehaviour:
   tier: 2
   maxUpgradeCount: 3
   upgradeCosts: 
-  evolveTargets: []
+  tier2EvolutionTargets: []
