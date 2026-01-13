@@ -7,6 +7,7 @@ public class Monster : MonoBehaviour
     public MonsterData monsterData;
 
     private MonsterMovement monsterMovement;
+    private MonsterStatusEffect statusEffect;
 
     private MonsterHealth monsterHealth;
     private CastleHealth castleHealth;
@@ -14,6 +15,7 @@ public class Monster : MonoBehaviour
     private void Awake()
     {
         monsterMovement = GetComponent<MonsterMovement>();
+        statusEffect = GetComponent<MonsterStatusEffect>();
 
         monsterHealth = GetComponent<MonsterHealth>();
         castleHealth = FindObjectOfType<CastleHealth>();
@@ -37,6 +39,11 @@ public class Monster : MonoBehaviour
     public void ApplySlow(float slowRatio, float duration)
     {
         monsterMovement.ApplySlow(slowRatio, duration);
+    }
+
+    public void ApplyDot(float damagePerTick, float duration, float interval)
+    {
+        statusEffect.ApplyDot(damagePerTick, duration, interval);
     }
 
     private void OnArrivedAtCastle()
