@@ -35,15 +35,18 @@ public class MiniBossSpawnController : MonoSingleton<MiniBossSpawnController>
 
     public void Spawn(MiniBossData data)
     {
+        if (MonsterPoolManager.Instance.HasAliveMiniBoss())
+        {
+            return;
+        }
+
         if (!IsUnlocked(data))
         {
-            Debug.Log($"{data.bossName} 아직 해금 안됨");
             return;
         }
 
         if (!IsCooldownReady(data))
         {
-            Debug.Log($"{data.bossName} 쿨타임 중");
             return;
         }
 
@@ -51,7 +54,5 @@ public class MiniBossSpawnController : MonoSingleton<MiniBossSpawnController>
         spawner.SpawnSingle(data.monsterData);
 
         lastSpawnTime[data] = Time.time;
-
-        Debug.Log($"{data.bossName} 스폰");
     }
 }
