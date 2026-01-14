@@ -1,20 +1,22 @@
-using UnityEngine;
-
 public class DotEffect : ITowerEffect
 {
-    private float damagePerTick;
-    private float duration;
-    private float interval;
+    private readonly DamageEffect damageEffect;
+    private readonly float damageRatio;
+    private readonly float duration;
+    private readonly float tickInterval;
 
-    public DotEffect(float damagePerTick, float duration, float interval)
+    public DotEffect(DamageEffect damageEffect, float damageRatio, float duration, float tickInterval)
     {
-        this.damagePerTick = damagePerTick;
+        this.damageEffect = damageEffect;
+        this.damageRatio = damageRatio;
         this.duration = duration;
-        this.interval = interval;
+        this.tickInterval = tickInterval;
     }
 
     public void Apply(Monster target)
     {
-        target.ApplyDot(damagePerTick, duration, interval);
+        float damagePerTick = damageEffect.GetFinalDamage() * damageRatio;
+
+        target.ApplyDot(damagePerTick, duration, tickInterval);
     }
 }

@@ -1,15 +1,17 @@
-public class DamageEffect : ITowerEffect
+public class DamageEffect : ITowerEffect, IUpgradeableEffect
 {
     private int baseDamage;
+    private int damageGrowth;
     private int upgradeLevel;
     private int beamBonus;
 
-    public DamageEffect(int baseDamage)
+    public DamageEffect(int baseDamage, int damageGrowth)
     {
         this.baseDamage = baseDamage;
+        this.damageGrowth = damageGrowth;
     }
 
-    public void SetUpgradeLevel(int level)
+    public void OnUpgrade(int level)
     {
         upgradeLevel = level;
     }
@@ -19,13 +21,13 @@ public class DamageEffect : ITowerEffect
         beamBonus = bonus;
     }
 
-    public int GetFinalDamage(int damageGrowth)
+    public int GetFinalDamage()
     {
         return baseDamage + (upgradeLevel * damageGrowth) + beamBonus;
     }
 
     public void Apply(Monster target)
     {
-        target.TakeDamage(baseDamage + beamBonus);
+        target.TakeDamage(GetFinalDamage());
     }
 }
