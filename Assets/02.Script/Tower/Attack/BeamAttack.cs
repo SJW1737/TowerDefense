@@ -50,8 +50,7 @@ public class BeamAttack : ITowerAttack
             stackCount = Mathf.Min(stackCount + 1, maxStack);
         }
 
-        int beamBonusDamage = stackCount * beamDamagePerStack;
-        damageEffect.SetBeamBonus(beamBonusDamage);
+        damageEffect.SetBeamBonus(stackCount * beamDamagePerStack);
 
         foreach (var effect in effects)
         {

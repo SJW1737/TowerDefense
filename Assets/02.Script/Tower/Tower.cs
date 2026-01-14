@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Tower : MonoBehaviour
@@ -8,6 +9,8 @@ public class Tower : MonoBehaviour
     public GameObject projectilePrefab;
 
     private ITowerAttack attack;
+    private List<ITowerEffect> effects;
+
     private float attackTimer;
 
     [SerializeField] private LayerMask monsterLayer;
@@ -67,42 +70,45 @@ public class Tower : MonoBehaviour
         this.attack = attack;
     }
 
+    public void SetEffects(List<ITowerEffect> effects)
+    {
+        this.effects = effects;
+    }
+
+    public T GetEffect<T>() where T : class, ITowerEffect
+    {
+        foreach (var effect in effects)
+        {
+            if (effect is T target)
+                return target;
+        }
+
+        Debug.LogError($"{typeof(T).Name} effect not found on tower");
+        return null;
+    }
+
     public bool TryUpgrade()
     {
-        // 1. 강화 가능 상태인지
         if (!CanUpgrade)
             return false;
 
-        // 2. 다음 강화 비용 계산
-        int cost = GetNextUpgradeCost();
-        if (cost < 0)
-            return false;
+        int cost = data.upgradeCosts[upgradeCount];
 
-        // 3. 골드 충분한지
         if (!GoldManager.Instance.Spend(cost))
             return false;
 
-        // 4. 강화 횟수 증가
-        ApplyUpgrade();
-
-        Debug.Log($"{data.towerName} 강화 성공 " + $"({upgradeCount}/{data.maxUpgradeCount}, 비용 {cost})");
-
-        return true;
-    }
-
-    public int GetNextUpgradeCost()
-    {
-        if (!CanUpgrade)
-            return -1; // 강화 불가 상태
-
-        return data.upgradeCosts[upgradeCount];
-    }
-
-    private void ApplyUpgrade()
-    {
         upgradeCount++;
 
-        // Beam 타워라면 스택당 데미지 +1
+        // 모든 Effect에 강화 전파
+        foreach (var effect in effects)
+        {
+            if (effect is IUpgradeableEffect upgradeable)
+            {
+                upgradeable.OnUpgrade(upgradeCount);
+            }
+        }
+
+        // Beam 특수 처리
         if (attack is BeamAttack beamAttack)
         {
             beamAttack.IncreaseBeamDamagePerStack(1);
@@ -113,6 +119,9 @@ public class Tower : MonoBehaviour
         // - 사거리 증가
         // - Tier2 진화
         // 전부 처리 가능
+
+        Debug.Log($"{data.towerName} 강화 완료 ({upgradeCount}/{data.maxUpgradeCount})");
+        return true;
     }
 
     // 사거리 체크

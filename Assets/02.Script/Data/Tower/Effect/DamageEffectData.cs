@@ -6,8 +6,8 @@ public class DamageEffectData : EffectData
     public int damage;
     public int damageGrowth; // 강화 1회당 증가량
 
-    public override ITowerEffect CreateEffect()
+    public override ITowerEffect CreateEffect(Tower tower)
     {
-        return new DamageEffect(damage);
+        return new DamageEffect(damage, damageGrowth);
     }
 }
