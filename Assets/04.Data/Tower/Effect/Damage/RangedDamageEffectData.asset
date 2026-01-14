@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: RangedDamageEffectData
   m_EditorClassIdentifier: 
   damage: 4
-  damageGrowth: 1
+  damageGrowth: 10
