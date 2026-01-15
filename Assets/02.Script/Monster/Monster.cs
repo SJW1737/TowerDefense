@@ -38,6 +38,9 @@ public class Monster : MonoBehaviour
 
     public void ApplySlow(float slowRatio, float duration)
     {
+        if (!gameObject.activeInHierarchy)
+            return;
+
         monsterMovement.ApplySlow(slowRatio, duration);
     }
 
@@ -57,6 +60,9 @@ public class Monster : MonoBehaviour
 
     public void OnDie()
     {
+        if (monsterMovement != null)
+            monsterMovement.ResetMovement();
+
         int rewardGold = monsterData.rewardGold + DifficultyManager.Instance.GoldBonus;
 
         GoldManager.Instance.Add(rewardGold);

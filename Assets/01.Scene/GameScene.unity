@@ -2829,19 +2829,19 @@ MonoBehaviour:
   - type: 3
     monsterData: {fileID: 11400000, guid: 969bffa86a7adfa48822b2b2610161d0, type: 2}
     prefab: {fileID: 1031709059401727802, guid: b9ca5f3568e446c4883b92877d9b32ed, type: 3}
-    poolSize: 3
+    poolSize: 2
   - type: 4
     monsterData: {fileID: 11400000, guid: 52e735d13d2361c4090b60f5fbeedaf4, type: 2}
-    prefab: {fileID: 1031709059401727802, guid: b9ca5f3568e446c4883b92877d9b32ed, type: 3}
-    poolSize: 3
+    prefab: {fileID: 1323966313293339024, guid: 46b04a705b8c7f0409c53824bf4ed562, type: 3}
+    poolSize: 1
   - type: 4
     monsterData: {fileID: 11400000, guid: 4fd63f2171c004041a2eda087f63c13b, type: 2}
-    prefab: {fileID: 1031709059401727802, guid: b9ca5f3568e446c4883b92877d9b32ed, type: 3}
-    poolSize: 3
+    prefab: {fileID: 3675186387767827339, guid: cb8346080496fb240bde98a30426e3ef, type: 3}
+    poolSize: 1
   - type: 4
     monsterData: {fileID: 11400000, guid: 5b4ef9c7f900ac24f92b07e205c12d9e, type: 2}
-    prefab: {fileID: 1031709059401727802, guid: b9ca5f3568e446c4883b92877d9b32ed, type: 3}
-    poolSize: 3
+    prefab: {fileID: 5705757255531769092, guid: 86f0079f15f6a2e41a7c1e10640d79e1, type: 3}
+    poolSize: 1
 --- !u!4 &809639480
 Transform:
   m_ObjectHideFlags: 0

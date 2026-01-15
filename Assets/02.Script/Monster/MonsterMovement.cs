@@ -31,6 +31,9 @@ public class MonsterMovement : MonoBehaviour
 
     public void ApplySlow(float ratio, float duration)
     {
+        if (!gameObject.activeInHierarchy)
+            return;
+
         if (slowCoroutine != null)
             StopCoroutine(slowCoroutine);
 
@@ -76,6 +79,13 @@ public class MonsterMovement : MonoBehaviour
 
     public void ResetMovement()
     {
+        if (slowCoroutine != null)
+        {
+            StopCoroutine(slowCoroutine);
+            slowCoroutine = null;
+        }
+
         StopAllCoroutines();
+        currentSpeed = moveSpeed;
     }
 }
