@@ -22,5 +22,5 @@ MonoBehaviour:
   effects: []
   tier: 2
   maxUpgradeCount: 3
-  upgradeCosts: 
+  upgradeCosts: 1e0000002800000032000000
   tier2EvolutionTargets: []

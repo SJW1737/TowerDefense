@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3a3a44001ba23d4b9aef86241cf5e57, type: 3}
-  m_Name: MeleeDamageEffectData
+  m_Name: DebuffDamageEffectData
   m_EditorClassIdentifier: 
   damage: 1
-  damageGrowth: 10
+  damageGrowth: 5

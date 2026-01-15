@@ -10,17 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a8ccd690911b1f4c9762b68daa29760, type: 3}
-  m_Name: BalanceTowerData
+  m_Name: BowTowerData
   m_EditorClassIdentifier: 
-  towerName: BalanceTower
+  towerName: BowTower
   cost: 30
   towerType: 0
   towerPrefab: {fileID: 4323069816014903991, guid: e5a44dcd214894a4786514b72d912b81, type: 3}
-  attackInterval: 0
-  range: 0
-  attackData: {fileID: 0}
-  effects: []
-  tier: 0
-  maxUpgradeCount: 0
-  upgradeCosts: 
+  attackInterval: 3
+  range: 4
+  attackData: {fileID: 11400000, guid: aaa17a584226d644ca29eb7c9853e6b3, type: 2}
+  effects:
+  - {fileID: 11400000, guid: e40ea0b61d7b18c41a3c8978056e2803, type: 2}
+  tier: 2
+  maxUpgradeCount: 3
+  upgradeCosts: 1e0000002800000032000000
   tier2EvolutionTargets: []

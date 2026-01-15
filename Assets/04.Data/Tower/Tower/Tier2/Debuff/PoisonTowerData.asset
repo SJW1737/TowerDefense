@@ -20,7 +20,7 @@ MonoBehaviour:
   range: 0
   attackData: {fileID: 0}
   effects: []
-  tier: 0
-  maxUpgradeCount: 0
-  upgradeCosts: 
+  tier: 2
+  maxUpgradeCount: 3
+  upgradeCosts: 1e0000002800000032000000
   tier2EvolutionTargets: []
