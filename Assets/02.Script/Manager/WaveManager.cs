@@ -14,6 +14,7 @@ public class WaveManager : MonoSingleton<WaveManager>
     public int CurrentWave => currentWave;
 
     public event Action<int> OnWaveChanged;
+    public event Action<int> OnWaveStarted;
 
     protected override void Init()
     {
@@ -34,6 +35,7 @@ public class WaveManager : MonoSingleton<WaveManager>
 
         isRunning = true;
         OnWaveChanged?.Invoke(currentWave);
+
         StartCoroutine(WaveLoop());
     }
 
@@ -60,6 +62,8 @@ public class WaveManager : MonoSingleton<WaveManager>
             if (monsterSpawn == null) yield break;
             monsterSpawn.StartWave(waveData);
 
+            OnWaveStarted?.Invoke(currentWave);
+
             yield return WaitUntilAllMonsterDead();
 
             Debug.Log($"Wave {currentWave} Á¾·á");
@@ -85,5 +89,16 @@ public class WaveManager : MonoSingleton<WaveManager>
 
             yield return null;
         }
+    }
+
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
+
+        OnWaveChanged = null;
+        OnWaveStarted = null;
+
+        if (instance == this)
+            instance = null;
     }
 }
