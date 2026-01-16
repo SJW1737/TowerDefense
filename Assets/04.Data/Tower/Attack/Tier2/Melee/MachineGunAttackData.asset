@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5415ad546cded7242ab8e90d1fa40cc5, type: 3}
   m_Name: MachineGunAttackData
   m_EditorClassIdentifier: 
-  projectileSpeed: 0
-  projectilePrefab: {fileID: 0}
+  projectileSpeed: 6
+  projectilePrefab: {fileID: 2917975267322545158, guid: 733b938aae91d80458d07da2adf60f84, type: 3}

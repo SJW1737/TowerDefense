@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3a3a44001ba23d4b9aef86241cf5e57, type: 3}
   m_Name: MachineGunDamageEffectData
   m_EditorClassIdentifier: 
-  damage: 0
-  damageGrowth: 0
+  damage: 2
+  damageGrowth: 5

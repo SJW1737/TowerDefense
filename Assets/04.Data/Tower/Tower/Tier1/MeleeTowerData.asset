@@ -16,7 +16,8 @@ MonoBehaviour:
   cost: 10
   towerType: 0
   towerPrefab: {fileID: 5323560347674312808, guid: 3f34f2e7afd65194bb225bbf6251d230, type: 3}
-  attackInterval: 3
+  baseAttackSpeed: 3
+  attackSpeedPerUpgrade: 0
   range: 2
   attackData: {fileID: 11400000, guid: 2ff972fcd7b4f944892b0c3ae8828079, type: 2}
   effects:

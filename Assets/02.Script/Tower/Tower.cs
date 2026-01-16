@@ -28,7 +28,7 @@ public class Tower : MonoBehaviour
     {
         attackTimer += Time.deltaTime;
 
-        float attackInterval = 1f / data.attackInterval;
+        float attackInterval = data.GetAttackInterval(upgradeCount);
 
         if (attackTimer >= attackInterval)
         {
