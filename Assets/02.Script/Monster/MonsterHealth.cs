@@ -1,11 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class MonsterHealth : Health
 {
     [SerializeField] private MonsterData monsterData;
     [SerializeField] private MonsterHealthBarUI MonsterHelathBarUI;
+
+    private Monster monster;
+
+    private void Awake()
+    {
+        monster = GetComponent<Monster>();
+    }
 
     private void Start()
     {
@@ -20,7 +28,7 @@ public class MonsterHealth : Health
 
     protected override void Die()
     {
-        GetComponent<Monster>().OnDie();
+        monster.NotifyDead();
     }
 
     public void ResetHealth(int maxHp)

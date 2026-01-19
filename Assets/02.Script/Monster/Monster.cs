@@ -12,6 +12,8 @@ public class Monster : MonoBehaviour
     private MonsterHealth monsterHealth;
     private CastleHealth castleHealth;
 
+    public bool IsDead { get; private set; }
+
     private void Awake()
     {
         monsterMovement = GetComponent<MonsterMovement>();
@@ -33,6 +35,8 @@ public class Monster : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        if (IsDead) return;
+
         monsterHealth.TakeDamage(damage);
     }
 
@@ -56,6 +60,14 @@ public class Monster : MonoBehaviour
         castleHealth.TakeDamage(monsterData.damage);
         //몬스터 제거
         ReturnToPool();
+    }
+
+    public void NotifyDead()
+    {
+        if (IsDead) return;
+
+        IsDead = true;
+        OnDie();
     }
 
     public void OnDie()

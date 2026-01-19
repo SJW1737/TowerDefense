@@ -9,6 +9,7 @@ public class Tower : MonoBehaviour
     public GameObject projectilePrefab;
 
     private ITowerAttack attack;
+    private ITickableAttack tickAttack;
     private List<ITowerEffect> effects;
 
     private float attackTimer;
@@ -26,6 +27,8 @@ public class Tower : MonoBehaviour
 
     private void Update()
     {
+        tickAttack?.Tick(Time.deltaTime);
+
         attackTimer += Time.deltaTime;
 
         float attackInterval = data.GetAttackInterval(upgradeCount);
@@ -33,10 +36,10 @@ public class Tower : MonoBehaviour
         if (attackTimer >= attackInterval)
         {
             Monster target = FindTarget();
+            attackTimer = 0f;
 
             if (target != null)
             {
-                attackTimer = 0f;
                 attack?.Execute(target);
             }
         }
@@ -68,6 +71,9 @@ public class Tower : MonoBehaviour
     public void SetAttack(ITowerAttack attack)
     {
         this.attack = attack;
+
+        if (attack is ITickableAttack tickable)
+            this.tickAttack = tickable;
     }
 
     public void SetEffects(List<ITowerEffect> effects)
