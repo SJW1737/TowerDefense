@@ -27,32 +27,38 @@ public class MiniBossSpawnController : MonoSingleton<MiniBossSpawnController>
         return Time.time >= lastSpawnTime[data] + data.cooldownTime;
     }
 
-    public float GetRemainCooldown(MiniBossData data)
-    {
-        float end = lastSpawnTime[data] + data.cooldownTime;
-        return Mathf.Max(0, end - Time.time);
-    }
-
-    public void Spawn(MiniBossData data)
+    public bool Spawn(MiniBossData data)
     {
         if (MonsterPoolManager.Instance.HasAliveMiniBoss())
         {
-            return;
+            return false;
         }
 
         if (!IsUnlocked(data))
         {
-            return;
+            return false;
         }
 
         if (!IsCooldownReady(data))
         {
-            return;
+            return false;
         }
 
         MonsterSpawn spawner = FindObjectOfType<MonsterSpawn>();
         spawner.SpawnSingle(data.monsterData);
 
         lastSpawnTime[data] = Time.time;
+
+        var popup = FindObjectOfType<WavePopupUI>();
+        if (popup != null)
+            popup.Show($"MINI BOSS SPAWN");
+
+        return true;
+    }
+
+    public float GetRemainCooldown(MiniBossData data)
+    {
+        float endTime = lastSpawnTime[data] + data.cooldownTime;
+        return Mathf.Max(0f, endTime - Time.time);
     }
 }

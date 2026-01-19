@@ -14,7 +14,6 @@ public class WaveManager : MonoSingleton<WaveManager>
     public int CurrentWave => currentWave;
 
     public event Action<int> OnWaveChanged;
-    public event Action<int> OnWaveStarted;
 
     protected override void Init()
     {
@@ -58,11 +57,9 @@ public class WaveManager : MonoSingleton<WaveManager>
             Debug.Log($"Wave {currentWave} Ω√¿€");
 
             WaveData waveData = WaveGenerator.Generate(currentWave);
-
-            if (monsterSpawn == null) yield break;
             monsterSpawn.StartWave(waveData);
 
-            OnWaveStarted?.Invoke(currentWave);
+            ShowWavePopup(currentWave);
 
             yield return WaitUntilAllMonsterDead();
 
@@ -75,30 +72,25 @@ public class WaveManager : MonoSingleton<WaveManager>
         }
     }
 
+    private void ShowWavePopup(int wave)
+    {
+        var popup = FindObjectOfType<WavePopupUI>();
+        if (popup == null) return;
+
+        if (wave % 10 == 0)
+            popup.Show("BOSS WAVE");
+        else
+            popup.Show($"{wave} WAVE");
+    }
+
     private IEnumerator WaitUntilAllMonsterDead()
     {
         while (true)
         {
-            if (monsterSpawn == null) yield break;
-
-            var pool = MonsterPoolManager.Instance;
-            if (pool == null) yield break;
-
             if (!monsterSpawn.IsWaveSpawning && MonsterPoolManager.Instance.AliveMonsterCount <= 0)
                 break;
 
             yield return null;
         }
-    }
-
-    private void OnDestroy()
-    {
-        StopAllCoroutines();
-
-        OnWaveChanged = null;
-        OnWaveStarted = null;
-
-        if (instance == this)
-            instance = null;
     }
 }

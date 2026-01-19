@@ -149,6 +149,7 @@ MonoBehaviour:
   miniBossData: {fileID: 11400000, guid: b2151e5aa6495cd46a4985bddc7c44f6, type: 2}
   button: {fileID: 7017551914745162066}
   cooldownText: {fileID: 8716033124840784292}
+  miniBossListPanel: {fileID: 2362035093733907241}
 --- !u!1 &2362035093733907241
 GameObject:
   m_ObjectHideFlags: 0
@@ -1052,6 +1053,7 @@ MonoBehaviour:
   miniBossData: {fileID: 11400000, guid: f7f66dde808ba324583fbd400ae7779e, type: 2}
   button: {fileID: 5538757721614388977}
   cooldownText: {fileID: 8474162856725896229}
+  miniBossListPanel: {fileID: 2362035093733907241}
 --- !u!1 &4664728031488485861
 GameObject:
   m_ObjectHideFlags: 0
@@ -1201,6 +1203,7 @@ MonoBehaviour:
   miniBossData: {fileID: 11400000, guid: 0b3bb01b3939c624da9b0b5d390b4381, type: 2}
   button: {fileID: 1942302912419488346}
   cooldownText: {fileID: 3617503059567978063}
+  miniBossListPanel: {fileID: 2362035093733907241}
 --- !u!1 &4759453146641616627
 GameObject:
   m_ObjectHideFlags: 0

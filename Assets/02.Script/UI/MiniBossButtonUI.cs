@@ -11,6 +11,9 @@ public class MiniBossButtonUI : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI cooldownText;
 
+    [SerializeField] private GameObject miniBossListPanel;
+    [SerializeField] private GameObject dim;
+
     private Coroutine cooldownRoutine;
 
     private void Awake()
@@ -71,8 +74,22 @@ public class MiniBossButtonUI : MonoBehaviour
 
     public void OnClickSpawn()
     {
-        MiniBossSpawnController.Instance.Spawn(miniBossData);
-        RefreshImmediate();
+        bool success = MiniBossSpawnController.Instance.Spawn(miniBossData);
+
+        if (success)
+        {
+            RefreshImmediate();
+
+            if (miniBossListPanel != null)
+            {
+                miniBossListPanel.SetActive(false);
+            }
+
+            if (dim != null)
+            {
+                dim.SetActive(false);
+            }
+        }
     }
 
     IEnumerator CooldownRoutine()
