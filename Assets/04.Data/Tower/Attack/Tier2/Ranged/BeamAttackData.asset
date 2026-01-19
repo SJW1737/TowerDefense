@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 843c54c6a32b18949ba0f78262f72110, type: 3}
   m_Name: BeamAttackData
   m_EditorClassIdentifier: 
-  stackInterval: 0
-  maxStack: 0
-  beamDamagePerStack: 0
+  stackInterval: 0.2
+  maxStack: 10
+  beamDamagePerStack: 2
+  beamPrefab: {fileID: 2664931793573176455, guid: b2d3ef77a3a78564989e0bfecada6652, type: 3}
