@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
-    public MonsterData monsterData;
+    public MonsterData MonsterData { get; private set; }
+    public MiniBossData MiniBossData { get; private set; }
 
     private MonsterMovement monsterMovement;
     private MonsterStatusEffect statusEffect;
@@ -28,8 +29,15 @@ public class Monster : MonoBehaviour
         monsterMovement.OnReachedEnd += OnArrivedAtCastle;
     }
 
+    public void Init(MonsterData monsterData, MiniBossData miniBossData = null)
+    {
+        MonsterData = monsterData;
+        MiniBossData = miniBossData;
+    }
     public void Activate()
     {
+        if (MonsterData == null) return;
+
         ResetMonster();
     }
 
@@ -42,8 +50,7 @@ public class Monster : MonoBehaviour
 
     public void ApplySlow(float slowRatio, float duration)
     {
-        if (!gameObject.activeInHierarchy)
-            return;
+        if (!gameObject.activeInHierarchy) return;
 
         monsterMovement.ApplySlow(slowRatio, duration);
     }
@@ -55,9 +62,9 @@ public class Monster : MonoBehaviour
 
     private void OnArrivedAtCastle()
     {
-        Debug.Log("몬스터 도착 및 성 체력 감소");
+        if (IsDead) return;
         //성 체력 감소
-        castleHealth.TakeDamage(monsterData.damage);
+        castleHealth.TakeDamage(MonsterData.damage);
         //몬스터 제거
         ReturnToPool();
     }
@@ -72,14 +79,13 @@ public class Monster : MonoBehaviour
 
     public void OnDie()
     {
-        if (monsterMovement != null)
-            monsterMovement.ResetMovement();
+        monsterMovement.ResetMovement();
 
-        int rewardGold = monsterData.rewardGold + DifficultyManager.Instance.GoldBonus;
+        int rewardGold = MonsterData.rewardGold + DifficultyManager.Instance.GoldBonus;
 
         GoldManager.Instance.Add(rewardGold);
 
-        if (monsterData.monsterType == MonsterType.Boss)
+        if (MonsterData.monsterType == MonsterType.Boss)
         {
             DifficultyManager.Instance.OnBossDefeated();
         }
@@ -90,34 +96,33 @@ public class Monster : MonoBehaviour
     private void ReturnToPool()
     {
         //미니보스
-        if (MonsterPoolManager.Instance.HasMonsterDataPool(monsterData))
+        if (MonsterData.monsterType == MonsterType.MiniBoss)
         {
-            MonsterPoolManager.Instance.ReturnMonster(monsterData, gameObject);
+            MonsterPoolManager.Instance.ReturnMiniBoss(this);
         }
         else//일반 몬스터
         {
-            MonsterPoolManager.Instance.ReturnMonster(monsterData.monsterType, gameObject);
+            MonsterPoolManager.Instance.ReturnMonster(this);
         }
     }
 
     private void OnDisable()
     {
         //이벤트 해제
-        if (monsterMovement != null)
-        {
-            monsterMovement.OnReachedEnd -= OnArrivedAtCastle;
-        }
+        monsterMovement.OnReachedEnd -= OnArrivedAtCastle;
     }
 
     public void ResetMonster()
     {
+        IsDead = false;
+
         float hpMultiplier = DifficultyManager.Instance.HpMultiplier;
-        int finalHp = Mathf.RoundToInt(monsterData.maxHP * hpMultiplier);
+        int finalHp = Mathf.RoundToInt(MonsterData.maxHP * hpMultiplier);
         
         monsterHealth.ResetHealth(finalHp);
         monsterMovement.ResetMovement();
 
-        monsterMovement.SetSpeed(monsterData.moveSpeed);
+        monsterMovement.SetSpeed(MonsterData.moveSpeed);
         monsterMovement.Setpath();
     }
 }

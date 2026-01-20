@@ -6,55 +6,51 @@ public class MonsterPoolManager : MonoSingleton<MonsterPoolManager>
 {
     public List<MonsterPoolData> poolDatas;
 
-    private Dictionary<MonsterType, Queue<GameObject>> poolDict;
-    private Dictionary<MonsterType, GameObject> prefabDict;
+    private Dictionary<MonsterType, Queue<GameObject>> monsterPools;
+    private Dictionary<MonsterType, MonsterData> monsterDatas;
 
-    private Dictionary<MonsterData, Queue<GameObject>> poolByData;
-    private Dictionary<MonsterData, GameObject> prefabByData;
+    private Dictionary<MiniBossData, Queue<GameObject>> miniBossPools;
 
     public int AliveMonsterCount { get; private set; }
     public int AliveMiniBossCount { get; private set; }
 
     protected override void Init()
     {
-        poolDict = new Dictionary<MonsterType, Queue<GameObject>>();
-        prefabDict = new Dictionary<MonsterType, GameObject>();
-
-        poolByData = new Dictionary<MonsterData, Queue<GameObject>>();
-        prefabByData = new Dictionary<MonsterData, GameObject>();
+        monsterPools = new Dictionary<MonsterType, Queue<GameObject>>();
+        monsterDatas = new Dictionary<MonsterType, MonsterData>();
+        miniBossPools = new Dictionary<MiniBossData, Queue<GameObject>>();
 
         foreach (var data in poolDatas)
         {
             //일반 몬스터용(웨이브)
-            if (!poolDict.ContainsKey(data.type))
+            if (!monsterPools.ContainsKey(data.type))
             {
                 Queue<GameObject> pool = new Queue<GameObject>();
 
                 for (int i = 0; i < data.poolSize; i++)
                 {
-                    GameObject monster = Instantiate(data.prefab);
-                    monster.SetActive(false);
-                    pool.Enqueue(monster);
+                    GameObject obj = Instantiate(data.prefab);
+                    obj.SetActive(false);
+                    pool.Enqueue(obj);
                 }
 
-                poolDict.Add(data.type, pool);
-                prefabDict.Add(data.type, data.prefab);
+                monsterPools.Add(data.type, pool);
+                monsterDatas.Add(data.type, data.monsterData);
             }
 
             //미니보스용
-            if (data.monsterData != null)
+            if (data.miniBossData != null && !miniBossPools.ContainsKey(data.miniBossData))
             {
-                Queue<GameObject> dataPool = new Queue<GameObject>();
+                Queue<GameObject> pool = new Queue<GameObject>();
 
                 for (int i = 0; i < data.poolSize; i++)
                 {
-                    GameObject monster = Instantiate(data.prefab);
-                    monster.SetActive(false);
-                    dataPool.Enqueue(monster);
+                    GameObject obj = Instantiate(data.prefab);
+                    obj.SetActive(false);
+                    pool.Enqueue(obj);
                 }
 
-                poolByData.Add(data.monsterData, dataPool);
-                prefabByData.Add(data.monsterData, data.prefab);
+                miniBossPools.Add(data.miniBossData, pool);
             }
         }
 
@@ -64,64 +60,56 @@ public class MonsterPoolManager : MonoSingleton<MonsterPoolManager>
 
     public GameObject GetMonster(MonsterType type, Vector3 position)    //일반 몬스터용
     {
-        if (!poolDict.ContainsKey(type))
+        if (!monsterPools.ContainsKey(type))
         {
             return null;
         }
 
-        GameObject monster = poolDict[type].Count > 0 ? poolDict[type].Dequeue() : Instantiate(prefabDict[type]);
+        GameObject obj = monsterPools[type].Dequeue();
+        obj.transform.position = position;
 
-        monster.transform.position = position;
-        monster.SetActive(true);
-
-        monster.GetComponent<Monster>().Activate();
+        Monster monster = obj.GetComponent<Monster>();
+        monster.Init(monsterDatas[type]);
+        obj.SetActive(true);
+        monster.Activate();
 
         AliveMonsterCount++;
-        return monster;
+        return obj;
     }
 
-    public void ReturnMonster(MonsterType type, GameObject monster)
+    public GameObject GetMiniBoss(MiniBossData data, Vector3 position) //미니보스용
     {
-        monster.SetActive(false);
-        poolDict[type].Enqueue(monster);
-
-        AliveMonsterCount--;
-    }
-
-    public GameObject GetMonster(MonsterData monsterData, Vector3 position) //미니보스용
-    {
-        if (!poolByData.ContainsKey(monsterData))
+        if (!miniBossPools.ContainsKey(data))
         {
             return null;
         }
 
-        GameObject monster = poolByData[monsterData].Count > 0 ? poolByData[monsterData].Dequeue() : Instantiate(prefabByData[monsterData]);
+        GameObject obj = miniBossPools[data].Dequeue();
+        obj.transform.position = position;
 
-        monster.transform.position = position;
-        monster.SetActive(true);
-        monster.GetComponent<Monster>().Activate();
+        Monster monster = obj.GetComponent<Monster>();
+        monster.Init(data.monsterData, data);
+        obj.SetActive(true);
+        monster.Activate();
 
         AliveMonsterCount++;
-
-        if (monsterData.monsterType == MonsterType.MiniBoss)
-            AliveMiniBossCount++;
-
-        return monster;
+        AliveMiniBossCount++;
+        return obj;
     }
 
-    public void ReturnMonster(MonsterData monsterData, GameObject monster)
+    public void ReturnMonster(Monster monster)
     {
-        monster.SetActive(false);
-        poolByData[monsterData].Enqueue(monster);
+        monster.gameObject.SetActive(false);
+        monsterPools[monster.MonsterData.monsterType].Enqueue(monster.gameObject);
         AliveMonsterCount--;
-
-        if (monsterData.monsterType == MonsterType.MiniBoss)
-            AliveMiniBossCount--;
     }
 
-    public bool HasMonsterDataPool(MonsterData data)
+    public void ReturnMiniBoss(Monster monster)
     {
-        return poolByData.ContainsKey(data);
+        monster.gameObject.SetActive(false);
+        miniBossPools[monster.MiniBossData].Enqueue(monster.gameObject);
+        AliveMonsterCount--;
+        AliveMiniBossCount--;
     }
 
     public bool HasAliveMiniBoss()

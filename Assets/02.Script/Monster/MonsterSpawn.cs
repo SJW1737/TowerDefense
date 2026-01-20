@@ -42,6 +42,6 @@ public class MonsterSpawn : MonoBehaviour
         Node startNode = GridManager.Instance.startNode;
         Vector3 spawnPos = new Vector3(startNode.x + 0.5f, startNode.y + 0.5f, 0);
 
-        MonsterPoolManager.Instance.GetMonster(monsterData, spawnPos);
+        MonsterPoolManager.Instance.GetMonster(monsterData.monsterType, spawnPos);
     }
 }

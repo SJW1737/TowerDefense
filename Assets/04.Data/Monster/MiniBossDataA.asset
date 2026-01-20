@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MiniBossDataA
   m_EditorClassIdentifier: 
   monsterName: MiniBossA
-  monsterType: 0
+  monsterType: 4
   description: 
   maxHP: 40
   damage: 2

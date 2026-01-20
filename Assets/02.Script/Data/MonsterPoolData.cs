@@ -7,6 +7,7 @@ public class MonsterPoolData
 {
     public MonsterType type;
     public MonsterData monsterData;
+    public MiniBossData miniBossData;
     public GameObject prefab;
     public int poolSize;
 }

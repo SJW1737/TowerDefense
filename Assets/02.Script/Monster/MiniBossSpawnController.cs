@@ -44,8 +44,10 @@ public class MiniBossSpawnController : MonoSingleton<MiniBossSpawnController>
             return false;
         }
 
-        MonsterSpawn spawner = FindObjectOfType<MonsterSpawn>();
-        spawner.SpawnSingle(data.monsterData);
+        Node startNode = GridManager.Instance.startNode;
+        Vector3 spawnPos = new Vector3(startNode.x + 0.5f, startNode.y + 0.5f, 0);
+
+        MonsterPoolManager.Instance.GetMiniBoss(data, spawnPos);
 
         lastSpawnTime[data] = Time.time;
 

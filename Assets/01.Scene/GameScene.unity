@@ -3025,30 +3025,37 @@ MonoBehaviour:
   poolDatas:
   - type: 0
     monsterData: {fileID: 11400000, guid: ca4ddf02a555cae4eba80f59dd67a442, type: 2}
+    miniBossData: {fileID: 0}
     prefab: {fileID: 1031709059401727802, guid: 48fa5bd2776d6214a84281c26b121273, type: 3}
     poolSize: 8
   - type: 1
     monsterData: {fileID: 11400000, guid: 002894c7d7b0a184387496f337a23da9, type: 2}
+    miniBossData: {fileID: 0}
     prefab: {fileID: 1031709059401727802, guid: c5e7c523da2acad489d5f7950bb51c58, type: 3}
     poolSize: 5
   - type: 2
     monsterData: {fileID: 11400000, guid: 4910c0b6ce1aa3c4b8859ae4f031e3fe, type: 2}
+    miniBossData: {fileID: 0}
     prefab: {fileID: 1031709059401727802, guid: a360f7f53e5eaf547a28664b685a57ad, type: 3}
     poolSize: 5
   - type: 3
     monsterData: {fileID: 11400000, guid: 969bffa86a7adfa48822b2b2610161d0, type: 2}
+    miniBossData: {fileID: 0}
     prefab: {fileID: 1031709059401727802, guid: b9ca5f3568e446c4883b92877d9b32ed, type: 3}
-    poolSize: 2
+    poolSize: 1
   - type: 4
-    monsterData: {fileID: 11400000, guid: 52e735d13d2361c4090b60f5fbeedaf4, type: 2}
+    monsterData: {fileID: 0}
+    miniBossData: {fileID: 11400000, guid: 0b3bb01b3939c624da9b0b5d390b4381, type: 2}
     prefab: {fileID: 1323966313293339024, guid: 46b04a705b8c7f0409c53824bf4ed562, type: 3}
     poolSize: 1
   - type: 4
-    monsterData: {fileID: 11400000, guid: 4fd63f2171c004041a2eda087f63c13b, type: 2}
+    monsterData: {fileID: 0}
+    miniBossData: {fileID: 11400000, guid: f7f66dde808ba324583fbd400ae7779e, type: 2}
     prefab: {fileID: 3675186387767827339, guid: cb8346080496fb240bde98a30426e3ef, type: 3}
     poolSize: 1
   - type: 4
-    monsterData: {fileID: 11400000, guid: 5b4ef9c7f900ac24f92b07e205c12d9e, type: 2}
+    monsterData: {fileID: 0}
+    miniBossData: {fileID: 11400000, guid: b2151e5aa6495cd46a4985bddc7c44f6, type: 2}
     prefab: {fileID: 5705757255531769092, guid: 86f0079f15f6a2e41a7c1e10640d79e1, type: 3}
     poolSize: 1
 --- !u!4 &809639480
