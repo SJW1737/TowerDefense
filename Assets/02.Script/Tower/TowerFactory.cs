@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 
 public static class TowerFactory
 {
@@ -19,6 +18,13 @@ public static class TowerFactory
         ITowerAttack attack = data.attackData.CreateAttack(tower, effects);
 
         tower.SetAttack(attack);
+
+        // Tick 전용 공격 처리
+        if (data.attackData is ITickAttackData tickData)
+        {
+            tower.SetTickAttack(tickData.CreateTickAttack(tower, effects));
+        }
+
         tower.SetEffects(effects);
     }
 }

@@ -6,7 +6,6 @@ public class Tower : MonoBehaviour
     public TowerData data;
 
     public Transform firePoint;      // 발사 위치
-    public GameObject projectilePrefab;
 
     private ITowerAttack attack;
     private ITickableAttack tickAttack;
@@ -76,6 +75,11 @@ public class Tower : MonoBehaviour
             this.tickAttack = tickable;
     }
 
+    public void SetTickAttack(ITickableAttack tickAttack)
+    {
+        this.tickAttack = tickAttack;
+    }
+
     public void SetEffects(List<ITowerEffect> effects)
     {
         this.effects = effects;
@@ -104,7 +108,7 @@ public class Tower : MonoBehaviour
             return false;
 
         upgradeCount++;
-
+        
         // 모든 Effect에 강화 전파
         foreach (var effect in effects)
         {
