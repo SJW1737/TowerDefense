@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8383879534186415662}
   - component: {fileID: 6775033124184310336}
   - component: {fileID: 3229942342818714864}
+  - component: {fileID: -9044181286712701780}
   m_Layer: 6
   m_Name: MiniBossC
   m_TagString: Untagged
@@ -102,7 +103,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d22f4b6ac30dde942951a6dfdde1efdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterData: {fileID: 11400000, guid: 5b4ef9c7f900ac24f92b07e205c12d9e, type: 2}
 --- !u!114 &1887234746403925103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,6 +201,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-9044181286712701780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5705757255531769092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98085fc13503c0429295e2c8d7a0517, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  burnVfxPrefab: {fileID: 3691268101610283127, guid: d8894ce0a21f55342a6a6a61562774b5, type: 3}
 --- !u!1 &6071935064702288079
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,7 +8,6 @@ public class Monster : MonoBehaviour
     public MiniBossData MiniBossData { get; private set; }
 
     private MonsterMovement monsterMovement;
-    private MonsterStatusEffect statusEffect;
 
     private MonsterHealth monsterHealth;
     private CastleHealth castleHealth;
@@ -18,7 +17,6 @@ public class Monster : MonoBehaviour
     private void Awake()
     {
         monsterMovement = GetComponent<MonsterMovement>();
-        statusEffect = GetComponent<MonsterStatusEffect>();
 
         monsterHealth = GetComponent<MonsterHealth>();
         castleHealth = FindObjectOfType<CastleHealth>();
@@ -55,9 +53,12 @@ public class Monster : MonoBehaviour
         monsterMovement.ApplySlow(slowRatio, duration);
     }
 
-    public void ApplyDot(float damagePerTick, float duration, float interval)
+    public void ApplyBurn(int damage, float duration, float interval)
     {
-        statusEffect.ApplyDot(damagePerTick, duration, interval);
+        if (!TryGetComponent(out MonsterBurn burn))
+            burn = gameObject.AddComponent<MonsterBurn>();
+
+        burn.ApplyBurn(damage, duration, interval);
     }
 
     private void OnArrivedAtCastle()

@@ -117,6 +117,7 @@ GameObject:
   - component: {fileID: 3646340295616951274}
   - component: {fileID: -3196974211011053285}
   - component: {fileID: 1540740402822473860}
+  - component: {fileID: -5619526291342931439}
   m_Layer: 6
   m_Name: NormalMonster
   m_TagString: Untagged
@@ -205,7 +206,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d22f4b6ac30dde942951a6dfdde1efdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterData: {fileID: 11400000, guid: ca4ddf02a555cae4eba80f59dd67a442, type: 2}
 --- !u!114 &4968381097565834505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,6 +304,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-5619526291342931439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031709059401727802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98085fc13503c0429295e2c8d7a0517, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  burnVfxPrefab: {fileID: 3691268101610283127, guid: d8894ce0a21f55342a6a6a61562774b5, type: 3}
 --- !u!1 &8594029910875152890
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,6 +361,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af6f9e486c365dd429c6be7bed001941, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 10
+  castleDamage: 5
+  castleHealth: {fileID: 0}
 --- !u!1001 &4115737024709425903
 PrefabInstance:
   m_ObjectHideFlags: 0

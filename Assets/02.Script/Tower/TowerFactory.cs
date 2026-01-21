@@ -25,6 +25,5 @@ public static class TowerFactory
             tower.SetTickAttack(tickData.CreateTickAttack(tower, effects));
         }
 
-        tower.SetEffects(effects);
     }
 }
