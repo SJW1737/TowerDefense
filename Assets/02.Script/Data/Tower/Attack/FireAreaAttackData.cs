@@ -11,6 +11,6 @@ public class FireAreaAttackData : AttackData, ITickAttackData
 
     public ITickableAttack CreateTickAttack(Tower tower, List<ITowerEffect> effects)
     {
-        return new FireAreaAttack(tower);
+        return new FireAreaAttack(tower, effects);
     }
 }

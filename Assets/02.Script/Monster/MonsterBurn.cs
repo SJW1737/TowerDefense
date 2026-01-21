@@ -7,6 +7,8 @@ public class MonsterBurn : MonoBehaviour
 
     public void ApplyBurn(int damagePerTick, float duration, float interval)
     {
+        if (!gameObject.activeInHierarchy) return;
+
         if (burnRoutine != null)
             StopCoroutine(burnRoutine);
 
