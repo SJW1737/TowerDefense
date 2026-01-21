@@ -20,6 +20,9 @@ public class BurnEffect : ITowerEffect
         int baseDamage = tower.GetEffect<DamageEffect>().GetFinalDamage();
         int burnDamage = Mathf.Max(1, Mathf.RoundToInt(baseDamage * damageRatio));
 
-        target.ApplyBurn(burnDamage, duration, interval);
+        if (target.TryGetComponent(out MonsterBurn burn))
+        {
+            burn.ApplyBurn(burnDamage, duration, interval);
+        }
     }
 }

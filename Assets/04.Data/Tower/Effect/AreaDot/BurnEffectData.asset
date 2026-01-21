@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34e0f876be3341a48a7743ae4997fe25, type: 3}
-  m_Name: FireAreaDotEffectData
+  m_Name: BurnEffectData
   m_EditorClassIdentifier: 
   duration: 3
+  interval: 1
   damageRatio: 0.3

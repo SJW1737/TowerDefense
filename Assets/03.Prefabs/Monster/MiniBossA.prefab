@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 1580768219810571128}
   - component: {fileID: 7552934392437053142}
   - component: {fileID: 310135060927886115}
+  - component: {fileID: -3313062003708796335}
   - component: {fileID: 4070232043421025157}
   - component: {fileID: 1707790452598565536}
-  - component: {fileID: -3313062003708796335}
   m_Layer: 6
   m_Name: MiniBossA
   m_TagString: Untagged
@@ -129,6 +129,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterData: {fileID: 11400000, guid: 52e735d13d2361c4090b60f5fbeedaf4, type: 2}
   MonsterHelathBarUI: {fileID: 5385784909252166500}
+--- !u!114 &-3313062003708796335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323966313293339024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98085fc13503c0429295e2c8d7a0517, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  burnPrefab: {fileID: 3691268101610283127, guid: d8894ce0a21f55342a6a6a61562774b5, type: 3}
 --- !u!61 &4070232043421025157
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -201,19 +214,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-3313062003708796335
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1323966313293339024}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a98085fc13503c0429295e2c8d7a0517, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  burnVfxPrefab: {fileID: 3691268101610283127, guid: d8894ce0a21f55342a6a6a61562774b5, type: 3}
 --- !u!1 &1704017531975467632
 GameObject:
   m_ObjectHideFlags: 0

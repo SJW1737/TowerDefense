@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 1499590747294714047}
   - component: {fileID: 4968381097565834505}
   - component: {fileID: 6051747448878673274}
+  - component: {fileID: -8082295907235566041}
   - component: {fileID: -7092522717116925332}
   - component: {fileID: 8397984409307328064}
-  - component: {fileID: -8082295907235566041}
   m_Layer: 6
   m_Name: TankMonster
   m_TagString: Untagged
@@ -129,6 +129,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterData: {fileID: 11400000, guid: 4910c0b6ce1aa3c4b8859ae4f031e3fe, type: 2}
   MonsterHelathBarUI: {fileID: 4004487042024719790}
+--- !u!114 &-8082295907235566041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031709059401727802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98085fc13503c0429295e2c8d7a0517, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  burnPrefab: {fileID: 3691268101610283127, guid: d8894ce0a21f55342a6a6a61562774b5, type: 3}
 --- !u!61 &-7092522717116925332
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -201,19 +214,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-8082295907235566041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1031709059401727802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a98085fc13503c0429295e2c8d7a0517, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  burnVfxPrefab: {fileID: 3691268101610283127, guid: d8894ce0a21f55342a6a6a61562774b5, type: 3}
 --- !u!1 &1784859138372855693
 GameObject:
   m_ObjectHideFlags: 0
