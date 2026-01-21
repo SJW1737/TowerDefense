@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AreaDotEffect : ITowerEffect, IUpgradeableEffect
@@ -8,6 +9,8 @@ public class AreaDotEffect : ITowerEffect, IUpgradeableEffect
     private readonly float damageRatio;
 
     private int upgradeLevel;
+
+    private readonly HashSet<Monster> activeTargets = new();
 
     public AreaDotEffect( Tower tower, float duration, float damageRatio)
     {
@@ -23,14 +26,18 @@ public class AreaDotEffect : ITowerEffect, IUpgradeableEffect
 
     public void Apply(Monster target)
     {
+        if (target == null)
+            return;
+
+        if (activeTargets.Contains(target))
+            return; // 이미 DOT 중이면 재시작 안 함
+
+        activeTargets.Add(target);
         tower.StartCoroutine(DoAreaDot(target));
     }
 
     private IEnumerator DoAreaDot(Monster target)
     {
-        if (target == null)
-            yield break;
-
         float time = 0f;
         float tickInterval = tower.data.GetAttackInterval(upgradeLevel);
 
@@ -44,5 +51,7 @@ public class AreaDotEffect : ITowerEffect, IUpgradeableEffect
             yield return new WaitForSeconds(tickInterval);
             time += tickInterval;
         }
+
+        activeTargets.Remove(target);
     }
 }
