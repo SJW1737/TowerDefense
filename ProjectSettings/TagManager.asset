@@ -38,6 +38,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Tile
+    uniqueID: 3404781319
+    locked: 0
+  - name: AreaDotEffect
+    uniqueID: 1108651307
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
