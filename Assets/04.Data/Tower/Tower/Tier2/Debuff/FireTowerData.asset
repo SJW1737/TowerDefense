@@ -16,10 +16,13 @@ MonoBehaviour:
   cost: 30
   towerType: 2
   towerPrefab: {fileID: 4323069816014903991, guid: 5d91f591db1846a41a35b0ee0d71080c, type: 3}
-  attackInterval: 0
-  range: 0
-  attackData: {fileID: 0}
-  effects: []
+  baseAttackSpeed: 0.1
+  attackSpeedPerUpgrade: 0
+  range: 3
+  attackData: {fileID: 11400000, guid: 0e1721dd0133fdf4b9d88c674972bde9, type: 2}
+  effects:
+  - {fileID: 11400000, guid: e0b955d609c5e744c8c3483460979b4d, type: 2}
+  - {fileID: 11400000, guid: 30096738ffdb26245a53035cf156775a, type: 2}
   tier: 2
   maxUpgradeCount: 3
   upgradeCosts: 1e0000002800000032000000
