@@ -38,10 +38,7 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Tile
-    uniqueID: 3404781319
-    locked: 0
-  - name: AreaDotEffect
+  - name: Field
     uniqueID: 1108651307
     locked: 0
   - name: Default
