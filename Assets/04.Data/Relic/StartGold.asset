@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: StartGold
   m_EditorClassIdentifier: 
   relicName: StartGold
-  icon: {fileID: 0}
-  maxLevel: 5
+  icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   description: 
+  maxLevel: 5
+  effectType: 0
+  valuePerLevel: 10

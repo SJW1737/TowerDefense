@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Relic/RelicData")]
 public class RelicData : ScriptableObject
 {
+    public string relicId;
     public string relicName;
     public Sprite icon;
     public string description;
