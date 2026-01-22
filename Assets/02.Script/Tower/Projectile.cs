@@ -3,18 +3,18 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    private Monster target;
-    private float speed;
-    private List<ITowerEffect> effects;
+    protected Monster target;
+    protected float speed;
+    protected List<ITowerEffect> effects;
 
-    public void Init(Monster target, float speed, List<ITowerEffect> effects)
+    public virtual void Init(Monster target, float speed, List<ITowerEffect> effects)
     {
         this.target = target;
         this.speed = speed;
         this.effects = effects;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (target == null || !target.gameObject.activeInHierarchy)
         {
@@ -25,7 +25,7 @@ public class Projectile : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    protected virtual void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.TryGetComponent(out Monster monster))
             return;

@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Tower/Effect/Burn")]
-public class BurnEffectData : EffectData
+[CreateAssetMenu(menuName = "Tower/Effect/DOT")]
+public class DOTEffectData : EffectData
 {
     public float duration;
     public float interval;
@@ -10,6 +10,6 @@ public class BurnEffectData : EffectData
 
     public override ITowerEffect CreateEffect(Tower tower)
     {
-        return new BurnEffect(tower, duration, interval, damageRatio);
+        return new DOTEffect(tower, duration, interval, damageRatio);
     }
 }

@@ -20,8 +20,8 @@ public class MonsterBurn : MonoBehaviour
 
     public void ApplyBurn(int damagePerTick, float duration, float interval)
     {
-        if (!gameObject.activeInHierarchy) return;
-
+        if (!gameObject.activeInHierarchy) 
+            return;
 
         // 이미 Burn 중이면 Coroutine 종료 후 새로 시작
         if (burnRoutine != null)
