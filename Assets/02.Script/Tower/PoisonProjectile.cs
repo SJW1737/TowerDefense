@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
 public class PoisonProjectile : Projectile
 {
     [Header("Poison Settings")]

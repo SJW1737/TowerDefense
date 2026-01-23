@@ -26,6 +26,6 @@ MonoBehaviour:
   maxUpgradeCount: 3
   upgradeCosts: 0a0000000f00000014000000
   tier2EvolutionTargets:
-  - {fileID: 11400000, guid: 0ef1e4f03bb4b354985b2fe46448a0e2, type: 2}
   - {fileID: 11400000, guid: 4b49425025d29464c8f06873f00e9b29, type: 2}
+  - {fileID: 11400000, guid: 0ef1e4f03bb4b354985b2fe46448a0e2, type: 2}
   - {fileID: 11400000, guid: a8010f94db6fdff4e95461ee2253bd57, type: 2}

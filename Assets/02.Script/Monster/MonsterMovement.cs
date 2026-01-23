@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 using System;
 
@@ -10,9 +9,13 @@ public class MonsterMovement : MonoBehaviour
 
     private float moveSpeed;
     private float currentSpeed;
+    private float slowMultiplier = 1f;
 
     private Queue<Node> pathQueue;
+
     private Coroutine slowCoroutine;
+    private Coroutine frozenCoroutine;
+    private bool isFrozen;
 
     private Pathfinder pathfinder;
     private GridManager gridManager;
@@ -34,17 +37,41 @@ public class MonsterMovement : MonoBehaviour
         if (!gameObject.activeInHierarchy)
             return;
 
+        if (isFrozen)
+            return;
+
         if (slowCoroutine != null)
             StopCoroutine(slowCoroutine);
 
         slowCoroutine = StartCoroutine(SlowRoutine(ratio, duration));
     }
 
+    public void ApplyFrozen(float duration)
+    {
+        if (frozenCoroutine != null)
+            StopCoroutine(frozenCoroutine);
+
+        frozenCoroutine = StartCoroutine(FrozenRoutine(duration));
+    }
+
     private IEnumerator SlowRoutine(float ratio, float duration)
     {
-        currentSpeed = moveSpeed * (1f - ratio);
+        slowMultiplier = 1f - ratio;
         yield return new WaitForSeconds(duration);
-        currentSpeed = moveSpeed;
+        slowMultiplier = 1f;
+    }
+
+    private IEnumerator FrozenRoutine(float duration)
+    {
+        isFrozen = true;
+        yield return new WaitForSeconds(duration);
+        isFrozen = false;
+    }
+
+    float GetFinalSpeed()
+    {
+        if (isFrozen) return 0f;
+        return moveSpeed * slowMultiplier;
     }
 
     public void Setpath()
@@ -67,7 +94,7 @@ public class MonsterMovement : MonoBehaviour
 
             while (Vector3.Distance(transform.position, targetpos) > 0.01f)
             {
-                transform.position = Vector3.MoveTowards(transform.position, targetpos, currentSpeed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, targetpos, GetFinalSpeed() * Time.deltaTime);
                 yield return null;
             }
 

@@ -57,12 +57,11 @@ public class Monster : MonoBehaviour
         monsterMovement.ApplySlow(slowRatio, duration);
     }
 
-    public void ApplyBurn(int damage, float duration, float interval)
+    public void ApplyFrozen(float duration)
     {
-        if (!TryGetComponent(out MonsterBurn burn))
-            burn = gameObject.AddComponent<MonsterBurn>();
+        if (!gameObject.activeInHierarchy) return;
 
-        burn.ApplyBurn(damage, duration, interval);
+        monsterMovement.ApplyFrozen(duration);
     }
 
     private void OnArrivedAtCastle()
