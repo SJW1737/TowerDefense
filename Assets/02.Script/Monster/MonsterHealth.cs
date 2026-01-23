@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class MonsterHealth : Health
 {
-    [SerializeField] private MonsterData monsterData;
     [SerializeField] private MonsterHealthBarUI MonsterHelathBarUI;
 
     private Monster monster;
@@ -15,15 +14,23 @@ public class MonsterHealth : Health
         monster = GetComponent<Monster>();
     }
 
-    private void Start()
+    private void OnEnable()
     {
-        MonsterHelathBarUI.Bind(this);
+        if (MonsterHelathBarUI != null)
+        {
+            MonsterHelathBarUI.Bind(this);
+        }
+            
     }
 
     public override void TakeDamage(float damage)
     {
         base.TakeDamage(damage);
-        MonsterHelathBarUI.UpdateUI();
+
+        if (MonsterHelathBarUI != null)
+        {
+            MonsterHelathBarUI.UpdateUI();
+        }
     }
 
     protected override void Die()
@@ -34,6 +41,10 @@ public class MonsterHealth : Health
     public void ResetHealth(int maxHp)
     {
         Init(maxHp);
-        MonsterHelathBarUI.UpdateUI();
+
+        if (MonsterHelathBarUI != null)
+        {
+            MonsterHelathBarUI.UpdateUI();
+        }
     }
 }

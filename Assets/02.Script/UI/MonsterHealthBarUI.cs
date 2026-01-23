@@ -21,7 +21,7 @@ public class MonsterHealthBarUI : MonoBehaviour
 
     public void UpdateUI()
     {
-        if (monsterHealth == null) return;
+        if (monsterHealth == null || monsterHealth.MaxHp <= 0) return;
 
         float ratio = (float)monsterHealth.CurrentHp / monsterHealth.MaxHp;
         hpSlider.value = ratio;

@@ -19,7 +19,7 @@ public class CastleHealthBarUI : MonoBehaviour
 
     public void UpdateUI()
     {
-        if (castleHealth == null) return;
+        if (castleHealth == null || castleHealth.MaxHp <= 0) return;
 
         float ratio = (float)castleHealth.CurrentHp / castleHealth.MaxHp;
         hpSlider.value = ratio;

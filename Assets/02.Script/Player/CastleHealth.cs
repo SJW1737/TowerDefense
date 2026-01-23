@@ -7,9 +7,6 @@ public class CastleHealth : Health
     [SerializeField] private int baseCastleMaxHP = 20;
     [SerializeField] private CastleHealthBarUI CastleHealthBarUI;
 
-    private bool isGameOver;
-
-
     private void Awake()
     {
         int bonusHp = 0;
@@ -22,13 +19,21 @@ public class CastleHealth : Health
         int finalMaxHp = baseCastleMaxHP + bonusHp;
 
         Init(finalMaxHp);
-        CastleHealthBarUI.Bind(this);
+
+        if (CastleHealthBarUI != null)
+        {
+            CastleHealthBarUI.Bind(this);
+        }
     }
 
     public override void TakeDamage(float damage)
     {
         base.TakeDamage(damage);
-        CastleHealthBarUI.UpdateUI();
+
+        if (CastleHealthBarUI != null)
+        {
+            CastleHealthBarUI.UpdateUI();
+        }
     }
 
     protected override void Die()
