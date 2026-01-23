@@ -13,5 +13,7 @@ public class SaveData
 {
     public bool startGoldApplied;
 
+    public int diamond;
+
     public List<RelicSaveData> relics = new();
 }

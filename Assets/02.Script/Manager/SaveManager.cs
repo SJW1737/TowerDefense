@@ -8,6 +8,8 @@ public class SaveManager : MonoSingleton<SaveManager>
 
     public SaveData Data { get; private set; }
 
+    public int Diamond => Data.diamond;
+
     protected override void Awake()
     {
         base.Awake();
@@ -17,6 +19,22 @@ public class SaveManager : MonoSingleton<SaveManager>
     protected override void Init()
     {
         Load();
+    }
+
+    public void AddDiamond(int amount)
+    {
+        Data.diamond += amount;
+        Save();
+    }
+
+    public bool SpendDiamond(int amount)
+    {
+        if (Data.diamond < amount)
+            return false;
+
+        Data.diamond -= amount;
+        Save();
+        return true;
     }
 
     public void Save()

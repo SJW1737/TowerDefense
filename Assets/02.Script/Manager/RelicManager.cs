@@ -29,6 +29,16 @@ public class RelicManager : MonoSingleton<RelicManager>
 
     protected override void Init()
     {
+        if (SaveManager.Instance == null || SaveManager.Instance.Data == null)
+        {
+            return;
+        }
+
+        if (allRelicData == null || allRelicData.Count == 0)
+        {
+            return;
+        }
+
         LoadRelicsFromSave();
     }
 
