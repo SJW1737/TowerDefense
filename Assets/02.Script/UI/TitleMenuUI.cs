@@ -24,6 +24,10 @@ public class TitleMenuUI : MonoBehaviour
         if (startButton != null)
             startButton.interactable = false;
 
+        var data = SaveManager.Instance.Data;
+        data.startGoldApplied = false;
+        SaveManager.Instance.Save();
+
         SceneManager.LoadScene(gameSceneName);
     }
 

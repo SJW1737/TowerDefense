@@ -18,6 +18,17 @@ public class RelicItemUI : MonoBehaviour, IPointerClickHandler
         Refresh();
     }
 
+    private void OnEnable()
+    {
+        RelicManager.Instance.OnRelicChanged += Refresh;
+    }
+
+    private void OnDisable()
+    {
+        if (RelicManager.IsReady)
+            RelicManager.Instance.OnRelicChanged -= Refresh;
+    }
+
     public void Refresh()
     {
         levelText.text = $"{relic.level} / {relic.data.maxLevel}";
@@ -35,7 +46,8 @@ public class RelicItemUI : MonoBehaviour, IPointerClickHandler
         if (relic.level >= relic.data.maxLevel)
             return;
 
-        relic.level++;
-        Refresh();
+        RelicManager.Instance.AddRelicLevel(relic.data);
+
+        Debug.Log($"[RELIC UPGRADE] {relic.data.relicName} ¡æ Lv.{relic.level}");
     }
 }

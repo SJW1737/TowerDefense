@@ -41,4 +41,22 @@ public class GoldManager : MonoSingleton<GoldManager>
         currentGold += amount;
         OnGoldChanged.Invoke(currentGold);
     }
+
+    public void ApplyStartGoldRelic()
+    {
+        if (!RelicManager.IsReady)
+        {
+            return;
+        }
+
+        int bonus = (int)RelicManager.Instance.GetValue(RelicEffectType.StartGold);
+
+        if (bonus <= 0)
+        {
+            return;
+        }
+
+        currentGold += bonus;
+        OnGoldChanged.Invoke(currentGold);
+    }
 }

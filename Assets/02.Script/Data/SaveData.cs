@@ -11,5 +11,7 @@ public class RelicSaveData
 [Serializable]
 public class SaveData
 {
+    public bool startGoldApplied;
+
     public List<RelicSaveData> relics = new();
 }

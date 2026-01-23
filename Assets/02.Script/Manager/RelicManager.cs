@@ -11,29 +11,24 @@ public class RelicManager : MonoSingleton<RelicManager>
 
     public static bool IsReady => instance != null;
 
+    public event Action OnRelicChanged;
+
     public static RelicManager TraceInstance
     {
         get
         {
-            Debug.Log(
-                $"[RelicManager.Instance ACCESS]\n{Environment.StackTrace}"
-            );
             return Instance;
         }
     }
 
     protected override void Awake()
     {
-        Debug.Log(
-        $"[RelicManager CREATED]\n{System.Environment.StackTrace}"
-    );
         base.Awake();
         DontDestroyOnLoad(gameObject);
     }
 
     protected override void Init()
     {
-        Debug.Log("[RelicManager] Init");
         LoadRelicsFromSave();
     }
 
@@ -62,14 +57,13 @@ public class RelicManager : MonoSingleton<RelicManager>
     public void AddRelicLevel(RelicData relicData)
     {
         var relic = relics.Find(r => r.data == relicData);
-        if (relic == null)
-            return;
-
-        if (relic.level >= relic.data.maxLevel)
+        if (relic == null || relic.level >= relic.data.maxLevel)
             return;
 
         relic.level++;
         SaveRelic(relic);
+
+        OnRelicChanged?.Invoke();
     }
 
     private void SaveRelic(OwnedRelic relic)
@@ -100,7 +94,10 @@ public class RelicManager : MonoSingleton<RelicManager>
         foreach (var relic in relics)
         {
             if (relic.data.effectType == type)
+            {
                 value += relic.level * relic.data.valuePerLevel;
+            }
+                
         }
 
         return value;

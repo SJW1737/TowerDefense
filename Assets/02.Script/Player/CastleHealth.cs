@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CastleHealth : Health
 {
-    [SerializeField] private int castleMaxHP = 20;
+    [SerializeField] private int baseCastleMaxHP = 20;
     [SerializeField] private CastleHealthBarUI CastleHealthBarUI;
 
     private bool isGameOver;
@@ -12,7 +12,16 @@ public class CastleHealth : Health
 
     private void Awake()
     {
-        Init(castleMaxHP);
+        int bonusHp = 0;
+
+        if (RelicManager.IsReady)
+        {
+            bonusHp = (int)RelicManager.Instance.GetValue(RelicEffectType.TowerMaxHp);
+        }
+
+        int finalMaxHp = baseCastleMaxHP + bonusHp;
+
+        Init(finalMaxHp);
         CastleHealthBarUI.Bind(this);
     }
 

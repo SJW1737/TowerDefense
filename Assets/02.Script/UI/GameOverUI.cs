@@ -71,6 +71,11 @@ public class GameOverUI : MonoBehaviour
     private void Restart()
     {
         Time.timeScale = 1f;
+
+        var data = SaveManager.Instance.Data;
+        data.startGoldApplied = false;
+        SaveManager.Instance.Save();
+
         if (WaveManager.Instance != null) WaveManager.Instance.ResetWave();
         SceneManager.LoadScene(gameScene);
     }
