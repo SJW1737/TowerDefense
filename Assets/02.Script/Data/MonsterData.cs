@@ -11,7 +11,6 @@ public enum MonsterType
     MiniBoss    //미니보스
 }
 
-
 [CreateAssetMenu(fileName = "MonsterData", menuName = "NewMonster")]
 public class MonsterData : ScriptableObject
 {

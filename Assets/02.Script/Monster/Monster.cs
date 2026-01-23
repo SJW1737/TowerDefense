@@ -43,7 +43,11 @@ public class Monster : MonoBehaviour
     {
         if (IsDead) return;
 
-        monsterHealth.TakeDamage(damage);
+        float damageBonus = RelicManager.Instance.GetValue(RelicEffectType.EnemyDamageTaken);
+
+        float finalDamage = damage * (1f + damageBonus);
+
+        monsterHealth.TakeDamage(finalDamage);
     }
 
     public void ApplySlow(float slowRatio, float duration)
@@ -117,13 +121,23 @@ public class Monster : MonoBehaviour
     {
         IsDead = false;
 
-        float hpMultiplier = DifficultyManager.Instance.HpMultiplier;
-        int finalHp = Mathf.RoundToInt(MonsterData.maxHP * hpMultiplier);
+        //체력
+        float hpMultiplier = DifficultyManager.Instance.HpMultiplier;   //보스 처치로 인한 체력 배율 증가
+        float relicHpReduce = RelicManager.Instance.GetValue(RelicEffectType.EnemyMaxHp);   //유물로 인한 최대체력 감소
+
+        float finalHpFloat = MonsterData.maxHP * hpMultiplier * (1f - relicHpReduce);
+
+        int finalHp = Mathf.RoundToInt(finalHpFloat);
         
         monsterHealth.ResetHealth(finalHp);
-        monsterMovement.ResetMovement();
 
-        monsterMovement.SetSpeed(MonsterData.moveSpeed);
+        //이동 속도
+        float relicSpeedReduce = RelicManager.Instance.GetValue(RelicEffectType.EnemyMoveSpeed);
+
+        float finalBaseSpeed = MonsterData.moveSpeed * (1f - relicSpeedReduce);
+
+        monsterMovement.ResetMovement();
+        monsterMovement.SetSpeed(finalBaseSpeed);
         monsterMovement.Setpath();
     }
 }

@@ -7,4 +7,9 @@ public class OwnedRelic
 {
     public RelicData data;
     public int level;
+
+    public float GetValue()
+    {
+        return level * data.valuePerLevel;
+    }
 }

@@ -93,9 +93,9 @@ public class RelicManager : MonoSingleton<RelicManager>
 
         foreach (var relic in relics)
         {
-            if (relic.data.effectType == type)
+            if (relic.data.effectType == type && relic.level > 0)
             {
-                value += relic.level * relic.data.valuePerLevel;
+                value += relic.GetValue();
             }
                 
         }
