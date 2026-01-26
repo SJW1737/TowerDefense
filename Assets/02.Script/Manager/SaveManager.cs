@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class SaveManager : MonoSingleton<SaveManager>
 {
@@ -9,6 +10,8 @@ public class SaveManager : MonoSingleton<SaveManager>
     public SaveData Data { get; private set; }
 
     public int Diamond => Data.diamond;
+
+    public event Action<int> OnDiamondChanged;
 
     protected override void Awake()
     {
@@ -25,6 +28,7 @@ public class SaveManager : MonoSingleton<SaveManager>
     {
         Data.diamond += amount;
         Save();
+        OnDiamondChanged?.Invoke(Data.diamond);
     }
 
     public bool SpendDiamond(int amount)
@@ -34,6 +38,7 @@ public class SaveManager : MonoSingleton<SaveManager>
 
         Data.diamond -= amount;
         Save();
+        OnDiamondChanged?.Invoke(Data.diamond);
         return true;
     }
 

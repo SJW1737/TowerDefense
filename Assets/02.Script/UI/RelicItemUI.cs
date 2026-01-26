@@ -43,11 +43,6 @@ public class RelicItemUI : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (relic.level >= relic.data.maxLevel)
-            return;
-
-        RelicManager.Instance.AddRelicLevel(relic.data);
-
-        Debug.Log($"[RELIC UPGRADE] {relic.data.relicName} ¡æ Lv.{relic.level}");
+        RelicDetailUI.Instance.Open(relic);
     }
 }
