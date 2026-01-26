@@ -6,26 +6,16 @@ public class PoisonArea : MonoBehaviour
 {
     private float radius;
     private List<ITowerEffect> effects;
-    private Transform followTarget;
 
-    public void Init(float radius, float duration, List<ITowerEffect> effects, Transform target)
+    public void Init(float radius, float duration, List<ITowerEffect> effects)
     {
         this.radius = radius;
         this.effects = effects;
-        followTarget = target;
 
-        transform.localScale = Vector3.one * radius * 2f;
+        transform.localScale = Vector3.one * radius * 4f;
 
         StartCoroutine(DamageRoutine());
         Destroy(gameObject, duration);
-    }
-
-    private void Update()
-    {
-        if (followTarget == null)
-            return;
-
-        transform.position = followTarget.position;
     }
 
     private IEnumerator DamageRoutine()

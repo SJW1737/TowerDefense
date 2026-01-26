@@ -17,11 +17,11 @@ public class PoisonProjectile : Projectile
         // 1. 독 장판 생성
         if (poisonAreaPrefab != null)
         {
-            GameObject area = Instantiate(poisonAreaPrefab, monster.transform.position, Quaternion.identity);
+            GameObject area = Instantiate(poisonAreaPrefab, monster.transform.position, Quaternion.identity, monster.transform);
 
             if (area.TryGetComponent(out PoisonArea poisonArea))
             {
-                poisonArea.Init(splashRadius, poisonAreaDuration, effects, monster.transform);
+                poisonArea.Init(splashRadius, poisonAreaDuration, effects);
             }
         }
 
