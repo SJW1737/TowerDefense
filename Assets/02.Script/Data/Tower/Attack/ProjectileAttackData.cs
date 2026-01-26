@@ -9,6 +9,6 @@ public class ProjectileAttackData : AttackData
 
     public override ITowerAttack CreateAttack(Tower tower, List<ITowerEffect> effects)
     {
-        return new ProjectileAttack(effects, projectileSpeed, projectilePrefab, tower.firePoint);
+        return new ProjectileAttack(tower, effects, projectileSpeed, projectilePrefab, tower.firePoint);
     }
 }

@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3a3a44001ba23d4b9aef86241cf5e57, type: 3}
-  m_Name: PoisonDamageEffectData
+  m_Script: {fileID: 11500000, guid: 5415ad546cded7242ab8e90d1fa40cc5, type: 3}
+  m_Name: BombAttackData
   m_EditorClassIdentifier: 
-  damage: 1
-  damageGrowth: 5
+  projectileSpeed: 6
+  projectilePrefab: {fileID: 2917975267322545158, guid: e6a08c5206c842a43ae884085a7c06a7, type: 3}

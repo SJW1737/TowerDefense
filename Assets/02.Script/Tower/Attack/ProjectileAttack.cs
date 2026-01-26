@@ -3,13 +3,15 @@ using UnityEngine;
 
 public class ProjectileAttack : ITowerAttack
 {
+    private Tower ownerTower;
     private List<ITowerEffect> effects;
     private float projectileSpeed;
     private GameObject projectilePrefab;
     private Transform firePoint;
 
-    public ProjectileAttack(List<ITowerEffect> effects, float projectileSpeed, GameObject projectilePrefab, Transform firePoint)
+    public ProjectileAttack(Tower ownerTower, List<ITowerEffect> effects, float projectileSpeed, GameObject projectilePrefab, Transform firePoint)
     {
+        this.ownerTower = ownerTower;
         this.effects = effects;
         this.projectileSpeed = projectileSpeed;
         this.projectilePrefab = projectilePrefab;
@@ -22,7 +24,28 @@ public class ProjectileAttack : ITowerAttack
 
         GameObject projObj = Object.Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
 
-        Projectile projectile = projObj.GetComponent<Projectile>();
-        projectile.Init(target, projectileSpeed, effects);
+        // ∆¯≈∫ ≈ıªÁ√º
+        if (projObj.TryGetComponent(out BombProjectile bomb))
+        {
+            if (ownerTower.data is BombTowerData bombData)
+            {
+                float radius = bombData.GetExplosionRadius(ownerTower.UpgradeCount);
+
+                bomb.Init(target.transform.position, projectileSpeed, radius, effects);
+            }
+            else
+            {
+                Debug.LogError("BombProjectile¿Œµ• BombTowerData∞° æ∆¥‘");
+            }
+
+            return;
+        }
+
+        // ±‚∫ª ≈ıªÁ√º
+        if (projObj.TryGetComponent(out Projectile projectile))
+        {
+            projectile.Init(target, projectileSpeed, effects);
+            return;
+        }
     }
 }

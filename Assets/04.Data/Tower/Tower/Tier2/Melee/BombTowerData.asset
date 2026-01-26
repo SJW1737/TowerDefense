@@ -9,18 +9,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a8ccd690911b1f4c9762b68daa29760, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f7c0d70b7eb9134dbbaf86baffb6021, type: 3}
   m_Name: BombTowerData
   m_EditorClassIdentifier: 
   towerName: BombTower
   cost: 30
   towerType: 0
   towerPrefab: {fileID: 4323069816014903991, guid: 6c6d461db07d6ac4d98b6528df262e43, type: 3}
-  attackInterval: 0
-  range: 0
-  attackData: {fileID: 0}
-  effects: []
+  baseAttackSpeed: 0.5
+  attackSpeedPerUpgrade: 0
+  range: 3
+  attackData: {fileID: 11400000, guid: 71d5ff67b7e17c040862e5e8084157f9, type: 2}
+  effects:
+  - {fileID: 11400000, guid: 37d425a364d4ba246a95eb697ebda575, type: 2}
   tier: 2
   maxUpgradeCount: 3
   upgradeCosts: 1e0000002800000032000000
   tier2EvolutionTargets: []
+  baseExplosionRadius: 2
+  radiusPerUpgrade: 1
