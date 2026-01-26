@@ -7,20 +7,26 @@ public class DiamondUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI diamondText;
 
-    private void Start()
+    private const string FORMAT = "Diamond : {0:N0}";
+
+    private SaveManager saveManager;
+
+    private void OnEnable()
     {
-        Refresh(SaveManager.Instance.Diamond);
-        SaveManager.Instance.OnDiamondChanged += Refresh;
+        saveManager = SaveManager.Instance;
+
+        Refresh(saveManager.Diamond);
+        saveManager.OnDiamondChanged += Refresh;
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
-        if (SaveManager.Instance != null)
-            SaveManager.Instance.OnDiamondChanged -= Refresh;
+        if (saveManager != null)
+            saveManager.OnDiamondChanged -= Refresh;
     }
 
     private void Refresh(int value)
     {
-        diamondText.text = value.ToString();
+        diamondText.text = string.Format(FORMAT, value);
     }
 }
