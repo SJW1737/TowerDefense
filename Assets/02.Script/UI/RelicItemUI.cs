@@ -31,7 +31,7 @@ public class RelicItemUI : MonoBehaviour, IPointerClickHandler
 
     public void Refresh()
     {
-        levelText.text = $"{relic.level} / {relic.data.maxLevel}";
+        levelText.text = $"{relic.level} / {relic.data.maxLevel} Lv";
 
         icon.sprite = relic.data.icon;
 
