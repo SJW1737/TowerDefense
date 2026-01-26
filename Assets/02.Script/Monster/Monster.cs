@@ -12,6 +12,8 @@ public class Monster : MonoBehaviour
     private MonsterHealth monsterHealth;
     private CastleHealth castleHealth;
 
+    private PoisonArea poisonArea;
+
     public bool IsDead { get; private set; }
 
     private void Awake()
@@ -62,6 +64,25 @@ public class Monster : MonoBehaviour
         if (!gameObject.activeInHierarchy) return;
 
         monsterMovement.ApplyFrozen(duration);
+    }
+
+    public void ApplyPoisonArea(PoisonArea prefab, float radius, float duration, List<ITowerEffect> effects)
+    {
+        if (poisonArea == null)
+        {
+            poisonArea = Instantiate(prefab, transform.position, Quaternion.identity);
+
+            poisonArea.Init(this, radius, duration, effects);
+        }
+        else
+        {
+            poisonArea.Refresh(duration);
+        }
+    }
+
+    public void ClearPoison()
+    {
+        poisonArea = null;
     }
 
     private void OnArrivedAtCastle()
