@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   splashRadius: 2
-  poisonAreaDuration: 1
+  poisonAreaDuration: 2
   poisonAreaPrefab: {fileID: 473417650485186470, guid: 3003761e8f46f4d4895530f708e6099c, type: 3}
 --- !u!58 &-2569297600795547874
 CircleCollider2D:

@@ -21,7 +21,7 @@ public class PoisonProjectile : Projectile
 
             if (area.TryGetComponent(out PoisonArea poisonArea))
             {
-                poisonArea.Init(splashRadius, poisonAreaDuration, effects);
+                poisonArea.Init(splashRadius, poisonAreaDuration, effects, monster.transform);
             }
         }
 
