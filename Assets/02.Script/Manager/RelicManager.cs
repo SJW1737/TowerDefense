@@ -66,13 +66,19 @@ public class RelicManager : MonoSingleton<RelicManager>
 
     public void AddRelicLevel(RelicData relicData)
     {
-        var relic = relics.Find(r => r.data == relicData);
-        if (relic == null || relic.level >= relic.data.maxLevel)
+        var relic = relics.Find(r => r.data.relicId == relicData.relicId);
+        if (relic == null)
+        {
             return;
+        }
+
+        if (relic.level >= relic.data.maxLevel)
+        {
+            return;
+        }
 
         relic.level++;
         SaveRelic(relic);
-
         OnRelicChanged?.Invoke();
     }
 
@@ -111,6 +117,23 @@ public class RelicManager : MonoSingleton<RelicManager>
         }
 
         return value;
+    }
+
+    public bool TryAddRelicLevel(RelicData relicData)
+    {
+        var relic = relics.Find(r => r.data.relicId == relicData.relicId);
+        if (relic == null || relic.level >= relic.data.maxLevel)
+            return false;
+
+        relic.level++;
+        SaveRelic(relic);
+        OnRelicChanged?.Invoke();
+        return true;
+    }
+
+    public OwnedRelic GetOwnedRelic(RelicData data)
+    {
+        return relics.Find(r => r.data.relicId == data.relicId);
     }
 
     public IReadOnlyList<OwnedRelic> GetAllRelics()

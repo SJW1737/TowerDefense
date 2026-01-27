@@ -27,6 +27,5 @@ public class ShopUI : MonoBehaviour
     private void OnClickGacha()
     {
         bool success = RelicGachaManager.Instance.TryGacha();
-        Debug.Log(success ? "유물 뽑기 성공" : "다이아 부족");
     }
 }

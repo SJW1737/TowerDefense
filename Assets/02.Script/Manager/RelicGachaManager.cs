@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class RelicGachaManager : MonoSingleton<RelicGachaManager>
@@ -15,30 +16,64 @@ public class RelicGachaManager : MonoSingleton<RelicGachaManager>
 
     public bool TryGacha()
     {
-        if (!SaveManager.Instance.SpendDiamond(gachaCost))
+        if (!RelicManager.Instance.GetAllRelics().Any(r => r.level < r.data.maxLevel))
+        {
             return false;
+        }
 
         RelicData result = Draw();
-        RelicManager.Instance.AddRelicLevel(result);
+
+        if (result == null)
+        {
+            return false;
+        }
+
+        bool upgraded = RelicManager.Instance.TryAddRelicLevel(result);
+
+        if (!upgraded)
+        {
+            return false;
+        }
+
+        SaveManager.Instance.SpendDiamond(gachaCost);
         return true;
     }
 
     private RelicData Draw()
     {
-        int totalWeight = 0;
+        var candidates = new List<RelicGachaEntry>();
+
         foreach (var e in gachaPool)
+        {
+            var owned = RelicManager.Instance.GetOwnedRelic(e.relicData);
+
+            if (owned.level < owned.data.maxLevel)
+            {
+                candidates.Add(e);
+            }
+        }
+
+        if (candidates.Count == 0)
+        {
+            return null;
+        }
+
+        int totalWeight = 0;
+        foreach (var e in candidates)
             totalWeight += e.weight;
 
         int rand = Random.Range(0, totalWeight);
         int acc = 0;
 
-        foreach (var e in gachaPool)
+        foreach (var e in candidates)
         {
             acc += e.weight;
             if (rand < acc)
+            {
                 return e.relicData;
+            }
         }
 
-        return gachaPool[0].relicData;
+        return null;
     }
 }
