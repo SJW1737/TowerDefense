@@ -36,9 +36,18 @@ public class RelicItemUI : MonoBehaviour, IPointerClickHandler
         icon.sprite = relic.data.icon;
 
         if (relic.level == 0)
+        {
             icon.color = new Color(1f, 1f, 1f, 0.4f);
-        else
-            icon.color = Color.white;
+            return;
+        }
+
+        if (relic.CanUpgrade)
+        {
+            icon.color = new Color(0.6f, 1f, 0.6f);
+            return;
+        }
+
+        icon.color = Color.white;
     }
 
     public void OnPointerClick(PointerEventData eventData)

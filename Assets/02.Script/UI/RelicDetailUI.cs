@@ -8,6 +8,7 @@ public class RelicDetailUI : MonoSingleton<RelicDetailUI>
 {
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI descText;
+    [SerializeField] private TextMeshProUGUI upgradeText;
     [SerializeField] private Button upgradeButton;
     [SerializeField] private GameObject dim;
     [SerializeField] private GameObject panel;
@@ -34,9 +35,22 @@ public class RelicDetailUI : MonoSingleton<RelicDetailUI>
         nameText.text = current.data.relicName;
         descText.text = current.data.description;
 
-        upgradeButton.interactable =
-            current.level < current.data.maxLevel &&
-            SaveManager.Instance.Diamond >= GetUpgradeCost();
+        if (current.level >= current.data.maxLevel)
+        {
+            upgradeText.text = "MAX";
+            upgradeButton.interactable = false;
+            return;
+        }
+
+        int needPiece = 1;
+        int havePiece = current.piece;
+
+        int needDiamond = GetUpgradeCost();
+        int haveDiamond = SaveManager.Instance.Diamond;
+
+        upgradeText.text = $"R : {havePiece} / {needPiece}\n" + $"D : {haveDiamond} / {needDiamond}";
+
+        upgradeButton.interactable = current.CanUpgrade && SaveManager.Instance.Diamond >= needDiamond;
     }
 
     public void OnClickUpgrade()
@@ -44,7 +58,7 @@ public class RelicDetailUI : MonoSingleton<RelicDetailUI>
         if (!SaveManager.Instance.SpendDiamond(GetUpgradeCost()))
             return;
 
-        RelicManager.Instance.AddRelicLevel(current.data);
+        RelicManager.Instance.TryUpgrade(current.data);
         Refresh();
     }
 

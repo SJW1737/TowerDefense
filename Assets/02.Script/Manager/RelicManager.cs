@@ -51,35 +51,56 @@ public class RelicManager : MonoSingleton<RelicManager>
         foreach (var relicData in allRelicData)
         {
             int level = 0;
+            int piece = 0;
 
             var saved = saveRelics.Find(r => r.relicId == relicData.relicId);
             if (saved != null)
+            {
                 level = saved.level;
+                piece = saved.piece;
+            }
 
             relics.Add(new OwnedRelic
             {
                 data = relicData,
-                level = level
+                level = level,
+                piece = piece
             });
         }
     }
 
-    public void AddRelicLevel(RelicData relicData)
+    public bool AddRelicPiece(RelicData data)
     {
-        var relic = relics.Find(r => r.data.relicId == relicData.relicId);
-        if (relic == null)
+        var relic = GetOwnedRelic(data);
+        if (relic == null || relic.IsMax)
+            return false;
+
+        if (relic.level == 0)
         {
-            return;
+            relic.level = 1;
+        }
+        else
+        {
+            relic.piece++;
         }
 
-        if (relic.level >= relic.data.maxLevel)
-        {
-            return;
-        }
-
-        relic.level++;
         SaveRelic(relic);
         OnRelicChanged?.Invoke();
+        return true;
+    }
+
+    public bool TryUpgrade(RelicData data)
+    {
+        var relic = GetOwnedRelic(data);
+        if (relic == null || !relic.CanUpgrade)
+            return false;
+
+        relic.level++;
+        relic.piece--;
+
+        SaveRelic(relic);
+        OnRelicChanged?.Invoke();
+        return true;
     }
 
     private void SaveRelic(OwnedRelic relic)
@@ -92,12 +113,14 @@ public class RelicManager : MonoSingleton<RelicManager>
             saveList.Add(new RelicSaveData
             {
                 relicId = relic.data.relicId,
-                level = relic.level
+                level = relic.level,
+                piece = relic.piece
             });
         }
         else
         {
             saved.level = relic.level;
+            saved.piece = relic.piece;
         }
 
         SaveManager.Instance.Save();
@@ -117,18 +140,6 @@ public class RelicManager : MonoSingleton<RelicManager>
         }
 
         return value;
-    }
-
-    public bool TryAddRelicLevel(RelicData relicData)
-    {
-        var relic = relics.Find(r => r.data.relicId == relicData.relicId);
-        if (relic == null || relic.level >= relic.data.maxLevel)
-            return false;
-
-        relic.level++;
-        SaveRelic(relic);
-        OnRelicChanged?.Invoke();
-        return true;
     }
 
     public OwnedRelic GetOwnedRelic(RelicData data)

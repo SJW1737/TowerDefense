@@ -6,6 +6,7 @@ public class RelicSaveData
 {
     public string relicId;
     public int level;
+    public int piece;
 }
 
 [Serializable]
