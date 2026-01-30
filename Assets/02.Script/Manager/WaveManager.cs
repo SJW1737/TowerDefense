@@ -11,6 +11,8 @@ public class WaveManager : MonoSingleton<WaveManager>
     private int currentWave = 1;
     private bool isRunning;
 
+    private int maxClearedWave = 0;
+
     public int CurrentWave => currentWave;
 
     public event Action<int> OnWaveChanged;
@@ -33,6 +35,9 @@ public class WaveManager : MonoSingleton<WaveManager>
         }
 
         isRunning = true;
+
+        maxClearedWave = 0;
+
         OnWaveChanged?.Invoke(currentWave);
 
         StartCoroutine(WaveLoop());
@@ -43,6 +48,8 @@ public class WaveManager : MonoSingleton<WaveManager>
         StopAllCoroutines();
         currentWave = 1;
         isRunning = false;
+
+        maxClearedWave = 0;
 
         OnWaveChanged?.Invoke(currentWave);
     }
@@ -64,6 +71,8 @@ public class WaveManager : MonoSingleton<WaveManager>
             yield return WaitUntilAllMonsterDead();
 
             Debug.Log($"Wave {currentWave} 종료");
+
+            maxClearedWave = currentWave;
 
             currentWave++;
             OnWaveChanged?.Invoke(currentWave);
@@ -92,5 +101,28 @@ public class WaveManager : MonoSingleton<WaveManager>
 
             yield return null;
         }
+    }
+
+    //실제 지급 계산
+    public void GrantWaveClearDiamond()
+    {
+        if (maxClearedWave < 10)
+            return;
+
+        int checkpointWave = (maxClearedWave / 10) * 10;
+
+        int rewardDiamond = (checkpointWave / 10) * 50;
+
+        SaveManager.Instance.AddDiamond(rewardDiamond);
+    }
+
+    //UI용
+    public int GetWaveClearDiamondReward()
+    {
+        if (maxClearedWave < 10)
+            return 0;
+
+        int checkpointWave = (maxClearedWave / 10) * 10;
+        return (checkpointWave / 10) * 50;
     }
 }

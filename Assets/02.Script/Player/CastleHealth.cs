@@ -40,6 +40,13 @@ public class CastleHealth : Health
     {
         Debug.Log("GameOver");
 
+        if (WaveManager.Instance != null)
+        {
+            WaveManager.Instance.GrantWaveClearDiamond();
+        }
+
+        int clearedWave = WaveManager.Instance != null ? WaveManager.Instance.CurrentWave - 1 : 0;
+
         GameOverUI ui = FindObjectOfType<GameOverUI>(true);
         if (ui == null)
         {

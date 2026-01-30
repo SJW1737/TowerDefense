@@ -60,9 +60,15 @@ public class GameOverUI : MonoBehaviour
             PlayerPrefs.Save();
         }
 
+        int rewardDiamond = 0;
+        if (WaveManager.Instance != null)
+        {
+            rewardDiamond = WaveManager.Instance.GetWaveClearDiamondReward();
+        }
+
         if (scoreAndBestText != null)
         {
-            scoreAndBestText.text = $"Score : {waveScore} Wave\n" + $"Best : {bestWave} Wave";
+            scoreAndBestText.text = $"Score : {waveScore} Wave\n" + $"Best : {bestWave} Wave\n\n" + $"Reward : \n +{rewardDiamond} Diamond";
         }
 
         Time.timeScale = 0f;
