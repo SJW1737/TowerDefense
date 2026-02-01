@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class TitleMenuUI : MonoBehaviour
 {
@@ -15,9 +16,25 @@ public class TitleMenuUI : MonoBehaviour
     [SerializeField] private Button shopButton;
     [SerializeField] private Button settingButton;
 
+    [Header("Texts")]
+    [SerializeField] private TextMeshProUGUI bestWaveText;
+
     [Header("UI")]
     [SerializeField] private SettingPanelUI settingPanelUI;
 
+    private const string KEY_BEST_WAVE = "BEST_WAVE";
+
+    private void Start()
+    {
+        UpdateBestWave();
+    }
+
+    private void UpdateBestWave()
+    {
+        int bestWave = PlayerPrefs.GetInt(KEY_BEST_WAVE, 0);
+        if (bestWaveText != null)
+            bestWaveText.text = $"Best Wave : {bestWave}";
+    }
 
     public void OnClickStart()
     {
