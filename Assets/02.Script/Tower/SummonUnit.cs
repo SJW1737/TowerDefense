@@ -12,6 +12,9 @@ public class SummonUnit : MonoBehaviour
 
     private float timer;
 
+    private int slotIndex;
+    private Vector3 standbyPosition;
+
     public void Initialize(Tower tower, Monster target)
     {
         this.ownerTower = tower;
@@ -27,6 +30,7 @@ public class SummonUnit : MonoBehaviour
 
         if (target == null || !target.gameObject.activeSelf)
         {
+            MoveToStandby();
             FindNewTarget();
             return;
         }
@@ -48,8 +52,7 @@ public class SummonUnit : MonoBehaviour
 
     private void Fire()
     {
-        Projectile proj =
-            Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
+        Projectile proj = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
 
         proj.Init(target, projectileSpeed, ownerTower.GetEffects());
     }
@@ -60,5 +63,16 @@ public class SummonUnit : MonoBehaviour
             return;
 
         target = ownerTower.FindTarget();
+    }
+
+    public void SetSlot(int index, Vector3 pos)
+    {
+        slotIndex = index;
+        standbyPosition = pos;
+    }
+
+    private void MoveToStandby()
+    {
+        transform.position = Vector3.Lerp(transform.position, standbyPosition, Time.deltaTime * 5f);
     }
 }
