@@ -17,4 +17,16 @@ public class SaveData
     public int diamond;
 
     public List<RelicSaveData> relics = new();
+
+    public string dailyMissionDate;
+    public List<DailyMissionSaveData> dailyMissions = new();
+}
+
+[Serializable]
+public class DailyMissionSaveData
+{
+    public string missionId;
+    public int currentCount;
+    public bool isCompleted;
+    public bool rewardClaimed;
 }
