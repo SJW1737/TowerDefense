@@ -9,18 +9,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a8ccd690911b1f4c9762b68daa29760, type: 3}
+  m_Script: {fileID: 11500000, guid: 62e7b2d55e94f5f4fb62061f83dd1691, type: 3}
   m_Name: SummonTowerData
   m_EditorClassIdentifier: 
   towerName: SummonTower
   cost: 30
   towerType: 1
   towerPrefab: {fileID: 4323069816014903991, guid: 91710dc0699013748b828cd55fd1db20, type: 3}
-  attackInterval: 0
-  range: 0
+  baseAttackSpeed: 3
+  attackSpeedPerUpgrade: 0
+  range: 8
   attackData: {fileID: 0}
-  effects: []
+  effects:
+  - {fileID: 11400000, guid: a25613f0b98e98d4e9a18831395333b3, type: 2}
   tier: 2
   maxUpgradeCount: 3
   upgradeCosts: 1e0000002800000032000000
   tier2EvolutionTargets: []
+  summonPrefab: {fileID: 4360112570692199619, guid: 072f2fa4646ab904a97e5d536a62d99e, type: 3}
+  baseSummonCount: 1
