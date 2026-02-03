@@ -44,7 +44,7 @@ public class Tower : MonoBehaviour
         }
     }
 
-    private Monster FindTarget()
+    public Monster FindTarget()
     {
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, data.range, monsterLayer);
 
@@ -95,6 +95,11 @@ public class Tower : MonoBehaviour
 
         Debug.LogError($"{typeof(T).Name} effect not found on tower");
         return null;
+    }
+
+    public List<ITowerEffect> GetEffects()
+    {
+        return effects;
     }
 
     public bool TryUpgrade()
