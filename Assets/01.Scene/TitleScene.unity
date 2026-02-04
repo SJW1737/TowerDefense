@@ -2484,7 +2484,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 984638003}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1824539211}
+        m_TargetAssemblyTypeName: DailyMissionPanelUI, Assembly-CSharp
+        m_MethodName: Close
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &984638003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3040,7 +3052,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1412302547}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1588903479}
+        m_TargetAssemblyTypeName: TitleMenuUI, Assembly-CSharp
+        m_MethodName: OnClickDailyMission
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1412302547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3751,6 +3775,7 @@ MonoBehaviour:
   settingButton: {fileID: 1483290276}
   bestWaveText: {fileID: 129957714}
   settingPanelUI: {fileID: 1123852941}
+  dailyMissionPanelUI: {fileID: 1824539211}
 --- !u!1 &1613979711
 GameObject:
   m_ObjectHideFlags: 0
@@ -4309,7 +4334,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1824539208
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4384,6 +4409,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   content: {fileID: 1317348315}
   itemPrefab: {fileID: 4936436110274719377, guid: a42466eefc5318849a54b3a3331904eb, type: 3}
+  dim: {fileID: 270389887}
 --- !u!1 &1851685998
 GameObject:
   m_ObjectHideFlags: 0

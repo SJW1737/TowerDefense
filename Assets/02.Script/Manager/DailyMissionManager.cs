@@ -21,6 +21,12 @@ public class DailyMissionManager : MonoSingleton<DailyMissionManager>
     {
         missionDict = new Dictionary<string, DailyMissionSaveData>();
 
+        SaveManager saveManager = SaveManager.Instance;
+        if (saveManager.Data == null)
+        {
+            saveManager.Load();
+        }
+
         SaveData saveData = SaveManager.Instance.Data;
 
         foreach (var data in missionDatas)

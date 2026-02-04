@@ -7,6 +7,13 @@ public class DailyMissionPanelUI : MonoBehaviour
     [SerializeField] private Transform content;
     [SerializeField] private DailyMissionListUI itemPrefab;
 
+    [SerializeField] private GameObject dim;
+
+    private void Awake()
+    {
+        Close();
+    }
+
     private void OnEnable()
     {
         Build();
@@ -27,5 +34,21 @@ public class DailyMissionPanelUI : MonoBehaviour
             var item = Instantiate(itemPrefab, content);
             item.Init(data, save);
         }
+    }
+
+    public void Open()
+    {
+        if (dim != null)
+            dim.SetActive(true);
+
+        gameObject.SetActive(true);
+    }
+
+    public void Close()
+    {
+        if (dim != null)
+            dim.SetActive(false);
+
+        gameObject.SetActive(false);
     }
 }
