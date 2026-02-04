@@ -1,14 +1,17 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class TowerUpgradeEvolutionPanelUI : MonoSingleton<TowerUpgradeEvolutionPanelUI>
 {
     [Header("Upgrade")]
     [SerializeField] private Button upgradeButton;
+    [SerializeField] private TextMeshProUGUI currentLevelText;
 
     [Header("Evolution")]
     [SerializeField] private Image[] tier2EvolutionImages;
     [SerializeField] private Button[] tier2EvolutionButtons;
+    [SerializeField] private TextMeshProUGUI[] tier2EvolutionTexts;
 
     private Tower currentTower;
 
@@ -35,6 +38,8 @@ public class TowerUpgradeEvolutionPanelUI : MonoSingleton<TowerUpgradeEvolutionP
     // 타워 클릭 시 호출
     public void Open(Tower tower)
     {
+        TowerBuildUI.Instance.Close();
+
         currentTower = tower;
         RefreshUI();
         gameObject.SetActive(true);
@@ -55,14 +60,32 @@ public class TowerUpgradeEvolutionPanelUI : MonoSingleton<TowerUpgradeEvolutionP
         bool canUpgrade = currentTower.CanUpgrade;
         bool canEvolve = !canUpgrade;
 
+        // 현재 강화 레벨 표시
+        int currentLevel = currentTower.UpgradeCount + 1; // 보통 0부터라서 +1
+        int maxLevel = currentTower.data.maxUpgradeCount + 1;
+
+        if (canUpgrade)
+            currentLevelText.text = $"Lv. {currentLevel} / {maxLevel}";
+        else
+            currentLevelText.text = "Lv. MAX";
+
         // 강화 버튼
-        upgradeButton.gameObject.SetActive(canUpgrade);
+        upgradeButton.gameObject.SetActive(true);
         upgradeButton.interactable = canUpgrade;
 
         // Tier2 진화 버튼들
         for (int i = 0; i < tier2EvolutionButtons.Length; i++)
         {
+            bool hasEvolution = canEvolve && i < currentTower.data.tier2EvolutionTargets.Count;
+
             tier2EvolutionButtons[i].gameObject.SetActive(canEvolve);
+
+            if (!hasEvolution)
+                continue;
+
+            TowerData evolutionData = currentTower.data.tier2EvolutionTargets[i];
+
+            tier2EvolutionTexts[i].text = evolutionData.towerName;
 
             // 나중에 TowerData에 Tier2 데이터 연결되면
             // 여기서 이미지 세팅 가능
