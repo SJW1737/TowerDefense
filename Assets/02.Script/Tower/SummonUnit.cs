@@ -35,6 +35,8 @@ public class SummonUnit : MonoBehaviour
             return;
         }
 
+        RotateToTarget();
+
         float dist = Vector2.Distance(transform.position, target.transform.position);
         if (dist > towerData.range)
             return;
@@ -74,5 +76,18 @@ public class SummonUnit : MonoBehaviour
     private void MoveToStandby()
     {
         transform.position = Vector3.Lerp(transform.position, standbyPosition, Time.deltaTime * 5f);
+
+        transform.rotation = Quaternion.Euler(0, 0, 90f);
+    }
+
+    private void RotateToTarget()
+    {
+        if (target == null)
+            return;
+
+        Vector2 dir = target.transform.position - transform.position;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+
+        transform.rotation = Quaternion.Euler(0f, 0f, angle);
     }
 }
