@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1da996640f63fcd48bacfc062c128b42, type: 3}
+  m_Name: KillMiniBoss
+  m_EditorClassIdentifier: 
+  id: 4003
+  title: Kill Mini Boss
+  description: Kill 5 Mini Boss
+  type: 1
+  targetCount: 5
+  rewardDiamond: 25

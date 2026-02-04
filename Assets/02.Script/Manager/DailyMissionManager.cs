@@ -9,6 +9,7 @@ public class DailyMissionManager : MonoSingleton<DailyMissionManager>
     [SerializeField] private List<DailyMissionData> missionDatas;
 
     private Dictionary<string, DailyMissionSaveData> missionDict;
+    public IReadOnlyList<DailyMissionData> MissionDatas => missionDatas;
 
     protected override void Init()
     {
@@ -40,7 +41,10 @@ public class DailyMissionManager : MonoSingleton<DailyMissionManager>
                 saveData.dailyMissions.Add(saved);
             }
 
-            missionDict.Add(data.id, saved);
+            if (!missionDict.ContainsKey(data.id))
+            {
+                missionDict.Add(data.id, saved);
+            }
         }
     }
 
