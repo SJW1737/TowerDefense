@@ -113,6 +113,13 @@ public class Monster : MonoBehaviour
         if (MonsterData.monsterType == MonsterType.Boss)
         {
             DifficultyManager.Instance.OnBossDefeated();
+
+            DailyMissionManager.Instance.AddProgress(DailyMissionType.KillBoss);
+        }
+
+        if (MonsterData.monsterType == MonsterType.MiniBoss)
+        {
+            DailyMissionManager.Instance.AddProgress(DailyMissionType.KillMiniBoss);
         }
 
         ReturnToPool();

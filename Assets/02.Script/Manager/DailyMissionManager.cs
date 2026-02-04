@@ -11,6 +11,12 @@ public class DailyMissionManager : MonoSingleton<DailyMissionManager>
     private Dictionary<string, DailyMissionSaveData> missionDict;
     public IReadOnlyList<DailyMissionData> MissionDatas => missionDatas;
 
+    protected override void Awake()
+    {
+        base.Awake();
+        DontDestroyOnLoad(gameObject);
+    }
+
     protected override void Init()
     {
         InitMissionData();

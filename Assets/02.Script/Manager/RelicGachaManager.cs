@@ -32,6 +32,9 @@ public class RelicGachaManager : MonoSingleton<RelicGachaManager>
         }
 
         RelicManager.Instance.AddRelicPiece(result);
+
+        DailyMissionManager.Instance.AddProgress(DailyMissionType.DrawGacha);
+
         var owned = RelicManager.Instance.GetOwnedRelic(result);
         RelicGachaResultUI.Instance.Open(owned);
         return true;

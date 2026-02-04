@@ -40,6 +40,8 @@ public class CastleHealth : Health
     {
         Debug.Log("GameOver");
 
+        DailyMissionManager.Instance.AddProgress(DailyMissionType.PlayGame);
+
         if (WaveManager.Instance != null)
         {
             WaveManager.Instance.GrantWaveClearDiamond();
