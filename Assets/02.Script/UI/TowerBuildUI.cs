@@ -34,6 +34,8 @@ public class TowerBuildUI : MonoSingleton<TowerBuildUI>
 
     public void Open()
     {
+        TowerUpgradeEvolutionPanelUI.Instance.Close();
+
         panel.SetActive(true);
     }
 

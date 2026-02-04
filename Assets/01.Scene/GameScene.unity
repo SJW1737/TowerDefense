@@ -3791,6 +3791,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeButton: {fileID: 203321240}
+  currentLevelText: {fileID: 1906313140}
   tier2EvolutionImages:
   - {fileID: 1802968275}
   - {fileID: 563575624}
@@ -3799,6 +3800,10 @@ MonoBehaviour:
   - {fileID: 622243507}
   - {fileID: 1084342749}
   - {fileID: 628659710}
+  tier2EvolutionTexts:
+  - {fileID: 229510583}
+  - {fileID: 163850885}
+  - {fileID: 572356136}
 --- !u!1001 &1407810429
 PrefabInstance:
   m_ObjectHideFlags: 0
