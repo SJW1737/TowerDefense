@@ -21,22 +21,29 @@ public class SummonAttack : ITowerAttack
         if (activeSummons.Count >= maxSummon)
             return;
 
-        int index = activeSummons.Count; // 슬롯 인덱스
-
         GameObject summonObj = GameObject.Instantiate(data.summonPrefab, tower.transform.position, Quaternion.identity);
 
         SummonUnit summon = summonObj.GetComponent<SummonUnit>();
         summon.Initialize(tower, target);
 
-        // 일자 배치 계산
-        float spacing = 0.6f;
+        activeSummons.Add(summon);
+
+        RepositionSummons();
+    }
+
+    private void RepositionSummons()
+    {
+        float spacing = 0.4f;
         Vector3 basePos = tower.transform.position + Vector3.up * 0.8f;
 
-        float offset = (index - (maxSummon - 1) / 2f) * spacing;
-        Vector3 standbyPos = basePos + new Vector3(offset, 0f, 0f);
+        int count = activeSummons.Count;
 
-        summon.SetSlot(index, standbyPos);
+        for (int i = 0; i < count; i++)
+        {
+            float offset = (i - (count - 1) / 2f) * spacing;
+            Vector3 pos = basePos + new Vector3(offset, 0f, 0f);
 
-        activeSummons.Add(summon);
+            activeSummons[i].SetSlot(i, pos);
+        }
     }
 }
