@@ -22,6 +22,7 @@ public class TitleMenuUI : MonoBehaviour
     [Header("UI")]
     [SerializeField] private SettingPanelUI settingPanelUI;
     [SerializeField] private DailyMissionPanelUI dailyMissionPanelUI;
+    [SerializeField] private AchieveMentPanelUI achievementPanelUI;
 
     private const string KEY_BEST_WAVE = "BEST_WAVE";
 
@@ -55,6 +56,12 @@ public class TitleMenuUI : MonoBehaviour
             shopButton.interactable = false;
 
         SceneManager.LoadScene(shopSceneName);
+    }
+
+    public void OnClickAchievement()
+    {
+        if (achievementPanelUI != null)
+            achievementPanelUI.Open();
     }
 
     public void OnClickDailyMission()

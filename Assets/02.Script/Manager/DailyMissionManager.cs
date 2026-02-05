@@ -19,8 +19,16 @@ public class DailyMissionManager : MonoSingleton<DailyMissionManager>
 
     protected override void Init()
     {
-        InitMissionData();
+        EnsureSaveDataReady();
         CheckDailyReset();
+        InitMissionData();
+    }
+
+    private void EnsureSaveDataReady()
+    {
+        var saveManager = SaveManager.Instance;
+        if (saveManager.Data == null)
+            saveManager.Load();
     }
 
     private void InitMissionData()
@@ -35,10 +43,11 @@ public class DailyMissionManager : MonoSingleton<DailyMissionManager>
 
         SaveData saveData = SaveManager.Instance.Data;
 
+        bool isDirty = false;
+
         foreach (var data in missionDatas)
         {
-            var saved = saveData.dailyMissions
-                .Find(x => x.missionId == data.id);
+            var saved = saveData.dailyMissions.Find(x => x.missionId == data.id);
 
             if (saved == null)
             {
@@ -51,20 +60,31 @@ public class DailyMissionManager : MonoSingleton<DailyMissionManager>
                 };
 
                 saveData.dailyMissions.Add(saved);
+                isDirty = true;
             }
 
-            if (!missionDict.ContainsKey(data.id))
-            {
-                missionDict.Add(data.id, saved);
-            }
+            missionDict[data.id] = saved;
+        }
+
+        if (isDirty)
+        {
+            saveManager.Save();
         }
     }
 
     //¸®¼Â
     private void CheckDailyReset()
     {
-        string today = DateTime.Now.ToString("yyyyMMdd");
         SaveData saveData = SaveManager.Instance.Data;
+
+        string today = DateTime.Now.ToString("yyyyMMdd");
+
+        if (string.IsNullOrEmpty(saveData.dailyMissionDate))
+        {
+            saveData.dailyMissionDate = today;
+            SaveManager.Instance.Save();
+            return;
+        }
 
         if (saveData.dailyMissionDate != today)
         {
@@ -76,7 +96,9 @@ public class DailyMissionManager : MonoSingleton<DailyMissionManager>
 
     private void ResetAll()
     {
-        foreach (var mission in missionDict.Values)
+        SaveData saveData = SaveManager.Instance.Data;
+
+        foreach (var mission in saveData.dailyMissions)
         {
             mission.currentCount = 0;
             mission.isCompleted = false;

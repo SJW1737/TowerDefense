@@ -41,6 +41,7 @@ public class CastleHealth : Health
         Debug.Log("GameOver");
 
         DailyMissionManager.Instance.AddProgress(DailyMissionType.PlayGame);
+        AchievementManager.Instance.AddProgress(AchievementType.PlayGame);
 
         if (WaveManager.Instance != null)
         {

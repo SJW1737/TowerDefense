@@ -20,6 +20,8 @@ public class SaveData
 
     public string dailyMissionDate;
     public List<DailyMissionSaveData> dailyMissions = new();
+
+    public List<AchievementSaveData> achievements = new();
 }
 
 [Serializable]
@@ -29,4 +31,14 @@ public class DailyMissionSaveData
     public int currentCount;
     public bool isCompleted;
     public bool rewardClaimed;
+}
+
+[Serializable]
+public class AchievementSaveData
+{
+    public string achievementId;
+
+    public int totalCount;      //누적 횟수
+    public int rewardedStep;    //중복 보상 
+    public int claimableStep;   //받을 수 있는 단계
 }

@@ -72,6 +72,8 @@ public class WaveManager : MonoSingleton<WaveManager>
 
             Debug.Log($"Wave {currentWave} Á¾·á");
 
+            AchievementManager.Instance.AddProgress(AchievementType.ClearWave);
+
             maxClearedWave = currentWave;
 
             currentWave++;

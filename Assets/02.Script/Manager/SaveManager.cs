@@ -21,7 +21,8 @@ public class SaveManager : MonoSingleton<SaveManager>
     }
     protected override void Init()
     {
-        Load();
+        if (Data == null)
+            Load();
     }
 
     public void AddDiamond(int amount)
