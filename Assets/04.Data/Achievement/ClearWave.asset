@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 5002
   title: Clear Wave
-  description: ' Clear 5 Wave'
+  description: Clear 5 Wave
   type: 4
   stepCount: 5
   rewardDiamond: 10
