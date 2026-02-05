@@ -104,7 +104,7 @@ public class MonsterMovement : MonoBehaviour
         OnReachedEnd?.Invoke();
     }
 
-    public void ResetMovement()
+    public void ResetStatus()
     {
         if (slowCoroutine != null)
         {
@@ -112,7 +112,21 @@ public class MonsterMovement : MonoBehaviour
             slowCoroutine = null;
         }
 
+        if (frozenCoroutine != null)
+        {
+            StopCoroutine(frozenCoroutine);
+            frozenCoroutine = null;
+        }
+
         StopAllCoroutines();
+
+        isFrozen = false;
+        slowMultiplier = 1f;
+    }
+
+    public void ResetMovement()
+    {
+        ResetStatus();
         currentSpeed = moveSpeed;
     }
 }

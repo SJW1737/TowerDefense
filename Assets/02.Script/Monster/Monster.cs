@@ -148,6 +148,8 @@ public class Monster : MonoBehaviour
     {
         IsDead = false;
 
+        monsterMovement.ResetMovement();
+
         //체력
         float hpMultiplier = DifficultyManager.Instance.HpMultiplier;   //보스 처치로 인한 체력 배율 증가
         float relicHpReduce = RelicManager.Instance.GetValue(RelicEffectType.EnemyMaxHp);   //유물로 인한 최대체력 감소
@@ -163,7 +165,6 @@ public class Monster : MonoBehaviour
 
         float finalBaseSpeed = MonsterData.moveSpeed * (1f - relicSpeedReduce);
 
-        monsterMovement.ResetMovement();
         monsterMovement.SetSpeed(finalBaseSpeed);
         monsterMovement.Setpath();
     }
