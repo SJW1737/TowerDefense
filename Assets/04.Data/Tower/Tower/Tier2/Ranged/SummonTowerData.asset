@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerName: SummonTower
   cost: 30
-  towerType: 1
+  towerTier: 1
   towerPrefab: {fileID: 4323069816014903991, guid: 91710dc0699013748b828cd55fd1db20, type: 3}
   baseAttackSpeed: 3
   attackSpeedPerUpgrade: 0

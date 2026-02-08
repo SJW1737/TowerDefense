@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerName: SniperRifleTower
   cost: 30
-  towerType: 1
+  towerTier: 1
   towerPrefab: {fileID: 4323069816014903991, guid: 2631115f690ed6a46ae145f0cb9d445a, type: 3}
   baseAttackSpeed: 1
   attackSpeedPerUpgrade: 0.5

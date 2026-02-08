@@ -4,7 +4,7 @@ using UnityEngine.Events;
 public class GoldManager : MonoSingleton<GoldManager>
 {
     [Header("Gold")]
-    [SerializeField] private int currentGold = 100;
+    [SerializeField] private int currentGold = 1000;
 
     public int CurrentGold => currentGold;
 

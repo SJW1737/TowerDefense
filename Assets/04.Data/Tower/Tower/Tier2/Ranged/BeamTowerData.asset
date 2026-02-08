@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerName: BeamTower
   cost: 30
-  towerType: 1
+  towerTier: 1
   towerPrefab: {fileID: 4323069816014903991, guid: c595976a82cb1d2429fbe008697d5c40, type: 3}
   baseAttackSpeed: 1
   attackSpeedPerUpgrade: 0

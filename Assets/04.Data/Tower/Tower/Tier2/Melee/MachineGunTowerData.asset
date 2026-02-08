@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerName: MachineGunTower
   cost: 30
-  towerType: 0
+  towerTier: 1
   towerPrefab: {fileID: 4323069816014903991, guid: 8b9ac785dd5b63348bb75550a508c68c, type: 3}
   baseAttackSpeed: 6
   attackSpeedPerUpgrade: 1

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerName: FireTower
   cost: 30
-  towerType: 2
+  towerTier: 1
   towerPrefab: {fileID: 4323069816014903991, guid: 5d91f591db1846a41a35b0ee0d71080c, type: 3}
   baseAttackSpeed: 1
   attackSpeedPerUpgrade: 0

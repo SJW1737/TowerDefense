@@ -1,13 +1,11 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public enum TowerType // 업그레이드 계보용
+public enum TowerTier
 {
-    Melee,  // 근거리
-    Ranged, // 원거리
-    Debuff  // 슬로우 or 스턴 (디버프 타워)
+    Tier1,
+    Tier2
 }
-
 
 [CreateAssetMenu(menuName = "Tower/TowerData")]
 public class TowerData : ScriptableObject
@@ -15,7 +13,7 @@ public class TowerData : ScriptableObject
     [Header("기본 정보")]
     public string towerName;
     public int cost;
-    public TowerType towerType;
+    public TowerTier towerTier;
     public GameObject towerPrefab;
 
     [Header("공통 전투 수치")]

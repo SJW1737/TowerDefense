@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerName: IceTower
   cost: 30
-  towerType: 2
+  towerTier: 1
   towerPrefab: {fileID: 4323069816014903991, guid: 04492ad0e054ba6458145c84c7e961f0, type: 3}
   baseAttackSpeed: 1
   attackSpeedPerUpgrade: 0

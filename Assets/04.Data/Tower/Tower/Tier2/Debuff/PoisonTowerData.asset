@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerName: PoisonTower
   cost: 30
-  towerType: 2
+  towerTier: 1
   towerPrefab: {fileID: 4323069816014903991, guid: e262db1ec05fc8a4b8612d2c01df60e6, type: 3}
   baseAttackSpeed: 1
   attackSpeedPerUpgrade: 0

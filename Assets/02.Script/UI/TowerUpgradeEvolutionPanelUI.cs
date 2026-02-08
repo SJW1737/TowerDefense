@@ -58,27 +58,38 @@ public class TowerUpgradeEvolutionPanelUI : MonoSingleton<TowerUpgradeEvolutionP
             return;
 
         bool canUpgrade = currentTower.CanUpgrade;
-        bool canEvolve = !canUpgrade;
+        bool isTier2 = currentTower.data.towerTier == TowerTier.Tier2;
 
         // 현재 강화 레벨 표시
         int currentLevel = currentTower.UpgradeCount + 1; // 보통 0부터라서 +1
         int maxLevel = currentTower.data.maxUpgradeCount + 1;
 
-        if (canUpgrade)
-            currentLevelText.text = $"Lv. {currentLevel} / {maxLevel}";
-        else
+        if (!canUpgrade && isTier2)
+        {
+            currentLevelText.text = "Lv. MAX (Cannot Evolve)";
+        }
+        else if (!canUpgrade)
+        {
             currentLevelText.text = "Lv. MAX";
+        }
+        else
+        {
+            currentLevelText.text = $"Lv. {currentLevel} / {maxLevel}";
+        }
+
+        currentLevelText.gameObject.SetActive(true);
 
         // 강화 버튼
-        upgradeButton.gameObject.SetActive(true);
-        upgradeButton.interactable = canUpgrade;
+        upgradeButton.gameObject.SetActive(canUpgrade);
 
-        // Tier2 진화 버튼들
+        // 진화 버튼들
+        bool canEvolve = !canUpgrade && !isTier2;
+
         for (int i = 0; i < tier2EvolutionButtons.Length; i++)
         {
             bool hasEvolution = canEvolve && i < currentTower.data.tier2EvolutionTargets.Count;
 
-            tier2EvolutionButtons[i].gameObject.SetActive(canEvolve);
+            tier2EvolutionButtons[i].gameObject.SetActive(hasEvolution);
 
             if (!hasEvolution)
                 continue;
@@ -99,8 +110,7 @@ public class TowerUpgradeEvolutionPanelUI : MonoSingleton<TowerUpgradeEvolutionP
         if (currentTower == null)
             return;
 
-        bool success = currentTower.TryUpgrade();
-        if (success)
+        if (currentTower.TryUpgrade())
         {
             RefreshUI();
         }
