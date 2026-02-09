@@ -10,6 +10,7 @@ public class DailyMissionListUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI titleText;
     [SerializeField] private Slider progressSlider;
     [SerializeField] private TextMeshProUGUI progressText;
+    [SerializeField] private TextMeshProUGUI rewardAmountText;
     [SerializeField] private Button rewardButton;
     [SerializeField] private TextMeshProUGUI rewardButtonText;
 
@@ -31,6 +32,8 @@ public class DailyMissionListUI : MonoBehaviour
     {
         //제목
         titleText.text = data.title;
+
+        rewardAmountText.text = $"+{data.rewardDiamond} Diamond";
 
         //진행도
         int current = Mathf.Min(save.currentCount, data.targetCount);

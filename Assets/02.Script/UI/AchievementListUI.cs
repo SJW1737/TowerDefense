@@ -11,7 +11,7 @@ public class AchievementListUI : MonoBehaviour
     [SerializeField] private Slider progressSlider;
     [SerializeField] private TextMeshProUGUI progressText;
 
-    [SerializeField] private TextMeshProUGUI rewardText;
+    [SerializeField] private TextMeshProUGUI rewardAmountText;
 
     [SerializeField] private Button claimButton;
     [SerializeField] private TextMeshProUGUI claimButtonText;
@@ -36,7 +36,8 @@ public class AchievementListUI : MonoBehaviour
             return;
 
         titleText.text = data.title;
-        rewardText.text = $"+{data.rewardDiamond}";
+
+        rewardAmountText.text = $"+{data.rewardDiamond} Diamond";
 
         int step = Mathf.Max(1, data.stepCount);
         int total = Mathf.Max(0, save.totalCount);
