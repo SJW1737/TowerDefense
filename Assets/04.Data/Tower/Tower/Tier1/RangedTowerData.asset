@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: RangedTowerData
   m_EditorClassIdentifier: 
   towerName: RangedTower
+  image: {fileID: 21300000, guid: 0540c4c0436f949418a364181312a582, type: 3}
   cost: 10
-  towerType: 1
+  towerTier: 0
   towerPrefab: {fileID: 5323560347674312808, guid: 0e9ec979436809549a0814c7cba3d60c, type: 3}
   baseAttackSpeed: 1.5
   attackSpeedPerUpgrade: 0
