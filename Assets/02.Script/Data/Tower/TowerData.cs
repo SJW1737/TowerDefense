@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum TowerTier
 {
@@ -12,6 +13,7 @@ public class TowerData : ScriptableObject
 {
     [Header("기본 정보")]
     public string towerName;
+    public Sprite image;
     public int cost;
     public TowerTier towerTier;
     public GameObject towerPrefab;

@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: DebuffTowerData
   m_EditorClassIdentifier: 
   towerName: DebuffTower
+  image: {fileID: 21300000, guid: e6aee2e8158d29841a24e1f76ff72e21, type: 3}
   cost: 10
-  towerType: 2
+  towerTier: 0
   towerPrefab: {fileID: 5323560347674312808, guid: edd67df298be7214dba2b824a1e16acf, type: 3}
   baseAttackSpeed: 1
   attackSpeedPerUpgrade: 0

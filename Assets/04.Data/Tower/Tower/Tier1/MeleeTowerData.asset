@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: MeleeTowerData
   m_EditorClassIdentifier: 
   towerName: MeleeTower
+  image: {fileID: 21300000, guid: 2fc11e37be0550344864c3c01b515af3, type: 3}
   cost: 10
-  towerType: 0
+  towerTier: 0
   towerPrefab: {fileID: 5323560347674312808, guid: 3f34f2e7afd65194bb225bbf6251d230, type: 3}
   baseAttackSpeed: 3
   attackSpeedPerUpgrade: 0
