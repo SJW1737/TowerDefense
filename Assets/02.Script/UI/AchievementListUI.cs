@@ -37,7 +37,7 @@ public class AchievementListUI : MonoBehaviour
 
         titleText.text = data.title;
 
-        rewardAmountText.text = $"+{data.rewardDiamond} Diamond";
+        rewardAmountText.text = $"+{data.rewardDiamond}";
 
         int step = Mathf.Max(1, data.stepCount);
         int total = Mathf.Max(0, save.totalCount);

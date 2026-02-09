@@ -7,7 +7,7 @@ public class DiamondUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI diamondText;
 
-    private const string FORMAT = "Diamond : {0:N0}";
+    private const string FORMAT = " : {0:N0}";
 
     private SaveManager saveManager;
 

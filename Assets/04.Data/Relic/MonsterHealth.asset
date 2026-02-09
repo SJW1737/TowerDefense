@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   relicId: 3001
   relicName: MonsterHealth
-  icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: 21300000, guid: 8e859c149e0cd814ea9acc8581953bd6, type: 3}
   description: 
   maxLevel: 5
   effectType: 3

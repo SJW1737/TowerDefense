@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   relicId: 3002
   relicName: MonsterMoveSpeed
-  icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: 21300000, guid: a7fa02c269abaed47bd3a49986381846, type: 3}
   description: 
   maxLevel: 5
   effectType: 2

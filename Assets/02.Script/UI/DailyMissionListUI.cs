@@ -33,7 +33,7 @@ public class DailyMissionListUI : MonoBehaviour
         //제목
         titleText.text = data.title;
 
-        rewardAmountText.text = $"+{data.rewardDiamond} Diamond";
+        rewardAmountText.text = $"+{data.rewardDiamond}";
 
         //진행도
         int current = Mathf.Min(save.currentCount, data.targetCount);
