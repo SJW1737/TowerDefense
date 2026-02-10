@@ -5560,12 +5560,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Tower Defense
-
-'
+  m_text: "\uD0C0\uC6CC\uB514\uD39C\uC2A4\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 50be2f86e8ee95641b5788d1924151f1, type: 2}
+  m_sharedMaterial: {fileID: -6462086702290287606, guid: 50be2f86e8ee95641b5788d1924151f1, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
