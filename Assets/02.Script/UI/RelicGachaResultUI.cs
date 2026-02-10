@@ -10,8 +10,9 @@ public class RelicGachaResultUI : MonoSingleton<RelicGachaResultUI>
     [SerializeField] private GameObject panel;
 
     [SerializeField] private TextMeshProUGUI relicTitle;
-    [SerializeField] private TextMeshProUGUI descrip;
     [SerializeField] private TextMeshProUGUI pieceText;
+
+    [SerializeField] private Image relicIcon;
 
     [SerializeField] private Button backButton;
 
@@ -25,9 +26,11 @@ public class RelicGachaResultUI : MonoSingleton<RelicGachaResultUI>
     public void Open(OwnedRelic relic)
     {
         relicTitle.text = relic.data.relicName;
-        descrip.text = relic.data.description;
 
         pieceText.text = $"{relic.level + relic.piece} / {relic.data.maxLevel}";
+
+        relicIcon.sprite = relic.data.icon;
+        relicIcon.enabled = relic.data.icon != null;
 
         dim.SetActive(true);
         panel.SetActive(true);

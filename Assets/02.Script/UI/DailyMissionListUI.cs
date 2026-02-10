@@ -46,17 +46,17 @@ public class DailyMissionListUI : MonoBehaviour
         if (!save.isCompleted)
         {
             rewardButton.interactable = false;
-            rewardButtonText.text = "in progress";  //진행 중
+            rewardButtonText.text = "진행 중";  //진행 중
         }
         else if (!save.rewardClaimed)
         {
             rewardButton.interactable = true;
-            rewardButtonText.text = "Reward";   //보상 받기 or 받기
+            rewardButtonText.text = "받기";   //보상 받기 or 받기
         }
         else
         {
             rewardButton.interactable = false;
-            rewardButtonText.text = "Complete";   //완료
+            rewardButtonText.text = "완료";   //완료
         }
     }
 

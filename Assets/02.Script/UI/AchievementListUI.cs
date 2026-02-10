@@ -51,12 +51,12 @@ public class AchievementListUI : MonoBehaviour
         if (save.claimableStep > 0)
         {
             claimButton.interactable = true;
-            claimButtonText.text = "Reward";
+            claimButtonText.text = "받기";
         }
         else
         {
             claimButton.interactable = false;
-            claimButtonText.text = "in progress";
+            claimButtonText.text = "진행 중";
         }
     }
 

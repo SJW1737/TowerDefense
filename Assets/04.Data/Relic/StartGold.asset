@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: StartGold
   m_EditorClassIdentifier: 
   relicId: 1001
-  relicName: StartGold
+  relicName: "\uC2DC\uC791 \uC2DC \uCD94\uAC00 \uACE8\uB4DC"
   icon: {fileID: 21300000, guid: 93b5b28db06f8d2439c780ec3aeb28d2, type: 3}
-  description: 
+  description: "\uAC8C\uC784 \uC2DC\uC791 \uC2DC \uACE8\uB4DC\uB97C \uB808\uBCA8
+    \uB2F9 5 \uC529 \uCD94\uAC00\uD569\uB2C8\uB2E4."
   maxLevel: 5
   effectType: 0
   valuePerLevel: 5
