@@ -8,9 +8,15 @@ public class RelicDetailUI : MonoSingleton<RelicDetailUI>
 {
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI descText;
-    [SerializeField] private TextMeshProUGUI upgradeText;
     [SerializeField] private Image relicImage;
+
     [SerializeField] private Button upgradeButton;
+
+    [SerializeField] private GameObject costGroup;
+    [SerializeField] private TextMeshProUGUI upgradeText;
+
+    [SerializeField] private TextMeshProUGUI maxLevelText;
+
     [SerializeField] private GameObject dim;
     [SerializeField] private GameObject panel;
 
@@ -41,10 +47,17 @@ public class RelicDetailUI : MonoSingleton<RelicDetailUI>
 
         if (current.level >= current.data.maxLevel)
         {
-            upgradeText.text = "MAX";
+            costGroup.SetActive(false);
+            maxLevelText.gameObject.SetActive(true);
+
+            upgradeText.text = "MAX Lv";
+
             upgradeButton.interactable = false;
             return;
         }
+
+        costGroup.SetActive(true);
+        maxLevelText.gameObject.SetActive(false);
 
         int needPiece = 1;
         int havePiece = current.piece;

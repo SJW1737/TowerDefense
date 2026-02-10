@@ -9,8 +9,12 @@ public class RelicItemUI : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] Image icon;
     [SerializeField] TextMeshProUGUI levelText;
+    [SerializeField] private Image upgradeArrow;
 
     private OwnedRelic relic;
+
+    private static readonly Color NORMAL_TEXT_COLOR = Color.white;
+    private static readonly Color UPGRADE_TEXT_COLOR = new Color(0.2f, 1f, 0.2f);
 
     public void Init(OwnedRelic relic)
     {
@@ -35,19 +39,25 @@ public class RelicItemUI : MonoBehaviour, IPointerClickHandler
 
         icon.sprite = relic.data.icon;
 
+        levelText.color = NORMAL_TEXT_COLOR;
+        if (upgradeArrow != null)
+            upgradeArrow.gameObject.SetActive(false);
+
         if (relic.level == 0)
         {
             icon.color = new Color(1f, 1f, 1f, 0.4f);
             return;
         }
 
+        icon.color = Color.white;
+
         if (relic.CanUpgrade)
         {
-            icon.color = new Color(0.6f, 1f, 0.6f);
-            return;
-        }
+            levelText.color = UPGRADE_TEXT_COLOR;
 
-        icon.color = Color.white;
+            if (upgradeArrow != null)
+                upgradeArrow.gameObject.SetActive(true);
+        }
     }
 
     public void OnPointerClick(PointerEventData eventData)
