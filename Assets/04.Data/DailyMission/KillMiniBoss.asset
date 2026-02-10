@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: KillMiniBoss
   m_EditorClassIdentifier: 
   id: 4003
-  title: Kill Mini Boss
-  description: Kill 5 Mini Boss
+  title: "\uBBF8\uB2C8 \uBCF4\uC2A4 \uC8FD\uC774\uAE30"
+  description: "\uBBF8\uB2C8 \uBCF4\uC2A4 5\uD68C \uC8FD\uC774\uAE30"
   type: 1
   targetCount: 5
   rewardDiamond: 25

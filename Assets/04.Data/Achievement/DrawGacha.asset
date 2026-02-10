@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: DrawGacha
   m_EditorClassIdentifier: 
   id: 5005
-  title: Draw Gacha
-  description: Draw 5 Gacha
+  title: "\uC720\uBB3C \uBF51\uAE30"
+  description: "\uC720\uBB3C \uBF51\uAE30 5\uD68C"
   type: 3
   stepCount: 5
   rewardDiamond: 20

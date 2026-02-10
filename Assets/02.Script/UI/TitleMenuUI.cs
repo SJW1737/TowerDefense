@@ -35,7 +35,7 @@ public class TitleMenuUI : MonoBehaviour
     {
         int bestWave = PlayerPrefs.GetInt(KEY_BEST_WAVE, 0);
         if (bestWaveText != null)
-            bestWaveText.text = $"Best Wave : {bestWave}";
+            bestWaveText.text = $"최고 웨이브 : {bestWave}";
     }
 
     public void OnClickStart()

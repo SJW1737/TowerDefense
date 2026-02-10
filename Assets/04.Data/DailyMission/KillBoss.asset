@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: KillBoss
   m_EditorClassIdentifier: 
   id: 4002
-  title: Kill Boss
-  description: Kill 3 Boss
+  title: "\uBCF4\uC2A4 \uC8FD\uC774\uAE30"
+  description: "\uBCF4\uC2A4 3\uD68C \uC8FD\uC774\uAE30"
   type: 0
   targetCount: 3
   rewardDiamond: 25

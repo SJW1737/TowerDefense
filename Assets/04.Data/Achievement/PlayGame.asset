@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: PlayGame
   m_EditorClassIdentifier: 
   id: 5001
-  title: Play Game
-  description: Play 3 Game
+  title: "\uAC8C\uC784 \uD50C\uB808\uC774"
+  description: "\uAC8C\uC784 3\uD68C \uD50C\uB808\uC774"
   type: 2
   stepCount: 3
   rewardDiamond: 10

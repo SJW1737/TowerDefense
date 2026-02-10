@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: ClearWave
   m_EditorClassIdentifier: 
   id: 5002
-  title: Clear Wave
-  description: Clear 5 Wave
+  title: "\uC6E8\uC774\uBE0C \uD074\uB9AC\uC5B4"
+  description: "\uC6E8\uC774\uBE0C \uD074\uB9AC\uC5B4 5"
   type: 4
   stepCount: 5
   rewardDiamond: 10

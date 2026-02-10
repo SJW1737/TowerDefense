@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: KillBoss
   m_EditorClassIdentifier: 
   id: 5003
-  title: Kill Boss
-  description: Kill 5 Boss
+  title: "\uBCF4\uC2A4 \uC8FD\uC774\uAE30"
+  description: "\uBCF4\uC2A4 5\uD68C \uC8FD\uC774\uAE30"
   type: 0
   stepCount: 5
   rewardDiamond: 20

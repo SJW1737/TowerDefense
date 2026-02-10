@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: DrawGacha
   m_EditorClassIdentifier: 
   id: 4004
-  title: Draw Gacha
-  description: 1 Gacha
+  title: "\uC720\uBB3C \uBF51\uAE30"
+  description: "\uC720\uBB3C 1\uD68C \uBF51\uAE30"
   type: 3
   targetCount: 1
   rewardDiamond: 25
