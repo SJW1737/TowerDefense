@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: FireTowerData
   m_EditorClassIdentifier: 
   towerName: FireTower
+  image: {fileID: 21300000, guid: 296906cd1708210428651f1f77b8e588, type: 3}
   cost: 30
   towerTier: 1
   towerPrefab: {fileID: 4323069816014903991, guid: 5d91f591db1846a41a35b0ee0d71080c, type: 3}

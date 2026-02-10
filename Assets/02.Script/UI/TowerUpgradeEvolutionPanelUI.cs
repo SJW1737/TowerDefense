@@ -5,6 +5,7 @@ using TMPro;
 public class TowerUpgradeEvolutionPanelUI : MonoSingleton<TowerUpgradeEvolutionPanelUI>
 {
     [Header("Upgrade")]
+    [SerializeField] private Image upgradeImage;
     [SerializeField] private Button upgradeButton;
     [SerializeField] private TextMeshProUGUI currentLevelText;
 
@@ -60,6 +61,13 @@ public class TowerUpgradeEvolutionPanelUI : MonoSingleton<TowerUpgradeEvolutionP
         bool canUpgrade = currentTower.CanUpgrade;
         bool isTier2 = currentTower.data.towerTier == TowerTier.Tier2;
 
+        // 현재 타워 이미지
+        upgradeImage.sprite = currentTower.data.image;
+
+        // 강화 버튼
+        upgradeButton.gameObject.SetActive(true);
+        upgradeButton.interactable = canUpgrade;
+
         // 현재 강화 레벨 표시
         int currentLevel = currentTower.UpgradeCount + 1; // 보통 0부터라서 +1
         int maxLevel = currentTower.data.maxUpgradeCount + 1;
@@ -76,11 +84,6 @@ public class TowerUpgradeEvolutionPanelUI : MonoSingleton<TowerUpgradeEvolutionP
         {
             currentLevelText.text = $"Lv. {currentLevel} / {maxLevel}";
         }
-
-        currentLevelText.gameObject.SetActive(true);
-
-        // 강화 버튼
-        upgradeButton.gameObject.SetActive(canUpgrade);
 
         // 진화 버튼들
         bool canEvolve = !canUpgrade && !isTier2;

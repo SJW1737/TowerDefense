@@ -77,7 +77,7 @@ public class SummonUnit : MonoBehaviour
     {
         transform.position = Vector3.Lerp(transform.position, standbyPosition, Time.deltaTime * 5f);
 
-        transform.rotation = Quaternion.Euler(0, 0, 90f);
+        transform.rotation = Quaternion.Euler(0, 0, 180f);
     }
 
     private void RotateToTarget()
