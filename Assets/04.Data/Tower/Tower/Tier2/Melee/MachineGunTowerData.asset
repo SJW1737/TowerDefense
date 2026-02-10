@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: MachineGunTowerData
   m_EditorClassIdentifier: 
   towerName: MachineGunTower
+  image: {fileID: 21300000, guid: bc9862598c43c4d42a5e97b6214b6774, type: 3}
   cost: 30
   towerTier: 1
   towerPrefab: {fileID: 4323069816014903991, guid: 8b9ac785dd5b63348bb75550a508c68c, type: 3}

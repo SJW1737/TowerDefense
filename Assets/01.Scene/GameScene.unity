@@ -867,7 +867,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1906313139}
   m_Father: {fileID: 1328495963}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3726,7 +3727,6 @@ RectTransform:
   m_Children:
   - {fileID: 485305219}
   - {fileID: 203321239}
-  - {fileID: 1906313139}
   - {fileID: 1802968274}
   - {fileID: 622243506}
   - {fileID: 563575623}
@@ -3790,6 +3790,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e0a834dc34fb8747bb4015e92ef77d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upgradeImage: {fileID: 485305220}
   upgradeButton: {fileID: 203321240}
   currentLevelText: {fileID: 1906313140}
   tier2EvolutionImages:
@@ -5075,12 +5076,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1328495963}
+  m_Father: {fileID: 203321239}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -309, y: -50}
-  m_SizeDelta: {x: -650, y: -186}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1906313140
 MonoBehaviour:
@@ -5096,7 +5097,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

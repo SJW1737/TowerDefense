@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: SniperRifleTowerData
   m_EditorClassIdentifier: 
   towerName: SniperRifleTower
+  image: {fileID: 21300000, guid: 3a1fe39763003da47bd69bfb243d71e4, type: 3}
   cost: 30
   towerTier: 1
   towerPrefab: {fileID: 4323069816014903991, guid: 2631115f690ed6a46ae145f0cb9d445a, type: 3}

@@ -75,8 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -5177388603050735206, guid: 8884154dfe85442a3a3578be807dbcdf, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 296906cd1708210428651f1f77b8e588, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
@@ -100,7 +100,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 84b1bedaf1f5a8249be50b70249dca5f, type: 2}
   firePoint: {fileID: 2478355930935028940}
-  projectilePrefab: {fileID: 2917975267322545158, guid: 3b381826fd4c7164d9a527153e1f40f0, type: 3}
   monsterLayer:
     serializedVersion: 2
     m_Bits: 64
