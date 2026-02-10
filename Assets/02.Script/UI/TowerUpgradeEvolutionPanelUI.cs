@@ -85,22 +85,25 @@ public class TowerUpgradeEvolutionPanelUI : MonoSingleton<TowerUpgradeEvolutionP
         // 진화 버튼들
         bool canEvolve = !canUpgrade && !isTier2;
 
+        var evolutions = currentTower.data.tier2EvolutionTargets;
+
         for (int i = 0; i < tier2EvolutionButtons.Length; i++)
         {
-            bool hasEvolution = canEvolve && i < currentTower.data.tier2EvolutionTargets.Count;
+            bool hasEvolutionData = i < evolutions.Count;
 
-            tier2EvolutionButtons[i].gameObject.SetActive(hasEvolution);
+            // 진화 데이터 없으면 슬롯 숨김
+            tier2EvolutionButtons[i].gameObject.SetActive(hasEvolutionData);
 
-            if (!hasEvolution)
+            if (!hasEvolutionData)
                 continue;
 
-            TowerData evolutionData = currentTower.data.tier2EvolutionTargets[i];
+            TowerData evolutionData = evolutions[i];
 
+            tier2EvolutionImages[i].sprite = evolutionData.image;
             tier2EvolutionTexts[i].text = evolutionData.towerName;
 
-            // 나중에 TowerData에 Tier2 데이터 연결되면
-            // 여기서 이미지 세팅 가능
-            // tier2EvolutionImages[i].sprite = ...
+            // 클릭 가능 여부만 제어
+            tier2EvolutionButtons[i].interactable = canEvolve;
         }
     }
 
