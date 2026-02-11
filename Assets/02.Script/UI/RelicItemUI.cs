@@ -13,7 +13,7 @@ public class RelicItemUI : MonoBehaviour, IPointerClickHandler
 
     private OwnedRelic relic;
 
-    private static readonly Color NORMAL_TEXT_COLOR = Color.white;
+    private static readonly Color NORMAL_TEXT_COLOR = Color.black;
     private static readonly Color UPGRADE_TEXT_COLOR = new Color(0.2f, 1f, 0.2f);
 
     public void Init(OwnedRelic relic)
