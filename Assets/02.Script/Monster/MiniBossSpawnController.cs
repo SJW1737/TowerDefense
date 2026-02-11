@@ -53,7 +53,7 @@ public class MiniBossSpawnController : MonoSingleton<MiniBossSpawnController>
 
         var popup = FindObjectOfType<WavePopupUI>();
         if (popup != null)
-            popup.Show($"MINI BOSS SPAWN");
+            popup.Show($"미니 보스 소환");
 
         return true;
     }

@@ -89,9 +89,9 @@ public class WaveManager : MonoSingleton<WaveManager>
         if (popup == null) return;
 
         if (wave % 10 == 0)
-            popup.Show("BOSS WAVE");
+            popup.Show("보스 웨이브");
         else
-            popup.Show($"{wave} WAVE");
+            popup.Show($"{wave} 웨이브");
     }
 
     private IEnumerator WaitUntilAllMonsterDead()

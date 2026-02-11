@@ -49,14 +49,14 @@ public class MiniBossButtonUI : MonoBehaviour
 
         if (!controller.IsUnlocked(miniBossData))
         {
-            SetText("LOCKED");
+            SetText("잠김");
             button.interactable = false;
             return;
         }
 
         if (MonsterPoolManager.Instance.HasAliveMiniBoss())
         {
-            SetText("ACTIVE");
+            SetText("소환 중");
             button.interactable = false;
             return;
         }
@@ -68,7 +68,7 @@ public class MiniBossButtonUI : MonoBehaviour
             return;
         }
 
-        SetText("SPAWN");
+        SetText("소환");
         button.interactable = true;
     }
 
@@ -101,7 +101,7 @@ public class MiniBossButtonUI : MonoBehaviour
             //중간에 미니보스가 생기면 중단
             if (MonsterPoolManager.Instance.HasAliveMiniBoss())
             {
-                SetText("ACTIVE");
+                SetText("소환 중");
                 yield break;
             }
 
@@ -112,7 +112,7 @@ public class MiniBossButtonUI : MonoBehaviour
         }
 
         //쿨타임 종료
-        SetText("SPAWN");
+        SetText("소환");
         button.interactable = true;
     }
 
