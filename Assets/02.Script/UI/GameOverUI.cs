@@ -68,7 +68,7 @@ public class GameOverUI : MonoBehaviour
 
         if (scoreAndBestText != null)
         {
-            scoreAndBestText.text = $"Score : {waveScore} Wave\n" + $"Best : {bestWave} Wave\n\n" + $"Reward : \n +{rewardDiamond} Diamond";
+            scoreAndBestText.text = $"웨이브 : {waveScore} 웨이브\n" + $"최고 웨이브 : {bestWave} 웨이브\n\n" + $"보상 : \n +{rewardDiamond} 다이아몬드";
         }
 
         Time.timeScale = 0f;

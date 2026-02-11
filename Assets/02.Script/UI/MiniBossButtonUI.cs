@@ -7,6 +7,7 @@ using TMPro;
 public class MiniBossButtonUI : MonoBehaviour
 {
     [SerializeField] private MiniBossData miniBossData;
+
     [SerializeField] private Button button;
 
     [SerializeField] private TextMeshProUGUI cooldownText;
@@ -74,6 +75,8 @@ public class MiniBossButtonUI : MonoBehaviour
 
     public void OnClickSpawn()
     {
+        Debug.Log($"[MiniBossButtonUI] Spawn : {miniBossData.name}");
+
         bool success = MiniBossSpawnController.Instance.Spawn(miniBossData);
 
         if (success)
@@ -92,13 +95,12 @@ public class MiniBossButtonUI : MonoBehaviour
         }
     }
 
-    IEnumerator CooldownRoutine()
+    private  IEnumerator CooldownRoutine()
     {
         var controller = MiniBossSpawnController.Instance;
 
         while (!controller.IsCooldownReady(miniBossData))
         {
-            //중간에 미니보스가 생기면 중단
             if (MonsterPoolManager.Instance.HasAliveMiniBoss())
             {
                 SetText("소환 중");

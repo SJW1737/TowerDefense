@@ -152,7 +152,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4079468126769309680
 RectTransform:
   m_ObjectHideFlags: 0
@@ -359,7 +359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc4f6db67ad382943a233e3654d50eaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  miniBossData: {fileID: 11400000, guid: 0b3bb01b3939c624da9b0b5d390b4381, type: 2}
+  miniBossData: {fileID: 11400000, guid: b2151e5aa6495cd46a4985bddc7c44f6, type: 2}
   button: {fileID: 2694028092939930119}
   cooldownText: {fileID: 7443534438320012213}
   miniBossListPanel: {fileID: 2362035093733907241}
@@ -746,7 +746,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: BossList
+  m_text: "\uBBF8\uB2C8 \uBCF4\uC2A4 \uB9AC\uC2A4\uD2B8"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 50be2f86e8ee95641b5788d1924151f1, type: 2}
   m_sharedMaterial: {fileID: -6462086702290287606, guid: 50be2f86e8ee95641b5788d1924151f1, type: 2}
@@ -853,7 +853,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 660}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &5296792151182260881
 MonoBehaviour:
@@ -1041,7 +1041,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc4f6db67ad382943a233e3654d50eaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  miniBossData: {fileID: 11400000, guid: 0b3bb01b3939c624da9b0b5d390b4381, type: 2}
+  miniBossData: {fileID: 11400000, guid: f7f66dde808ba324583fbd400ae7779e, type: 2}
   button: {fileID: 751404224788587440}
   cooldownText: {fileID: 2257261646688694337}
   miniBossListPanel: {fileID: 2362035093733907241}

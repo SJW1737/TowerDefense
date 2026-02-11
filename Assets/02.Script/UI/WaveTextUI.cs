@@ -32,6 +32,6 @@ public class WaveTextUI : MonoBehaviour
     private void HandleWaveChanged(int wave)
     {
         if (waveText != null)
-            waveText.text = $"Wave : {wave}";
+            waveText.text = $"¿þÀÌºê : {wave}";
     }
 }
