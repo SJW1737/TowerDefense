@@ -14,6 +14,8 @@ public class Monster : MonoBehaviour
 
     private PoisonArea poisonArea;
 
+    private Animator animator;
+
     public bool IsDead { get; private set; }
 
     private void Awake()
@@ -22,6 +24,8 @@ public class Monster : MonoBehaviour
 
         monsterHealth = GetComponent<MonsterHealth>();
         castleHealth = FindObjectOfType<CastleHealth>();
+
+        animator = GetComponent<Animator>();
     }
 
     private void OnEnable()
@@ -99,13 +103,20 @@ public class Monster : MonoBehaviour
         if (IsDead) return;
 
         IsDead = true;
-        OnDie();
+
+        monsterMovement.ResetMovement();
+
+        Collider2D col = GetComponent<Collider2D>();
+        if (col != null)
+        {
+            col.enabled = false;
+        }
+
+        animator.SetTrigger("Die");
     }
 
     public void OnDie()
     {
-        monsterMovement.ResetMovement();
-
         int rewardGold = MonsterData.rewardGold + DifficultyManager.Instance.GoldBonus;
 
         GoldManager.Instance.Add(rewardGold);
@@ -149,6 +160,15 @@ public class Monster : MonoBehaviour
     public void ResetMonster()
     {
         IsDead = false;
+
+        Collider2D col = GetComponent<Collider2D>();
+        if (col != null)
+        {
+            col.enabled = true;
+        }
+
+        animator.ResetTrigger("Die");
+        animator.Play("Walk");
 
         monsterMovement.ResetMovement();
 
