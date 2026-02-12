@@ -20,10 +20,14 @@ public class MonsterMovement : MonoBehaviour
     private Pathfinder pathfinder;
     private GridManager gridManager;
 
+    private SpriteRenderer spriteRenderer;
+
     private void Awake()
     {
         pathfinder = Pathfinder.Instance;
         gridManager = GridManager.Instance;
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     public void SetSpeed(float speed)
@@ -94,6 +98,20 @@ public class MonsterMovement : MonoBehaviour
 
             while (Vector3.Distance(transform.position, targetpos) > 0.01f)
             {
+                Vector3 dir = targetpos - transform.position;
+
+                if (spriteRenderer != null)
+                {
+                    if (dir.x > 0.01f)
+                    {
+                        spriteRenderer.flipX = false;   //오른쪽
+                    }
+                    else if (dir.x < -0.01f)
+                    {
+                        spriteRenderer.flipX = true;    //왼쪽
+                    }
+                }
+
                 transform.position = Vector3.MoveTowards(transform.position, targetpos, GetFinalSpeed() * Time.deltaTime);
                 yield return null;
             }
@@ -128,5 +146,10 @@ public class MonsterMovement : MonoBehaviour
     {
         ResetStatus();
         currentSpeed = moveSpeed;
+
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.flipX = false;
+        } 
     }
 }
