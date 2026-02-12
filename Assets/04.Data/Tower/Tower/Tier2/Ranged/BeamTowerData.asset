@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a8ccd690911b1f4c9762b68daa29760, type: 3}
   m_Name: BeamTowerData
   m_EditorClassIdentifier: 
-  towerName: BeamTower
+  towerName: "\uB808\uC774\uC800"
   image: {fileID: 21300000, guid: 6964e2ba760222e4e900d54ddc65af88, type: 3}
   cost: 30
   towerTier: 1

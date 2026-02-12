@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a8ccd690911b1f4c9762b68daa29760, type: 3}
   m_Name: FireTowerData
   m_EditorClassIdentifier: 
-  towerName: FireTower
+  towerName: "\uBD88"
   image: {fileID: 21300000, guid: 296906cd1708210428651f1f77b8e588, type: 3}
   cost: 30
   towerTier: 1

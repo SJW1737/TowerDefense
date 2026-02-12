@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a8ccd690911b1f4c9762b68daa29760, type: 3}
   m_Name: DebuffTowerData
   m_EditorClassIdentifier: 
-  towerName: DebuffTower
+  towerName: "\uB514\uBC84\uD504"
   image: {fileID: 21300000, guid: e6aee2e8158d29841a24e1f76ff72e21, type: 3}
   cost: 10
   towerTier: 0

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62e7b2d55e94f5f4fb62061f83dd1691, type: 3}
   m_Name: SummonTowerData
   m_EditorClassIdentifier: 
-  towerName: SummonTower
+  towerName: "\uC18C\uD658"
   image: {fileID: 21300000, guid: 0c1ef97ce6720964ca374bdc622d5185, type: 3}
   cost: 30
   towerTier: 1

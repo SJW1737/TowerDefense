@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f7c0d70b7eb9134dbbaf86baffb6021, type: 3}
   m_Name: BombTowerData
   m_EditorClassIdentifier: 
-  towerName: BombTower
+  towerName: "\uD3ED\uD0C4"
   image: {fileID: 21300000, guid: 777c0cb631a69904db3bc7b0997222fd, type: 3}
   cost: 30
   towerTier: 1

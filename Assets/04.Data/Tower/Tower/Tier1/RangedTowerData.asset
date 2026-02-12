@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a8ccd690911b1f4c9762b68daa29760, type: 3}
   m_Name: RangedTowerData
   m_EditorClassIdentifier: 
-  towerName: RangedTower
+  towerName: "\uC6D0\uAC70\uB9AC"
   image: {fileID: 21300000, guid: 0540c4c0436f949418a364181312a582, type: 3}
   cost: 10
   towerTier: 0

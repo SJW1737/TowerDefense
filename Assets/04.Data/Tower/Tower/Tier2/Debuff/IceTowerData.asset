@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a8ccd690911b1f4c9762b68daa29760, type: 3}
   m_Name: IceTowerData
   m_EditorClassIdentifier: 
-  towerName: IceTower
+  towerName: "\uC5BC\uC74C"
   image: {fileID: 21300000, guid: d9c54611eb0c51649a9fdbb1bf585f77, type: 3}
   cost: 30
   towerTier: 1
