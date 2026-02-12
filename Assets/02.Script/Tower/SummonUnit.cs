@@ -28,7 +28,7 @@ public class SummonUnit : MonoBehaviour
         if (ownerTower == null)
             return;
 
-        if (target == null || !target.gameObject.activeSelf)
+        if (target == null || !target.gameObject.activeSelf || target.IsDead)
         {
             MoveToStandby();
             FindNewTarget();
@@ -54,6 +54,9 @@ public class SummonUnit : MonoBehaviour
 
     private void Fire()
     {
+        if (target == null || target.IsDead)
+            return;
+
         Projectile proj = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
 
         proj.Init(target, projectileSpeed, ownerTower.GetEffects());
