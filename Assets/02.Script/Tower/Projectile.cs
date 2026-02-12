@@ -16,7 +16,7 @@ public class Projectile : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (target == null || !target.gameObject.activeInHierarchy)
+        if (target == null || !target.gameObject.activeInHierarchy || target.IsDead)
         {
             Destroy(gameObject);
             return;
@@ -30,6 +30,8 @@ public class Projectile : MonoBehaviour
         if (!other.TryGetComponent(out Monster monster))
             return;
         if (monster != target)
+            return;
+        if (monster.IsDead)
             return;
 
         foreach (var effect in effects)

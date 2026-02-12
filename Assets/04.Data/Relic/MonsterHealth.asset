@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MonsterHealth
   m_EditorClassIdentifier: 
   relicId: 3001
-  relicName: "\uC801 \uCCB4\uB825 \uAC10\uC18C \uC720\uBB3C"
+  relicName: "\uC801 \uCCB4\uB825 \uAC10\uC18C"
   icon: {fileID: 21300000, guid: 8e859c149e0cd814ea9acc8581953bd6, type: 3}
   description: "\uC801\uC758 \uCCB4\uB825\uC744 \uB808\uBCA8 \uB2F9 0.01% \uC529
     \uAC10\uC18C \uC2DC\uD0B5\uB2C8\uB2E4."
