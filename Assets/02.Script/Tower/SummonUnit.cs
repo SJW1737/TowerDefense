@@ -86,7 +86,7 @@ public class SummonUnit : MonoBehaviour
             return;
 
         Vector2 dir = target.transform.position - transform.position;
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + 90f;
 
         transform.rotation = Quaternion.Euler(0f, 0f, angle);
     }
