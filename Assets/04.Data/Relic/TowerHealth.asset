@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   relicId: 2001
   relicName: "\uC131 \uCCB4\uB825 \uC99D\uAC00"
-  icon: {fileID: 21300000, guid: 6270d46c6c1104b448fb5bac5bede74d, type: 3}
+  icon: {fileID: -874412191, guid: 57176db7c58eedc4ab37e58c4250ca3f, type: 3}
   description: "\uC131\uC758 \uCCB4\uB825\uC744 \uB808\uBCA8 \uB2F9 2 \uC529 \uC99D\uAC00
     \uC2DC\uD0B5\uB2C8\uB2E4."
   maxLevel: 5
