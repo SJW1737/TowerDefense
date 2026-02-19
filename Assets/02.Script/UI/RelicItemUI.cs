@@ -62,6 +62,7 @@ public class RelicItemUI : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        SoundManager.Instance.PlaySFX("ButtonClick");
         RelicDetailUI.Instance.Open(relic);
     }
 }

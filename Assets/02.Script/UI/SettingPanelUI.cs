@@ -39,6 +39,8 @@ public class SettingPanelUI : MonoBehaviour
 
     public void Close()
     {
+        SoundManager.Instance.PlaySFX("ButtonClick");
+
         if (settingPanel != null) settingPanel.SetActive(false);
         if (dim != null) dim.SetActive(false);
     }

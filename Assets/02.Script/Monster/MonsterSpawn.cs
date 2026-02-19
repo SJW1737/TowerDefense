@@ -23,6 +23,11 @@ public class MonsterSpawn : MonoBehaviour
         {
             for (int i = 0; i < monster.count; i++)
             {
+                if (monster.type == MonsterType.Boss)
+                {
+                    SoundManager.Instance.PlaySFX("BossAppear");
+                }
+
                 MonsterPoolManager.Instance.GetMonster(monster.type, spawnPos);
 
                 yield return new WaitForSeconds(waveData.spawnInterval);

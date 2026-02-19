@@ -38,7 +38,7 @@ public class CastleHealth : Health
 
     protected override void Die()
     {
-        Debug.Log("GameOver");
+        SoundManager.Instance.PlaySFX("GameOver");
 
         DailyMissionManager.Instance.AddProgress(DailyMissionType.PlayGame);
         AchievementManager.Instance.AddProgress(AchievementType.PlayGame);

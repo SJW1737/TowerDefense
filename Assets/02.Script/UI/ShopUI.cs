@@ -21,11 +21,13 @@ public class ShopUI : MonoBehaviour
 
     private void OnClickBack()
     {
+        SoundManager.Instance.PlaySFX("ButtonClick");
         SceneManager.LoadScene(titleSceneName);
     }
 
     private void OnClickGacha()
     {
+        SoundManager.Instance.PlaySFX("ButtonClick");
         bool success = RelicGachaManager.Instance.TryGacha();
     }
 }

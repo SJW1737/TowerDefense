@@ -75,12 +75,13 @@ public class MiniBossButtonUI : MonoBehaviour
 
     public void OnClickSpawn()
     {
-        Debug.Log($"[MiniBossButtonUI] Spawn : {miniBossData.name}");
-
         bool success = MiniBossSpawnController.Instance.Spawn(miniBossData);
 
         if (success)
         {
+            SoundManager.Instance.PlaySFX("ButtonClick");
+            SoundManager.Instance.PlaySFX("BossAppear");
+
             RefreshImmediate();
 
             if (miniBossListPanel != null)

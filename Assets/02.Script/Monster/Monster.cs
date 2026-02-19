@@ -112,6 +112,11 @@ public class Monster : MonoBehaviour
             col.enabled = false;
         }
 
+        if (MonsterData.monsterType == MonsterType.Boss || MonsterData.monsterType == MonsterType.MiniBoss)
+        {
+            SoundManager.Instance.PlaySFX("BossDead");
+        }
+
         animator.SetTrigger("Die");
     }
 

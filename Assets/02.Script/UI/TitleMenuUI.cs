@@ -61,8 +61,6 @@ public class TitleMenuUI : MonoBehaviour
         if (shopButton != null)
             shopButton.interactable = false;
 
-        SoundManager.Instance.PlaySFX("ButtonClick");
-
         SceneManager.LoadScene(shopSceneName);
     }
 

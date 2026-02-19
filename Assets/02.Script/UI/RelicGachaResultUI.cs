@@ -38,6 +38,7 @@ public class RelicGachaResultUI : MonoSingleton<RelicGachaResultUI>
 
     public void Close()
     {
+        SoundManager.Instance.PlaySFX("ButtonClick");
         dim.SetActive(false);
         panel.SetActive(false);
     }
