@@ -48,5 +48,7 @@ public class TowerBuildUI : MonoSingleton<TowerBuildUI>
     {
         BuildManager.Instance.BuildTower(data.towerPrefab, data.cost);
         Close();
+
+        SoundManager.Instance.PlaySFX("Build");
     }
 }
