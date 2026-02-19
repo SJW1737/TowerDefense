@@ -62,8 +62,11 @@ public class AchievementListUI : MonoBehaviour
 
     private void OnClickClaim()
     {
+        SoundManager.Instance.PlaySFX("ButtonClick");
+
         if (AchievementManager.Instance.ClaimReward(data.id))
         {
+            SoundManager.Instance.PlaySFX("Upgrade");
             Refresh();
         }
     }

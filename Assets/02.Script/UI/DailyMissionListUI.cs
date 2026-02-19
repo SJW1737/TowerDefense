@@ -62,9 +62,12 @@ public class DailyMissionListUI : MonoBehaviour
 
     private void OnClickReward()
     {
+        SoundManager.Instance.PlaySFX("ButtonClick");
+
         bool success = DailyMissionManager.Instance.ClaimReward(data.id);
         if (success)
         {
+            SoundManager.Instance.PlaySFX("Upgrade");
             Refresh();
         }
     }

@@ -6345,6 +6345,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 58cbd9b8b196f504faa6010ebbff7ef2, type: 3}
   - {fileID: 8300000, guid: 1b585c182c3e4c24c920418d26daaac7, type: 3}
   - {fileID: 8300000, guid: de94c3bbfed1dae4fbf72bcaaccfc971, type: 3}
+  - {fileID: 8300000, guid: c9fdde2bc4d0fe844b30e1d1003cab66, type: 3}
   bgmVolume: 1
   sfxVolume: 1
 --- !u!4 &2118906880

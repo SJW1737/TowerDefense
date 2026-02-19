@@ -24,6 +24,7 @@ public class RelicDetailUI : MonoSingleton<RelicDetailUI>
 
     public void Open(OwnedRelic relic)
     {
+        SoundManager.Instance.PlaySFX("ButtonClick");
         current = relic;
         Refresh();
 
@@ -33,6 +34,7 @@ public class RelicDetailUI : MonoSingleton<RelicDetailUI>
 
     public void Close()
     {
+        SoundManager.Instance.PlaySFX("ButtonClick");
         dim.SetActive(false);
         panel.SetActive(false);
     }
@@ -76,6 +78,8 @@ public class RelicDetailUI : MonoSingleton<RelicDetailUI>
             return;
 
         RelicManager.Instance.TryUpgrade(current.data);
+        SoundManager.Instance.PlaySFX("ButtonClick");
+        SoundManager.Instance.PlaySFX("Upgrade");
         Refresh();
     }
 

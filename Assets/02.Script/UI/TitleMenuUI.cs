@@ -29,6 +29,7 @@ public class TitleMenuUI : MonoBehaviour
     private void Start()
     {
         UpdateBestWave();
+        SoundManager.Instance.PlayBGM("TitleBGM");
     }
 
     private void UpdateBestWave()
@@ -47,7 +48,12 @@ public class TitleMenuUI : MonoBehaviour
         data.startGoldApplied = false;
         SaveManager.Instance.Save();
 
+        SoundManager.Instance.PlaySFX("ButtonClick");
+
         SceneManager.LoadScene(gameSceneName);
+
+        SoundManager.Instance.StopBGM();
+        SoundManager.Instance.PlayBGM("InGameBGM");
     }
 
     public void OnClickShop()
@@ -55,23 +61,31 @@ public class TitleMenuUI : MonoBehaviour
         if (shopButton != null)
             shopButton.interactable = false;
 
+        SoundManager.Instance.PlaySFX("ButtonClick");
+
         SceneManager.LoadScene(shopSceneName);
     }
 
     public void OnClickAchievement()
     {
+        SoundManager.Instance.PlaySFX("ButtonClick");
+
         if (achievementPanelUI != null)
             achievementPanelUI.Open();
     }
 
     public void OnClickDailyMission()
     {
+        SoundManager.Instance.PlaySFX("ButtonClick");
+
         if (dailyMissionPanelUI != null)
             dailyMissionPanelUI.Open();
     }
 
     public void OnClickSetting()
     {
+        SoundManager.Instance.PlaySFX("ButtonClick");
+
         if (settingPanelUI != null)
             settingPanelUI.Open();
     }

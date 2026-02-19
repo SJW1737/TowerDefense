@@ -53,6 +53,8 @@ public class AchieveMentPanelUI : MonoBehaviour
 
     public void Close()
     {
+        SoundManager.Instance.PlaySFX("ButtonClick");
+
         if (dim != null)
             dim.SetActive(false);
 
