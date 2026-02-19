@@ -15,6 +15,7 @@ public class TitleMenuUI : MonoBehaviour
     [SerializeField] private Button startButton;
     [SerializeField] private Button shopButton;
     [SerializeField] private Button settingButton;
+    [SerializeField] private Button exitButton;
 
     [Header("Texts")]
     [SerializeField] private TextMeshProUGUI bestWaveText;
@@ -83,5 +84,16 @@ public class TitleMenuUI : MonoBehaviour
 
         if (settingPanelUI != null)
             settingPanelUI.Open();
+    }
+
+    public void OnClickExit()
+    {
+        SoundManager.Instance.PlaySFX("ButtonClick");
+
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false; //¿¡µðÅÍ
+#else
+        Application.Quit(); //ºôµå
+#endif
     }
 }
