@@ -6335,9 +6335,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgmSource: {fileID: 1195632102}
   sfxSource: {fileID: 340589346}
-  bgmClips: []
+  bgmClips:
+  - {fileID: 8300000, guid: d77e97800a0d38b49b2adaea9f303695, type: 3}
+  - {fileID: 8300000, guid: 975d202bd8172d74d96f36a67634d753, type: 3}
   sfxClips:
-  - {fileID: 8300000, guid: 096a5cedd8c3c7247a1270dea2065584, type: 3}
+  - {fileID: 8300000, guid: c7e698860d16df042a5e5d4c551bd8f7, type: 3}
   - {fileID: 8300000, guid: 30fe2c0b35243f544a43a09f441319a1, type: 3}
   - {fileID: 8300000, guid: f9e06e3d79217864ca7c2dbff1edcee3, type: 3}
   - {fileID: 8300000, guid: 58cbd9b8b196f504faa6010ebbff7ef2, type: 3}
