@@ -33,6 +33,8 @@ public class RelicGachaManager : MonoSingleton<RelicGachaManager>
 
         RelicManager.Instance.AddRelicPiece(result);
 
+        SoundManager.Instance.PlaySFX("Draw");
+
         DailyMissionManager.Instance.AddProgress(DailyMissionType.DrawGacha);
         AchievementManager.Instance.AddProgress(AchievementType.DrawGacha);
 

@@ -58,7 +58,7 @@ public class SoundManager : MonoBehaviour
     }
 
     // BGM
-    public void PlayBGM(string name, bool loop = true)
+    public void PlayBGM(string name, bool restart = false, bool loop = true)
     {
         if (!bgmDict.ContainsKey(name))
         {
@@ -68,7 +68,7 @@ public class SoundManager : MonoBehaviour
 
         AudioClip clip = bgmDict[name];
 
-        if (bgmSource.clip == clip) return;
+        if (bgmSource.clip == clip && !restart) return;
 
         bgmSource.clip = clip;
         bgmSource.loop = loop;

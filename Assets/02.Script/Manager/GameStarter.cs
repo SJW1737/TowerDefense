@@ -7,6 +7,8 @@ public class GameStarter : MonoBehaviour
     private void Start()
     {
         ApplyStartRelics();
+
+        SoundManager.Instance.PlayBGM("InGameBGM", true);
     }
 
     private void ApplyStartRelics()

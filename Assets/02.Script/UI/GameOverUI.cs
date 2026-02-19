@@ -76,8 +76,6 @@ public class GameOverUI : MonoBehaviour
 
     private void Restart()
     {
-        SoundManager.Instance.StopBGM();
-
         Time.timeScale = 1f;
 
         var data = SaveManager.Instance.Data;

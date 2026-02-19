@@ -51,9 +51,6 @@ public class TitleMenuUI : MonoBehaviour
         SoundManager.Instance.PlaySFX("ButtonClick");
 
         SceneManager.LoadScene(gameSceneName);
-
-        SoundManager.Instance.StopBGM();
-        SoundManager.Instance.PlayBGM("InGameBGM");
     }
 
     public void OnClickShop()
