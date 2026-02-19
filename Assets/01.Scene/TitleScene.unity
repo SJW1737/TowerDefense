@@ -6336,7 +6336,13 @@ MonoBehaviour:
   bgmSource: {fileID: 1195632102}
   sfxSource: {fileID: 340589346}
   bgmClips: []
-  sfxClips: []
+  sfxClips:
+  - {fileID: 8300000, guid: 096a5cedd8c3c7247a1270dea2065584, type: 3}
+  - {fileID: 8300000, guid: 30fe2c0b35243f544a43a09f441319a1, type: 3}
+  - {fileID: 8300000, guid: f9e06e3d79217864ca7c2dbff1edcee3, type: 3}
+  - {fileID: 8300000, guid: 58cbd9b8b196f504faa6010ebbff7ef2, type: 3}
+  - {fileID: 8300000, guid: 1b585c182c3e4c24c920418d26daaac7, type: 3}
+  - {fileID: 8300000, guid: de94c3bbfed1dae4fbf72bcaaccfc971, type: 3}
   bgmVolume: 1
   sfxVolume: 1
 --- !u!4 &2118906880
