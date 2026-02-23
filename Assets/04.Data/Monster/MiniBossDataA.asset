@@ -15,7 +15,7 @@ MonoBehaviour:
   monsterName: MiniBossA
   monsterType: 4
   description: 
-  maxHP: 40
+  maxHP: 80
   damage: 2
   moveSpeed: 5
   rewardGold: 10

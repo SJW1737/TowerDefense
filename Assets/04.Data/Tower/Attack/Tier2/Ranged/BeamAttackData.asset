@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stackInterval: 0.2
   maxStack: 10
-  beamDamagePerStack: 2
+  beamDamagePerStack: 1
   beamPrefab: {fileID: 2664931793573176455, guid: b2d3ef77a3a78564989e0bfecada6652, type: 3}

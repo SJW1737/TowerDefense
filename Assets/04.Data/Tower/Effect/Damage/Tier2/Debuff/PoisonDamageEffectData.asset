@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: PoisonDamageEffectData
   m_EditorClassIdentifier: 
   damage: 1
-  damageGrowth: 5
+  damageGrowth: 2

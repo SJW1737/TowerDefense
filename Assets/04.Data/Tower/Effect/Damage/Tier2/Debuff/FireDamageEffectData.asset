@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: FireDamageEffectData
   m_EditorClassIdentifier: 
   damage: 2
-  damageGrowth: 5
+  damageGrowth: 2

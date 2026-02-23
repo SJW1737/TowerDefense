@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: BurnEffectData
   m_EditorClassIdentifier: 
   duration: 3
-  interval: 1
-  damageRatio: 0.3
+  interval: 2
+  damageRatio: 0.4

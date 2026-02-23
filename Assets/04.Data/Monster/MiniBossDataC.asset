@@ -15,7 +15,7 @@ MonoBehaviour:
   monsterName: MiniBossC
   monsterType: 4
   description: 
-  maxHP: 80
+  maxHP: 160
   damage: 2
   moveSpeed: 5
   rewardGold: 30
