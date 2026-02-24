@@ -9,7 +9,7 @@ public class BeamAttack : ITowerAttack, ITickableAttack
     private readonly float stackInterval;
     private readonly int maxStack;
 
-    private int beamDamagePerStack;
+    private float beamDamagePerStack;
 
     private DamageEffect damageEffect;
 
@@ -25,7 +25,7 @@ public class BeamAttack : ITowerAttack, ITickableAttack
     private GameObject beamPrefab;
     private Transform firePoint;
 
-    public BeamAttack(List<ITowerEffect> effects, float stackInterval, int maxStack, int beamDamagePerStack, GameObject beamPrefab, Transform firePoint)
+    public BeamAttack(List<ITowerEffect> effects, float stackInterval, int maxStack, float beamDamagePerStack, GameObject beamPrefab, Transform firePoint)
     {
         this.effects = effects;
         this.stackInterval = stackInterval;

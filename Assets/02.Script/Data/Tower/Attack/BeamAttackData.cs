@@ -6,7 +6,7 @@ public class BeamAttackData : AttackData
 {
     public float stackInterval;
     public int maxStack;
-    public int beamDamagePerStack;
+    public float beamDamagePerStack;
     public GameObject beamPrefab;
 
     public override ITowerAttack CreateAttack(Tower tower, List<ITowerEffect> effects)

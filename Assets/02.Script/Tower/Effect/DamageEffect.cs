@@ -1,11 +1,11 @@
 public class DamageEffect : ITowerEffect, IUpgradeableEffect
 {
-    private int baseDamage;
-    private int damageGrowth;
+    private float baseDamage;
+    private float damageGrowth;
     private int upgradeLevel;
-    private int beamBonus;
+    private float beamBonus;
 
-    public DamageEffect(int baseDamage, int damageGrowth)
+    public DamageEffect(float baseDamage, float damageGrowth)
     {
         this.baseDamage = baseDamage;
         this.damageGrowth = damageGrowth;
@@ -16,12 +16,12 @@ public class DamageEffect : ITowerEffect, IUpgradeableEffect
         upgradeLevel = level;
     }
 
-    public void SetBeamBonus(int bonus)
+    public void SetBeamBonus(float bonus)
     {
         beamBonus = bonus;
     }
 
-    public int GetFinalDamage()
+    public float GetFinalDamage()
     {
         return baseDamage + (upgradeLevel * damageGrowth) + beamBonus;
     }
