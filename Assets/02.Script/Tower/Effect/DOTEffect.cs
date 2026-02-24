@@ -17,8 +17,8 @@ public class DOTEffect : ITowerEffect
 
     public void Apply(Monster target)
     {
-        int baseDamage = tower.GetEffect<DamageEffect>().GetFinalDamage();
-        int dotDamage = Mathf.Max(1, Mathf.RoundToInt(baseDamage * damageRatio));
+        float baseDamage = tower.GetEffect<DamageEffect>().GetFinalDamage();
+        float dotDamage = Mathf.Max(1, Mathf.RoundToInt(baseDamage * damageRatio));
 
         if (target.TryGetComponent(out MonsterBurn burn))
         {

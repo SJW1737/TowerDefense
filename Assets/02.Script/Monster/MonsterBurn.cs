@@ -18,7 +18,7 @@ public class MonsterBurn : MonoBehaviour
         }
     }
 
-    public void ApplyBurn(int damagePerTick, float duration, float interval)
+    public void ApplyBurn(float damagePerTick, float duration, float interval)
     {
         if (!gameObject.activeInHierarchy) 
             return;
@@ -36,7 +36,7 @@ public class MonsterBurn : MonoBehaviour
         burnRoutine = StartCoroutine(BurnRoutine(damagePerTick, duration, interval));
     }
 
-    private IEnumerator BurnRoutine(int damagePerTick, float duration, float interval)
+    private IEnumerator BurnRoutine(float damagePerTick, float duration, float interval)
     {
         float elapsed = 0f;
 
