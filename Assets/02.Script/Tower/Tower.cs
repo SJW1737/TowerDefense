@@ -6,6 +6,7 @@ public class Tower : MonoBehaviour
     public TowerData data;
 
     public Transform firePoint;      // 발사 위치
+    private Vector3 standbyPosition;
 
     private ITowerAttack attack;
     private ITickableAttack tickAttack;
@@ -42,6 +43,11 @@ public class Tower : MonoBehaviour
                 RotateToTarget(target);
                 attack?.Execute(target);
             }
+
+            else
+            {
+                MoveToStandby();
+            }
         }
     }
 
@@ -77,6 +83,11 @@ public class Tower : MonoBehaviour
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f;
 
         transform.rotation = Quaternion.Euler(0f, 0f, angle);
+    }
+
+    private void MoveToStandby()
+    {
+        transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
     public void SetAttack(ITowerAttack attack)
