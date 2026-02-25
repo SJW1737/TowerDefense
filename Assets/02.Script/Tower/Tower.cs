@@ -49,23 +49,26 @@ public class Tower : MonoBehaviour
     {
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, data.range, monsterLayer);
 
-        Monster closest = null;
-        float minDist = float.MaxValue;
+        Monster frontMost = null;
+        float maxDistance = float.MinValue;
 
         foreach (var hit in hits)
         {
             if (hit.TryGetComponent(out Monster monster))
             {
+                MonsterMovement move = monster.GetComponent<MonsterMovement>();
+                if (move == null) continue;
+
                 float dist = Vector2.Distance(transform.position, monster.transform.position);
-                if (dist < minDist)
+                if (move.TravelDistance > maxDistance)
                 {
-                    minDist = dist;
-                    closest = monster;
+                    maxDistance = move.TravelDistance;
+                    frontMost = monster;
                 }
             }
         }
 
-        return closest;
+        return frontMost;
     }
 
     private void RotateToTarget(Monster target)
