@@ -22,6 +22,8 @@ public class MonsterMovement : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
+    public float TravelDistance { get; private set; }
+
     private void Awake()
     {
         pathfinder = Pathfinder.Instance;
@@ -98,6 +100,8 @@ public class MonsterMovement : MonoBehaviour
 
             while (Vector3.Distance(transform.position, targetpos) > 0.01f)
             {
+                Vector3 prevPos = transform.position;
+
                 Vector3 dir = targetpos - transform.position;
 
                 if (spriteRenderer != null)
@@ -113,6 +117,10 @@ public class MonsterMovement : MonoBehaviour
                 }
 
                 transform.position = Vector3.MoveTowards(transform.position, targetpos, GetFinalSpeed() * Time.deltaTime);
+
+                // 이동 거리 누적
+                TravelDistance += Vector3.Distance(prevPos, transform.position);
+
                 yield return null;
             }
 
@@ -146,6 +154,8 @@ public class MonsterMovement : MonoBehaviour
     {
         ResetStatus();
         currentSpeed = moveSpeed;
+
+        TravelDistance = 0f;
 
         if (spriteRenderer != null)
         {

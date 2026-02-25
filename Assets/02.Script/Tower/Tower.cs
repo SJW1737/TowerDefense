@@ -6,6 +6,7 @@ public class Tower : MonoBehaviour
     public TowerData data;
 
     public Transform firePoint;      // 발사 위치
+    private Vector3 standbyPosition;
 
     private ITowerAttack attack;
     private ITickableAttack tickAttack;
@@ -42,6 +43,11 @@ public class Tower : MonoBehaviour
                 RotateToTarget(target);
                 attack?.Execute(target);
             }
+
+            else
+            {
+                MoveToStandby();
+            }
         }
     }
 
@@ -49,23 +55,26 @@ public class Tower : MonoBehaviour
     {
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, data.range, monsterLayer);
 
-        Monster closest = null;
-        float minDist = float.MaxValue;
+        Monster frontMost = null;
+        float maxDistance = float.MinValue;
 
         foreach (var hit in hits)
         {
             if (hit.TryGetComponent(out Monster monster))
             {
+                MonsterMovement move = monster.GetComponent<MonsterMovement>();
+                if (move == null) continue;
+
                 float dist = Vector2.Distance(transform.position, monster.transform.position);
-                if (dist < minDist)
+                if (move.TravelDistance > maxDistance)
                 {
-                    minDist = dist;
-                    closest = monster;
+                    maxDistance = move.TravelDistance;
+                    frontMost = monster;
                 }
             }
         }
 
-        return closest;
+        return frontMost;
     }
 
     private void RotateToTarget(Monster target)
@@ -74,6 +83,11 @@ public class Tower : MonoBehaviour
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f;
 
         transform.rotation = Quaternion.Euler(0f, 0f, angle);
+    }
+
+    private void MoveToStandby()
+    {
+        transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
     public void SetAttack(ITowerAttack attack)
