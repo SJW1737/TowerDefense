@@ -1654,7 +1654,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popupText: {fileID: 72904059}
-  showDuration: 1.5
+  normalDuration: 1
+  bossDuration: 0.2
 --- !u!114 &398135350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1996,7 +1997,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 16.44122
+  orthographic size: 13.27045
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3107,17 +3108,17 @@ MonoBehaviour:
     monsterData: {fileID: 11400000, guid: ca4ddf02a555cae4eba80f59dd67a442, type: 2}
     miniBossData: {fileID: 0}
     prefab: {fileID: 1031709059401727802, guid: 48fa5bd2776d6214a84281c26b121273, type: 3}
-    poolSize: 8
+    poolSize: 10
   - type: 1
     monsterData: {fileID: 11400000, guid: 002894c7d7b0a184387496f337a23da9, type: 2}
     miniBossData: {fileID: 0}
     prefab: {fileID: 1031709059401727802, guid: c5e7c523da2acad489d5f7950bb51c58, type: 3}
-    poolSize: 5
+    poolSize: 10
   - type: 2
     monsterData: {fileID: 11400000, guid: 4910c0b6ce1aa3c4b8859ae4f031e3fe, type: 2}
     miniBossData: {fileID: 0}
     prefab: {fileID: 1031709059401727802, guid: a360f7f53e5eaf547a28664b685a57ad, type: 3}
-    poolSize: 5
+    poolSize: 10
   - type: 3
     monsterData: {fileID: 11400000, guid: 969bffa86a7adfa48822b2b2610161d0, type: 2}
     miniBossData: {fileID: 0}

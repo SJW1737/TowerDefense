@@ -122,14 +122,14 @@ public class Monster : MonoBehaviour
 
     public void OnDie()
     {
-        int rewardGold = MonsterData.rewardGold + DifficultyManager.Instance.GoldBonus;
+        float goldMultiplier = DifficultyManager.Instance.GoldMultiplier;
+
+        int rewardGold = Mathf.RoundToInt(MonsterData.rewardGold * goldMultiplier);
 
         GoldManager.Instance.Add(rewardGold);
 
         if (MonsterData.monsterType == MonsterType.Boss)
         {
-            DifficultyManager.Instance.OnBossDefeated();
-
             DailyMissionManager.Instance.AddProgress(DailyMissionType.KillBoss);
             AchievementManager.Instance.AddProgress(AchievementType.KillBoss);
         }
@@ -178,7 +178,7 @@ public class Monster : MonoBehaviour
         monsterMovement.ResetMovement();
 
         //체력
-        float hpMultiplier = DifficultyManager.Instance.HpMultiplier;   //보스 처치로 인한 체력 배율 증가
+        float hpMultiplier = DifficultyManager.Instance.HpMultiplier;   //웨이브에 따른 체력 증가
         float relicHpReduce = RelicManager.Instance.GetValue(RelicEffectType.EnemyMaxHp);   //유물로 인한 최대체력 감소
 
         float finalHpFloat = MonsterData.maxHP * hpMultiplier * (1f - relicHpReduce);

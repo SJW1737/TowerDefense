@@ -13,9 +13,13 @@ public class WaveManager : MonoSingleton<WaveManager>
 
     private int maxClearedWave = 0;
 
+    [Header("Wave Settings")]
+    [SerializeField] private float prepareTime = 3f;
+
     public int CurrentWave => currentWave;
 
     public event Action<int> OnWaveChanged;
+    public event Action<float> OnPrepareTimeChanged;
 
     protected override void Init()
     {
@@ -61,20 +65,33 @@ public class WaveManager : MonoSingleton<WaveManager>
             if (monsterSpawn == null)
                 yield break;
 
+            yield return PreparePhase();
+
+            DifficultyManager.Instance.UpdateDifficulty(currentWave);
+
             Debug.Log($"Wave {currentWave} 시작");
 
             WaveData waveData = WaveGenerator.Generate(currentWave);
-            monsterSpawn.StartWave(waveData);
 
-            ShowWavePopup(currentWave);
+            var popup = FindObjectOfType<WavePopupUI>();
+            bool isBoss = currentWave % 10 == 0;
+
+            if (popup != null)
+            {
+                string text = isBoss ? "보스 웨이브" : $"{currentWave} 웨이브";
+
+                yield return popup.ShowWave(text, isBoss);
+            }
+
+            monsterSpawn.StartWave(waveData);
 
             yield return WaitUntilAllMonsterDead();
 
             Debug.Log($"Wave {currentWave} 종료");
 
-            AchievementManager.Instance.AddProgress(AchievementType.ClearWave);
-
             maxClearedWave = currentWave;
+            
+            AchievementManager.Instance.AddProgress(AchievementType.ClearWave);
 
             currentWave++;
             OnWaveChanged?.Invoke(currentWave);
@@ -83,15 +100,18 @@ public class WaveManager : MonoSingleton<WaveManager>
         }
     }
 
-    private void ShowWavePopup(int wave)
+    private IEnumerator PreparePhase()
     {
-        var popup = FindObjectOfType<WavePopupUI>();
-        if (popup == null) return;
+        float timer = prepareTime;
 
-        if (wave % 10 == 0)
-            popup.Show("보스 웨이브");
-        else
-            popup.Show($"{wave} 웨이브");
+        while (timer > 0f)
+        {
+            OnPrepareTimeChanged?.Invoke(timer);
+            timer -= Time.deltaTime;
+            yield return null;
+        }
+
+        OnPrepareTimeChanged?.Invoke(0f);
     }
 
     private IEnumerator WaitUntilAllMonsterDead()

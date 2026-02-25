@@ -9,7 +9,13 @@ public class MonsterPoolManager : MonoSingleton<MonsterPoolManager>
     private Dictionary<MonsterType, Queue<GameObject>> monsterPools;
     private Dictionary<MonsterType, MonsterData> monsterDatas;
 
+    //추가 생성 용
+    private Dictionary<MonsterType, GameObject> monsterPrefabs;
+
     private Dictionary<MiniBossData, Queue<GameObject>> miniBossPools;
+
+    //추가 생성 용
+    private Dictionary<MiniBossData, GameObject> miniBossPrefabs;
 
     public int AliveMonsterCount { get; private set; }
     public int AliveMiniBossCount { get; private set; }
@@ -18,7 +24,9 @@ public class MonsterPoolManager : MonoSingleton<MonsterPoolManager>
     {
         monsterPools = new Dictionary<MonsterType, Queue<GameObject>>();
         monsterDatas = new Dictionary<MonsterType, MonsterData>();
+        monsterPrefabs = new Dictionary<MonsterType, GameObject>();
         miniBossPools = new Dictionary<MiniBossData, Queue<GameObject>>();
+        miniBossPrefabs = new Dictionary<MiniBossData, GameObject>();
 
         foreach (var data in poolDatas)
         {
@@ -36,6 +44,8 @@ public class MonsterPoolManager : MonoSingleton<MonsterPoolManager>
 
                 monsterPools.Add(data.type, pool);
                 monsterDatas.Add(data.type, data.monsterData);
+
+                monsterPrefabs.Add(data.type, data.prefab);
             }
 
             //미니보스용
@@ -51,6 +61,8 @@ public class MonsterPoolManager : MonoSingleton<MonsterPoolManager>
                 }
 
                 miniBossPools.Add(data.miniBossData, pool);
+
+                miniBossPrefabs.Add(data.miniBossData, data.prefab);
             }
         }
 
@@ -65,7 +77,17 @@ public class MonsterPoolManager : MonoSingleton<MonsterPoolManager>
             return null;
         }
 
-        GameObject obj = monsterPools[type].Dequeue();
+        GameObject obj;
+
+        if (monsterPools[type].Count == 0)
+        {
+            obj = Instantiate(monsterPrefabs[type]);    //부족하면 새로 생성
+        }
+        else
+        {
+            obj = monsterPools[type].Dequeue();
+        }
+
         obj.transform.position = position;
 
         Monster monster = obj.GetComponent<Monster>();
@@ -84,7 +106,17 @@ public class MonsterPoolManager : MonoSingleton<MonsterPoolManager>
             return null;
         }
 
-        GameObject obj = miniBossPools[data].Dequeue();
+        GameObject obj;
+
+        if (miniBossPools[data].Count == 0)
+        {
+            obj = Instantiate(miniBossPrefabs[data]);   //부족하면 새로 생성
+        }
+        else
+        {
+            obj = miniBossPools[data].Dequeue();
+        }
+
         obj.transform.position = position;
 
         Monster monster = obj.GetComponent<Monster>();

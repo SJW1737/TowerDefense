@@ -8,10 +8,11 @@ public class WaveGenerator
     {
         WaveData data = new WaveData();
         data.monsters = new List<WaveMonster>();
-
         data.spawnInterval = 1f;
 
         int patternWave = (wave - 1) % 10 + 1;
+        int waveTier = (wave - 1) / 10; //10웨이브 당 1단계
+        int countMultiplier = (int)Mathf.Pow(2, waveTier); //단계에 따른 몬스터 배수
 
         if (patternWave == 10)
         {
@@ -22,7 +23,7 @@ public class WaveGenerator
         if (patternWave >= 1 && patternWave <= 3)
         {
             int[] normalCounts = { 5, 5, 6 };
-            data.monsters.Add(new WaveMonster{type = MonsterType.Normal, count = normalCounts[patternWave - 1]});
+            data.monsters.Add(new WaveMonster{type = MonsterType.Normal, count = normalCounts[patternWave - 1] * countMultiplier });
         }
         //Wave 4 ~ 6
         else if (patternWave >= 4 && patternWave <= 6)
@@ -32,9 +33,9 @@ public class WaveGenerator
 
             int idx = patternWave - 4;
 
-            data.monsters.Add(new WaveMonster{type = MonsterType.Normal, count = normalCounts[idx]});
-
-            data.monsters.Add(new WaveMonster{type = MonsterType.Fast, count = fastCounts[idx]});
+            data.monsters.Add(new WaveMonster{type = MonsterType.Normal, count = normalCounts[idx] * countMultiplier });
+            
+            data.monsters.Add(new WaveMonster{type = MonsterType.Fast, count = fastCounts[idx] * countMultiplier });
         }
         //Wave 7 ~ 9
         else if (patternWave >= 7 && patternWave <= 9)
@@ -45,11 +46,11 @@ public class WaveGenerator
 
             int idx = patternWave - 7;
 
-            data.monsters.Add(new WaveMonster { type = MonsterType.Tank, count = tankCounts[idx] });
+            data.monsters.Add(new WaveMonster { type = MonsterType.Tank, count = tankCounts[idx] * countMultiplier});
 
-            data.monsters.Add(new WaveMonster{type = MonsterType.Normal, count = normalCounts[idx]});
+            data.monsters.Add(new WaveMonster{type = MonsterType.Normal, count = normalCounts[idx] * countMultiplier });
 
-            data.monsters.Add(new WaveMonster{type = MonsterType.Fast, count = fastCounts[idx]});
+            data.monsters.Add(new WaveMonster{type = MonsterType.Fast, count = fastCounts[idx] * countMultiplier });
         }
 
         return data;
