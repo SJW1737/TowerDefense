@@ -39,6 +39,7 @@ public class Tower : MonoBehaviour
 
             if (target != null)
             {
+                RotateToTarget(target);
                 attack?.Execute(target);
             }
         }
@@ -65,6 +66,14 @@ public class Tower : MonoBehaviour
         }
 
         return closest;
+    }
+
+    private void RotateToTarget(Monster target)
+    {
+        Vector2 dir = target.transform.position - transform.position;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f;
+
+        transform.rotation = Quaternion.Euler(0f, 0f, angle);
     }
 
     public void SetAttack(ITowerAttack attack)
