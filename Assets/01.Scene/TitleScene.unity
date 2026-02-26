@@ -3248,8 +3248,10 @@ MonoBehaviour:
   settingPanel: {fileID: 1456643264}
   dim: {fileID: 270389887}
   backButton: {fileID: 2077222224}
+  quitButton: {fileID: 0}
   bgmSlider: {fileID: 1223305469}
   sfxSlider: {fileID: 255860460}
+  titleSceneName: TitleScene
 --- !u!1 &1168546947
 GameObject:
   m_ObjectHideFlags: 0

@@ -63,6 +63,11 @@ public class SettingPanelUI : MonoBehaviour
         if (SoundManager.Instance != null)
             SoundManager.Instance.PlaySFX("ButtonClick");
 
+        if (InGameSession.Instance != null)
+            InGameSession.Instance.ResetSession();
+
+        Time.timeScale = 1f;
+
         SceneManager.LoadScene(titleSceneName);
     }
 

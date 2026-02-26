@@ -43,6 +43,9 @@ public class CastleHealth : Health
         DailyMissionManager.Instance.AddProgress(DailyMissionType.PlayGame);
         AchievementManager.Instance.AddProgress(AchievementType.PlayGame);
 
+        InGameSession.Instance.Commit();
+        InGameSession.Instance.ResetSession();
+
         if (WaveManager.Instance != null)
         {
             WaveManager.Instance.GrantWaveClearDiamond();

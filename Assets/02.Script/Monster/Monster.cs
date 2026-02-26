@@ -126,14 +126,12 @@ public class Monster : MonoBehaviour
 
         if (MonsterData.monsterType == MonsterType.Boss)
         {
-            DailyMissionManager.Instance.AddProgress(DailyMissionType.KillBoss);
-            AchievementManager.Instance.AddProgress(AchievementType.KillBoss);
+            InGameSession.Instance.killBoss++;
         }
 
         if (MonsterData.monsterType == MonsterType.MiniBoss)
         {
-            DailyMissionManager.Instance.AddProgress(DailyMissionType.KillMiniBoss);
-            AchievementManager.Instance.AddProgress(AchievementType.KillMiniBoss);
+            InGameSession.Instance.killMiniBoss++;
         }
 
         ReturnToPool();

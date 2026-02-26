@@ -30,6 +30,8 @@ public class WaveManager : MonoSingleton<WaveManager>
     {
         if (isRunning) return;
 
+        InGameSession.Instance.ResetSession();
+
         if (monsterSpawn == null)
             monsterSpawn = FindObjectOfType<MonsterSpawn>(true);
 
@@ -50,6 +52,9 @@ public class WaveManager : MonoSingleton<WaveManager>
     public void ResetWave()
     {
         StopAllCoroutines();
+
+        InGameSession.Instance.ResetSession();
+
         currentWave = 1;
         isRunning = false;
 
@@ -90,8 +95,8 @@ public class WaveManager : MonoSingleton<WaveManager>
             Debug.Log($"Wave {currentWave} Á¾·á");
 
             maxClearedWave = currentWave;
-            
-            AchievementManager.Instance.AddProgress(AchievementType.ClearWave);
+
+            InGameSession.Instance.clearWave++;
 
             currentWave++;
             OnWaveChanged?.Invoke(currentWave);
