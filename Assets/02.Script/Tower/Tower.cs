@@ -6,7 +6,6 @@ public class Tower : MonoBehaviour
     public TowerData data;
 
     public Transform firePoint;      // 발사 위치
-    private Vector3 standbyPosition;
 
     private ITowerAttack attack;
     private ITickableAttack tickAttack;
@@ -151,12 +150,6 @@ public class Tower : MonoBehaviour
         {
             beamAttack.IncreaseBeamDamagePerStack(1);
         }
-
-        // TODO : 나중에 여기서
-        // - 공격속도 증가
-        // - 사거리 증가
-        // - Tier2 진화
-        // 전부 처리 가능
 
         Debug.Log($"{data.towerName} 강화 완료 ({upgradeCount}/{data.maxUpgradeCount})");
         return true;

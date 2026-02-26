@@ -6,6 +6,10 @@ public class IceArea : MonoBehaviour
     private float radius;
     private float areaDuration;
 
+    private bool isInitialized;
+
+    private Coroutine slowRoutine;
+
     public void Init(float radius, float areaDuration)
     {
         this.radius = radius;
@@ -13,21 +17,23 @@ public class IceArea : MonoBehaviour
 
         transform.localScale = Vector3.one * radius * 2f;
 
+        isInitialized = true;
+
         StartCoroutine(LifeRoutine());
-        StartCoroutine(SlowRoutine());
+        slowRoutine = StartCoroutine(SlowRoutine());
     }
 
     private IEnumerator LifeRoutine()
     {
         yield return new WaitForSeconds(areaDuration);
-        Destroy(gameObject);
+        ReturnToPool();
     }
 
     private IEnumerator SlowRoutine()
     {
         WaitForSeconds tick = new WaitForSeconds(0.1f);
 
-        while (true)
+        while (isInitialized)
         {
             Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, radius, LayerMask.GetMask("Monster"));
 
@@ -41,5 +47,21 @@ public class IceArea : MonoBehaviour
 
             yield return tick;
         }
+    }
+
+    private void ReturnToPool()
+    {
+        isInitialized = false; 
+        ObjectPool.Instance.ReturnToPool(this);
+    }
+
+    private void OnDisable()
+    {
+        isInitialized = false;
+
+        StopAllCoroutines();
+
+        radius = 0f;
+        areaDuration = 0f;
     }
 }

@@ -13,22 +13,26 @@ public class IceProjectile : Projectile
             return;
         if (monster != target)
             return;
+        if (monster.IsDead)
+            return;
 
         // 1. 얼음 장판 생성
         if (iceAreaPrefab != null)
         {
-            GameObject area = Instantiate(iceAreaPrefab, monster.transform.position, Quaternion.identity);
+            GameObject obj = ObjectPool.Instance.Get(iceAreaPrefab);
 
-            if (area.TryGetComponent(out IceArea iceArea))
-            {
-                iceArea.Init(slowRadius, iceAreaDuration);
-            }
+            IceArea area = obj.GetComponent<IceArea>();
+            area.transform.position = monster.transform.position;
+            area.Init(slowRadius, iceAreaDuration);
         }
 
         // 2. 데미지, 속박 적용
-        foreach (var effect in effects)
-            effect.Apply(monster);
+        if (effects != null)
+        {
+            foreach (var effect in effects)
+                effect.Apply(monster);
+        }
 
-        Destroy(gameObject);
+        ObjectPool.Instance.ReturnToPool(this);
     }
 }

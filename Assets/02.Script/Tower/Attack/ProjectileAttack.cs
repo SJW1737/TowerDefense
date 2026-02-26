@@ -20,12 +20,18 @@ public class ProjectileAttack : ITowerAttack
 
     public void Execute(Monster target)
     {
-        if (target == null) return;
+        if (target == null || target.IsDead) 
+            return;
 
-        GameObject projObj = Object.Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
+        GameObject obj = ObjectPool.Instance.Get(projectilePrefab);
+
+        obj.transform.position = firePoint.position;
+        obj.transform.rotation = firePoint.rotation;
+
+        Projectile baseProjectile = obj.GetComponent<Projectile>();
 
         // ∆¯≈∫ ≈ıªÁ√º
-        if (projObj.TryGetComponent(out BombProjectile bomb))
+        if (baseProjectile is BombProjectile bomb)
         {
             if (ownerTower.data is BombTowerData bombData)
             {
@@ -42,10 +48,6 @@ public class ProjectileAttack : ITowerAttack
         }
 
         // ±‚∫ª ≈ıªÁ√º
-        if (projObj.TryGetComponent(out Projectile projectile))
-        {
-            projectile.Init(target, projectileSpeed, effects);
-            return;
-        }
+        baseProjectile.Init(target, projectileSpeed, effects);
     }
 }

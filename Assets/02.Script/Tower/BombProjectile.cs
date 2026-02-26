@@ -1,12 +1,10 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class BombProjectile : MonoBehaviour
+public class BombProjectile : Projectile
 {
     private Vector3 targetPos;
-    private float speed;
     private float explosionRadius;
-    private List<ITowerEffect> effects;
 
     public GameObject bombAreaPrefab;
     public float maxScale;
@@ -15,16 +13,19 @@ public class BombProjectile : MonoBehaviour
 
     public void Init(Vector3 targetPos, float speed, float explosionRadius, List<ITowerEffect> effects)
     {
+        base.Init(null, speed, effects);
+
         this.targetPos = targetPos;
-        this.speed = speed;
         this.explosionRadius = explosionRadius;
-        this.effects = effects;
 
         totalDistance = Vector3.Distance(transform.position, targetPos);
     }
 
-    private void Update()
+    protected override void Update()
     {
+        if (totalDistance <= 0f)
+            return;
+
         transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
 
         UpdateScale();
@@ -38,20 +39,28 @@ public class BombProjectile : MonoBehaviour
     private void UpdateScale()
     {
         float dist = Vector3.Distance(transform.position, targetPos);
-        float t = 1f - (dist / totalDistance);
+        float t = Mathf.Clamp01(1f - (dist / totalDistance));
         float scale = Mathf.Lerp(1f, maxScale, t);
         transform.localScale = Vector3.one * scale;
     }
 
     private void Explode()
     {
-        GameObject area = Instantiate(bombAreaPrefab, transform.position, Quaternion.identity);
+        GameObject obj = ObjectPool.Instance.Get(bombAreaPrefab);
 
-        if (area.TryGetComponent(out BombArea bombArea))
-        {
-            bombArea.Init(explosionRadius, effects);
-        }
+        BombArea area = obj.GetComponent<BombArea>();
+        area.transform.position = transform.position;
+        area.Init(explosionRadius, effects);
 
-        Destroy(gameObject);
+        ReturnToPool();
+    }
+
+    private void OnDisable()
+    {
+        targetPos = Vector3.zero;
+        explosionRadius = 0f;
+        totalDistance = 0f;
+
+        StopAllCoroutines();
     }
 }

@@ -9,6 +9,8 @@ public class PoisonArea : MonoBehaviour
     private float remainTime;
     private List<ITowerEffect> effects;
 
+    private bool isReturned;
+
     public void Init(Monster owner, float radius, float duration, List<ITowerEffect> effects)
     {
         this.owner = owner;
@@ -17,6 +19,8 @@ public class PoisonArea : MonoBehaviour
 
         remainTime = duration;
         transform.localScale = Vector3.one * radius * 2f;
+
+        isReturned = false;
 
         StartCoroutine(DamageRoutine());
     }
@@ -27,10 +31,10 @@ public class PoisonArea : MonoBehaviour
             transform.position = owner.transform.position;
 
         remainTime -= Time.deltaTime;
+
         if (remainTime <= 0f)
         {
-            owner?.ClearPoison();
-            Destroy(gameObject);
+            ReturnToPool();
         }
     }
 
@@ -58,5 +62,25 @@ public class PoisonArea : MonoBehaviour
 
             yield return tick;
         }
+    }
+
+    private void ReturnToPool()
+    {
+        if (isReturned)
+            return;
+
+        isReturned = true;
+
+        StopAllCoroutines();
+        owner?.ClearPoison();
+        ObjectPool.Instance.ReturnToPool(this);
+    }
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+        owner = null;
+        effects = null;
+        isReturned = false;
     }
 }

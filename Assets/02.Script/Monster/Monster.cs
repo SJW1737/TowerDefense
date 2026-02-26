@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Monster : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class Monster : MonoBehaviour
     private PoisonArea poisonArea;
 
     private Animator animator;
+
+    public event Action<Monster> OnDeath;
 
     public bool IsDead { get; private set; }
 
@@ -70,18 +73,9 @@ public class Monster : MonoBehaviour
         monsterMovement.ApplyFrozen(duration);
     }
 
-    public void ApplyPoisonArea(PoisonArea prefab, float radius, float duration, List<ITowerEffect> effects)
+    public void SetPoisonArea(PoisonArea area)
     {
-        if (poisonArea == null)
-        {
-            poisonArea = Instantiate(prefab, transform.position, Quaternion.identity);
-
-            poisonArea.Init(this, radius, duration, effects);
-        }
-        else
-        {
-            poisonArea.Refresh(duration);
-        }
+        poisonArea = area;
     }
 
     public void ClearPoison()
@@ -103,6 +97,8 @@ public class Monster : MonoBehaviour
         if (IsDead) return;
 
         IsDead = true;
+
+        OnDeath?.Invoke(this);
 
         monsterMovement.ResetMovement();
 
@@ -165,6 +161,7 @@ public class Monster : MonoBehaviour
     public void ResetMonster()
     {
         IsDead = false;
+        OnDeath = null;
 
         Collider2D col = GetComponent<Collider2D>();
         if (col != null)

@@ -15,12 +15,20 @@ public class SummonUnit : MonoBehaviour
     private int slotIndex;
     private Vector3 standbyPosition;
 
+    private void OnDisable()
+    {
+        ownerTower = null;
+        target = null;
+        timer = 0f;
+    }
+
     public void Initialize(Tower tower, Monster target)
     {
         this.ownerTower = tower;
         this.target = target;
 
         this.towerData = tower.data;
+        timer = 0f;
     }
 
     private void Update()
@@ -57,7 +65,12 @@ public class SummonUnit : MonoBehaviour
         if (target == null || target.IsDead)
             return;
 
-        Projectile proj = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
+        GameObject obj = ObjectPool.Instance.Get(projectilePrefab.gameObject);
+
+        obj.transform.position = firePoint.position;
+        obj.transform.rotation = firePoint.rotation;
+
+        Projectile proj = obj.GetComponent<Projectile>();
 
         proj.Init(target, projectileSpeed, ownerTower.GetEffects());
     }

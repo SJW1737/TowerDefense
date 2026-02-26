@@ -14,8 +14,20 @@ public class PoisonProjectile : Projectile
         if (monster != target)
             return;
 
-        monster.ApplyPoisonArea(poisonAreaPrefab.GetComponent<PoisonArea>(), splashRadius, poisonAreaDuration, effects);
+        SpawnPoisonArea(monster);
 
-        Destroy(gameObject);
+        ReturnToPool();
+    }
+
+    private void SpawnPoisonArea(Monster monster)
+    {
+        GameObject obj = ObjectPool.Instance.Get(poisonAreaPrefab);
+
+        PoisonArea area = obj.GetComponent<PoisonArea>();
+        area.transform.position = monster.transform.position;
+
+        area.Init(monster, splashRadius, poisonAreaDuration, effects);
+
+        monster.SetPoisonArea(area);
     }
 }
