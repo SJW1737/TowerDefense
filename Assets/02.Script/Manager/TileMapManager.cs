@@ -30,7 +30,7 @@ public class TileMapManager : MonoBehaviour
 
                 GameObject prefab = node.isBlocked ? towerTilePrefab : pathTilePrefab;
 
-                Vector3 pos = new Vector3(x + 0.5f, y + 0.5f, 0f);
+                Vector3 pos = new Vector3(x + 0.5f, y + 0.5f, 0f) + gridManager.worldOffset;
 
                 Instantiate(prefab, pos, Quaternion.identity, transform);
             }

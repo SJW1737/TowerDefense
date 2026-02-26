@@ -14,6 +14,8 @@ public class GridManager : MonoSingleton<GridManager>
     public Node startNode;
     public Node endNode;
 
+    public Vector3 worldOffset = new Vector3(0f, -0.8f, 0f);
+
     protected override void Awake()
     {
         base.Awake();
@@ -129,8 +131,8 @@ public class GridManager : MonoSingleton<GridManager>
         for (int x = 0; x <= width; x++)
         {
             Gizmos.DrawLine(
-                new Vector3(x, 0, 0),
-                new Vector3(x, height, 0)
+                new Vector3(x, 0, 0) + worldOffset,
+                new Vector3(x, height, 0) + worldOffset
             );
         }
 
@@ -138,8 +140,8 @@ public class GridManager : MonoSingleton<GridManager>
         for (int y = 0; y <= height; y++)
         {
             Gizmos.DrawLine(
-                new Vector3(0, y, 0),
-                new Vector3(width, y, 0)
+                new Vector3(0, y, 0) + worldOffset,
+                new Vector3(width, y, 0) + worldOffset
             );
         }
 
@@ -161,7 +163,7 @@ public class GridManager : MonoSingleton<GridManager>
                     Gizmos.color = Color.red;
 
                 Gizmos.DrawCube(
-                    new Vector3(x + 0.5f, y + 0.5f, 0),
+                    new Vector3(x + 0.5f, y + 0.5f, 0) + worldOffset,
                     Vector3.one
                 );
             }

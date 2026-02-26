@@ -96,7 +96,7 @@ public class MonsterMovement : MonoBehaviour
         {
             Node next = pathQueue.Dequeue();
 
-            Vector3 targetpos = new Vector3(next.x + 0.5f, next.y + 0.5f, transform.position.z);    //노드 중앙 보정
+            Vector3 targetpos = new Vector3(next.x + 0.5f, next.y + 0.5f, transform.position.z) + gridManager.worldOffset;      //노드 중앙 보정
 
             while (Vector3.Distance(transform.position, targetpos) > 0.01f)
             {

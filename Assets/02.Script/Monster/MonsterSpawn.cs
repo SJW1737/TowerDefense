@@ -17,7 +17,7 @@ public class MonsterSpawn : MonoBehaviour
 
         Node startNode = GridManager.Instance.startNode;
 
-        Vector3 spawnPos = new Vector3(startNode.x + 0.5f, startNode.y + 0.5f, 0);
+        Vector3 spawnPos = new Vector3(startNode.x + 0.5f, startNode.y + 0.5f, 0) + GridManager.Instance.worldOffset;
 
         foreach (var monster in waveData.monsters)
         {
@@ -45,7 +45,7 @@ public class MonsterSpawn : MonoBehaviour
         }
 
         Node startNode = GridManager.Instance.startNode;
-        Vector3 spawnPos = new Vector3(startNode.x + 0.5f, startNode.y + 0.5f, 0);
+        Vector3 spawnPos = new Vector3(startNode.x + 0.5f, startNode.y + 0.5f, 0) + GridManager.Instance.worldOffset;
 
         MonsterPoolManager.Instance.GetMonster(monsterData.monsterType, spawnPos);
     }
