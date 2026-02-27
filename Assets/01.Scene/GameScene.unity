@@ -1914,6 +1914,9 @@ MonoBehaviour:
   meleeTowerData: {fileID: 11400000, guid: 36baf441f693c0f4b9dde33940d5fb0b, type: 2}
   rangedTowerData: {fileID: 11400000, guid: 1561b59738151594eb94a6f5b2afe987, type: 2}
   debuffTowerData: {fileID: 11400000, guid: db7c281b72ca1b845a333aac94594f14, type: 2}
+  meleeTowerText: {fileID: 1540549335}
+  rangedTowerText: {fileID: 2007379800}
+  debuffTowerText: {fileID: 2005705529}
 --- !u!114 &355115692
 MonoBehaviour:
   m_ObjectHideFlags: 0

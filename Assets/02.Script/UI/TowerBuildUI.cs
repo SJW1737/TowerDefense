@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class TowerBuildUI : MonoSingleton<TowerBuildUI>
 {
@@ -16,10 +17,16 @@ public class TowerBuildUI : MonoSingleton<TowerBuildUI>
     [SerializeField] private TowerData rangedTowerData;
     [SerializeField] private TowerData debuffTowerData;
 
+    [Header("Texts")]
+    [SerializeField] private TextMeshProUGUI meleeTowerText;
+    [SerializeField] private TextMeshProUGUI rangedTowerText;
+    [SerializeField] private TextMeshProUGUI debuffTowerText;
+
     protected override void Awake()
     {
         base.Awake();
     }
+
     protected override void Init()
     {
         panel.SetActive(false);
@@ -30,6 +37,10 @@ public class TowerBuildUI : MonoSingleton<TowerBuildUI>
         rangedBuyButton.onClick.AddListener(() => OnClickBuildTower(rangedTowerData));
 
         debuffBuyButton.onClick.AddListener(() => OnClickBuildTower(debuffTowerData));
+
+        meleeTowerText.text = meleeTowerData.towerName;
+        rangedTowerText.text = rangedTowerData.towerName;
+        debuffTowerText.text = debuffTowerData.towerName;
     }
 
     public void Open()
