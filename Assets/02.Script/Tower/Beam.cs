@@ -17,11 +17,16 @@ public class Beam : MonoBehaviour
     {
         if (target == null)
         {
-            Destroy(gameObject);
+            ReturnToPool();
             return;
         }
 
         line.SetPosition(0, firePoint.position);
         line.SetPosition(1, target.position);
+    }
+
+    private void ReturnToPool()
+    {
+        ObjectPool.Instance.ReturnToPool(this);
     }
 }

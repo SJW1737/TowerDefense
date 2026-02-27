@@ -100,16 +100,20 @@ public class BeamAttack : ITowerAttack, ITickableAttack
     {
         ClearBeam();
 
-        GameObject obj = GameObject.Instantiate(beamPrefab);
+        GameObject obj = ObjectPool.Instance.Get(beamPrefab);
+
         beam = obj.GetComponent<Beam>();
+        beam.transform.position = firePoint.position;
+
         beam.Init(firePoint, target.transform);
     }
 
     private void ClearBeam()
     {
         if (beam != null)
-            GameObject.Destroy(beam.gameObject);
-
-        beam = null;
+        {
+            ObjectPool.Instance.ReturnToPool(beam);
+            beam = null;
+        }
     }
 }
