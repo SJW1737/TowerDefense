@@ -16,11 +16,13 @@ public class WaveManager : MonoSingleton<WaveManager>
     [Header("Wave Settings")]
     [SerializeField] private float prepareTime = 3f;
 
+    [Header("UI")]
+    [SerializeField] private WavePopupUI wavePopupUI;
+    [SerializeField] private WaveDelayUI waveDelayUI;
+
     public int CurrentWave => currentWave;
 
     public event Action<int> OnWaveChanged;
-    public event Action<float> OnPrepareTimeChanged;
-
     protected override void Init()
     {
         monsterSpawn = FindObjectOfType<MonsterSpawn>();
@@ -41,7 +43,7 @@ public class WaveManager : MonoSingleton<WaveManager>
         }
 
         isRunning = true;
-
+        currentWave = 1;
         maxClearedWave = 0;
 
         OnWaveChanged?.Invoke(currentWave);
@@ -70,24 +72,26 @@ public class WaveManager : MonoSingleton<WaveManager>
             if (monsterSpawn == null)
                 yield break;
 
-            yield return PreparePhase();
+            bool isBoss = currentWave % 10 == 0;
+
+            if (wavePopupUI != null)
+            {
+                string text = isBoss ? "보스 웨이브" : $"{currentWave} 웨이브";
+                wavePopupUI.Show(text, isBoss);
+
+                yield return new WaitForSeconds(isBoss ? 0.8f : 1f);
+            }
+
+            if (waveDelayUI != null)
+                waveDelayUI.StartCountdown(prepareTime);
+
+            yield return new WaitForSeconds(prepareTime);
 
             DifficultyManager.Instance.UpdateDifficulty(currentWave);
 
             Debug.Log($"Wave {currentWave} 시작");
 
             WaveData waveData = WaveGenerator.Generate(currentWave);
-
-            var popup = FindObjectOfType<WavePopupUI>();
-            bool isBoss = currentWave % 10 == 0;
-
-            if (popup != null)
-            {
-                string text = isBoss ? "보스 웨이브" : $"{currentWave} 웨이브";
-
-                yield return popup.ShowWave(text, isBoss);
-            }
-
             monsterSpawn.StartWave(waveData);
 
             yield return WaitUntilAllMonsterDead();
@@ -100,23 +104,7 @@ public class WaveManager : MonoSingleton<WaveManager>
 
             currentWave++;
             OnWaveChanged?.Invoke(currentWave);
-
-            yield return new WaitForSeconds(3f);
         }
-    }
-
-    private IEnumerator PreparePhase()
-    {
-        float timer = prepareTime;
-
-        while (timer > 0f)
-        {
-            OnPrepareTimeChanged?.Invoke(timer);
-            timer -= Time.deltaTime;
-            yield return null;
-        }
-
-        OnPrepareTimeChanged?.Invoke(0f);
     }
 
     private IEnumerator WaitUntilAllMonsterDead()
