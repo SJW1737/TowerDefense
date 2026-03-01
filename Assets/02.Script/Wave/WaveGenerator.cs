@@ -16,7 +16,19 @@ public class WaveGenerator
 
         if (patternWave == 10)
         {
-            data.monsters.Add(new WaveMonster{type = MonsterType.Boss, count = 1});
+            int[] normalCounts = { 4 };
+            int[] fastCounts = { 3 };
+            int[] tankCounts = { 2 };
+
+            int idx = 0;
+
+            data.monsters.Add(new WaveMonster { type = MonsterType.Tank, count = tankCounts[idx] * countMultiplier });
+
+            data.monsters.Add(new WaveMonster { type = MonsterType.Boss, count = 1 });
+
+            data.monsters.Add(new WaveMonster { type = MonsterType.Fast, count = fastCounts[idx] * countMultiplier });
+
+            data.monsters.Add(new WaveMonster { type = MonsterType.Normal, count = normalCounts[idx] * countMultiplier });
         }
 
         //Wave 1 ~ 3
@@ -48,9 +60,9 @@ public class WaveGenerator
 
             data.monsters.Add(new WaveMonster { type = MonsterType.Tank, count = tankCounts[idx] * countMultiplier});
 
-            data.monsters.Add(new WaveMonster{type = MonsterType.Normal, count = normalCounts[idx] * countMultiplier });
+            data.monsters.Add(new WaveMonster { type = MonsterType.Fast, count = fastCounts[idx] * countMultiplier });
 
-            data.monsters.Add(new WaveMonster{type = MonsterType.Fast, count = fastCounts[idx] * countMultiplier });
+            data.monsters.Add(new WaveMonster{type = MonsterType.Normal, count = normalCounts[idx] * countMultiplier });
         }
 
         return data;
