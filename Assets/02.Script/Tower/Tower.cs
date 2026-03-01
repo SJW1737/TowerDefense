@@ -35,10 +35,10 @@ public class Tower : MonoBehaviour
         if (attackTimer >= attackInterval)
         {
             Monster target = FindTarget();
-            attackTimer = 0f;
 
             if (target != null)
             {
+                attackTimer = 0f;
                 RotateToTarget(target);
                 attack?.Execute(target);
             }

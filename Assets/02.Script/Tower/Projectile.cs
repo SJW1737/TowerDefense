@@ -7,23 +7,13 @@ public class Projectile : MonoBehaviour
     protected float speed;
     protected List<ITowerEffect> effects;
 
-    private bool isInitialized;
-
-    public GameObject PrefabKey { get; private set; }
-
-    public void SetPrefabKey(GameObject key)
-    {
-        PrefabKey = key;
-    }
+    protected bool isInitialized;
 
     public virtual void Init(Monster target, float speed, List<ITowerEffect> effects)
     {
         this.target = target;
         this.speed = speed;
         this.effects = effects != null ? new List<ITowerEffect>(effects) : null;
-
-        if (target != null)
-            target.OnDeath += OnTargetDeath;
 
         isInitialized = true;
     }
@@ -33,7 +23,7 @@ public class Projectile : MonoBehaviour
         if (!isInitialized)
             return;
 
-        if (target == null || !target.gameObject.activeInHierarchy || target.IsDead)
+        if (target == null || target.IsDead)
         {
             ReturnToPool();
             return;
@@ -62,28 +52,17 @@ public class Projectile : MonoBehaviour
         ReturnToPool();
     }
 
-    private void OnTargetDeath(Monster deadMonster)
-    {
-        ReturnToPool();
-    }
-
-
     protected virtual void ReturnToPool()
     {
-        isInitialized = false;
-        ObjectPool.Instance.ReturnToPool(this);
-    }
-
-    private void OnDisable()
-    {
         if (target != null)
-            target.OnDeath -= OnTargetDeath;
+        {
+            target = null;
+        }
 
-        target = null;
+        isInitialized = false;
         effects = null;
         speed = 0f;
-        isInitialized = false;
 
-        StopAllCoroutines();
+        ObjectPool.Instance.ReturnToPool(this);
     }
 }

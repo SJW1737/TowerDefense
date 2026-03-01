@@ -13,18 +13,27 @@ public class BombProjectile : Projectile
 
     public void Init(Vector3 targetPos, float speed, float explosionRadius, List<ITowerEffect> effects)
     {
-        base.Init(null, speed, effects);
-
+        this.target = null;
         this.targetPos = targetPos;
+        this.speed = speed;
         this.explosionRadius = explosionRadius;
+        this.effects = effects != null ? new List<ITowerEffect>(effects) : null;
 
         totalDistance = Vector3.Distance(transform.position, targetPos);
+
+        isInitialized = true;
     }
 
     protected override void Update()
     {
-        if (totalDistance <= 0f)
+        if (!isInitialized)
             return;
+
+        if (totalDistance <= 0f)
+        {
+            ReturnToPool();
+            return;
+        }
 
         transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
 
@@ -55,12 +64,15 @@ public class BombProjectile : Projectile
         ReturnToPool();
     }
 
-    private void OnDisable()
+    protected override void ReturnToPool()
     {
+        isInitialized = false;
+        effects = null;
+        speed = 0f;
         targetPos = Vector3.zero;
         explosionRadius = 0f;
         totalDistance = 0f;
 
-        StopAllCoroutines();
+        ObjectPool.Instance.ReturnToPool(this);
     }
 }

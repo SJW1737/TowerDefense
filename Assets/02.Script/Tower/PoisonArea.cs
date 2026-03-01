@@ -47,7 +47,7 @@ public class PoisonArea : MonoBehaviour
     {
         WaitForSeconds tick = new WaitForSeconds(1f);
 
-        while (true)
+        while (remainTime > 0f)
         {
             Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, radius, LayerMask.GetMask("Monster"));
 

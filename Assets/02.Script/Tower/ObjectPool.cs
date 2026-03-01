@@ -13,6 +13,12 @@ public class ObjectPool : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         Instance = this;
     }
 
@@ -31,9 +37,9 @@ public class ObjectPool : MonoBehaviour
         }
         else
         {
-            GameObject obj = Instantiate(prefab);
-            instanceToPrefab[obj] = prefab;
-            return obj;
+            GameObject newObj = Instantiate(prefab);
+            instanceToPrefab[newObj] = prefab;
+            return newObj;
         }
     }
 
