@@ -15,13 +15,6 @@ public class SummonUnit : MonoBehaviour
     private int slotIndex;
     private Vector3 standbyPosition;
 
-    private void OnDisable()
-    {
-        ownerTower = null;
-        target = null;
-        timer = 0f;
-    }
-
     public void Initialize(Tower tower, Monster target)
     {
         this.ownerTower = tower;
