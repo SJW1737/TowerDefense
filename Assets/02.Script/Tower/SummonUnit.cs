@@ -10,6 +10,9 @@ public class SummonUnit : MonoBehaviour
     [SerializeField] private Projectile projectilePrefab;
     [SerializeField] private float projectileSpeed;
 
+    private float rotationSpeed = 360f;   // 초당 회전 각도
+    private float moveSpeed = 5f;         // 대기 위치 복귀 속도
+
     private float timer;
 
     private int slotIndex;
@@ -29,18 +32,22 @@ public class SummonUnit : MonoBehaviour
         if (ownerTower == null)
             return;
 
-        if (target == null || !target.gameObject.activeSelf || target.IsDead)
+        if (target == null || target.IsDead)
         {
             MoveToStandby();
             FindNewTarget();
             return;
         }
 
-        RotateToTarget();
-
         float dist = Vector2.Distance(transform.position, target.transform.position);
+
         if (dist > towerData.range)
+        {
+            MoveToStandby();
             return;
+        }
+
+        RotateToTarget();
 
         timer += Time.deltaTime;
 
@@ -84,9 +91,12 @@ public class SummonUnit : MonoBehaviour
 
     private void MoveToStandby()
     {
-        transform.position = Vector3.Lerp(transform.position, standbyPosition, Time.deltaTime * 5f);
+        transform.position = Vector3.MoveTowards(transform.position, standbyPosition, moveSpeed * Time.deltaTime);
 
-        transform.rotation = Quaternion.Euler(0, 0, 180f);
+        float currentZ = transform.eulerAngles.z;
+        float newZ = Mathf.MoveTowardsAngle(currentZ, 180f, rotationSpeed * Time.deltaTime);
+
+        transform.rotation = Quaternion.Euler(0f, 0f, newZ);
     }
 
     private void RotateToTarget()
@@ -95,8 +105,11 @@ public class SummonUnit : MonoBehaviour
             return;
 
         Vector2 dir = target.transform.position - transform.position;
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + 90f;
+        float targetAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + 90f;
 
-        transform.rotation = Quaternion.Euler(0f, 0f, angle);
+        float currentZ = transform.eulerAngles.z;
+        float newZ = Mathf.MoveTowardsAngle(currentZ, targetAngle, rotationSpeed * Time.deltaTime);
+
+        transform.rotation = Quaternion.Euler(0f, 0f, newZ);
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 public class Tower : MonoBehaviour
 {
     public TowerData data;
+    private Monster currentTarget;
 
     public Transform firePoint;      // 발사 위치
 
@@ -19,6 +20,8 @@ public class Tower : MonoBehaviour
     public int UpgradeCount => upgradeCount;
     public bool CanUpgrade => upgradeCount < data.maxUpgradeCount;
 
+    private float rotationSpeed = 360f; // 초당 회전 각도
+
     private void Start()
     {
         TowerFactory.SetupTower(this);
@@ -30,23 +33,38 @@ public class Tower : MonoBehaviour
 
         attackTimer += Time.deltaTime;
 
-        float attackInterval = data.GetAttackInterval(upgradeCount);
-
-        if (attackTimer >= attackInterval)
+        if (currentTarget == null || currentTarget.IsDead)
         {
-            Monster target = FindTarget();
+            currentTarget = FindTarget();
+        }
 
-            if (target != null)
+        if (currentTarget != null)
+        {
+            float dist = Vector2.Distance(transform.position, currentTarget.transform.position);
+
+            if (dist <= data.range)
             {
-                attackTimer = 0f;
-                RotateToTarget(target);
-                attack?.Execute(target);
+                RotateToTarget(currentTarget);
+
+                float attackInterval = data.GetAttackInterval(upgradeCount);
+
+                if (attackTimer >= attackInterval)
+                {
+                    attackTimer = 0f;
+                    attack?.Execute(currentTarget);
+                }
             }
 
             else
             {
+                currentTarget = null;
                 MoveToStandby();
             }
+        }
+
+        else
+        {
+            MoveToStandby();
         }
     }
 
@@ -81,12 +99,16 @@ public class Tower : MonoBehaviour
         Vector2 dir = target.transform.position - transform.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f;
 
-        transform.rotation = Quaternion.Euler(0f, 0f, angle);
+        Quaternion targetRot = Quaternion.Euler(0f, 0f, angle);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRot, Time.deltaTime * 10f);
     }
 
     private void MoveToStandby()
     {
-        transform.rotation = Quaternion.Euler(0, 0, 0);
+        float currentZ = transform.eulerAngles.z;
+        float newZ = Mathf.MoveTowardsAngle(currentZ, 0f, rotationSpeed * Time.deltaTime);
+
+        transform.rotation = Quaternion.Euler(0f, 0f, newZ);
     }
 
     public void SetAttack(ITowerAttack attack)
