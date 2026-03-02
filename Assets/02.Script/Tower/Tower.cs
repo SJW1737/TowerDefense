@@ -197,11 +197,6 @@ public class Tower : MonoBehaviour
         rangeInstance.SetActive(show);
     }
 
-    public void RefreshRange()
-    {
-        UpdateRangeVisual();
-    }
-
     // 사거리 체크
     private void OnDrawGizmos()
     {
