@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 0ef1e4f03bb4b354985b2fe46448a0e2, type: 2}
+  rangePrefab: {fileID: 8748985177799202194, guid: ed9f6234325533f4bbfd5d9c0c5e20ec, type: 3}
   firePoint: {fileID: 2478355930935028940}
   monsterLayer:
     serializedVersion: 2

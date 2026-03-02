@@ -6,6 +6,10 @@ public class Tower : MonoBehaviour
     public TowerData data;
     private Monster currentTarget;
 
+    [SerializeField] private GameObject rangePrefab;
+    private GameObject rangeInstance;
+    public float AttackRange => data.range;
+
     public Transform firePoint;      // 발사 위치
 
     private ITowerAttack attack;
@@ -25,6 +29,11 @@ public class Tower : MonoBehaviour
     private void Start()
     {
         TowerFactory.SetupTower(this);
+
+        rangeInstance = Instantiate(rangePrefab, transform);
+        rangeInstance.SetActive(false);
+
+        UpdateRangeVisual();
     }
 
     private void Update()
@@ -175,6 +184,22 @@ public class Tower : MonoBehaviour
 
         Debug.Log($"{data.towerName} 강화 완료 ({upgradeCount}/{data.maxUpgradeCount})");
         return true;
+    }
+
+    private void UpdateRangeVisual()
+    {
+        float diameter = AttackRange * 2f;
+        rangeInstance.transform.localScale = new Vector3(diameter, diameter, 1f);
+    }
+
+    public void ShowRange(bool show)
+    {
+        rangeInstance.SetActive(show);
+    }
+
+    public void RefreshRange()
+    {
+        UpdateRangeVisual();
     }
 
     // 사거리 체크
