@@ -23,7 +23,7 @@ public class Projectile : MonoBehaviour
         if (!isInitialized)
             return;
 
-        if (target == null || target.IsDead)
+        if (target == null || target.IsDead || !target.gameObject.activeInHierarchy)
         {
             ReturnToPool();
             return;
