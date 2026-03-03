@@ -19,7 +19,13 @@ public class BuildManager : MonoSingleton<BuildManager>
 
     public void SelectTile(TowerTile tile)
     {
+        if (selectedTile != null)
+            selectedTile.SetHighlight(false);
+
         selectedTile = tile;
+
+        selectedTile.SetHighlight(true);
+
         towerBuildUI.Open();
     }
 
@@ -30,6 +36,8 @@ public class BuildManager : MonoSingleton<BuildManager>
 
         goldManager.Spend(cost);
         selectedTile.BuildTower(towerPrefab);
+
+        selectedTile.SetHighlight(false);
 
         selectedTile = null;
         towerBuildUI.Close();

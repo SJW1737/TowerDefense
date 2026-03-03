@@ -32,7 +32,13 @@ public class TileMapManager : MonoBehaviour
 
                 Vector3 pos = new Vector3(x + 0.5f, y + 0.5f, 0f) + gridManager.worldOffset;
 
-                Instantiate(prefab, pos, Quaternion.identity, transform);
+                GameObject tileObj = Instantiate(prefab, pos, Quaternion.identity, transform);
+
+                TowerTile towerTile = tileObj.GetComponent<TowerTile>();
+                if (towerTile != null)
+                {
+                    towerTile.Init(node);
+                }
             }
         }
     }
