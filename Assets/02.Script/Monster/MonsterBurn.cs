@@ -59,4 +59,22 @@ public class MonsterBurn : MonoBehaviour
         
         burnRoutine = null;
     }
+
+    //화상 강제 종료 함수
+    public void StopBurn()
+    {
+        if (burnRoutine != null)
+        {
+            StopCoroutine(burnRoutine);
+            burnRoutine = null;
+        }
+
+        if (burnInstance != null)
+            burnInstance.SetActive(false);
+    }
+
+    private void OnDisable()
+    {
+        StopBurn();
+    }
 }

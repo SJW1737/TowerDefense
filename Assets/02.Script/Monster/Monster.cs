@@ -17,6 +17,8 @@ public class Monster : MonoBehaviour
 
     private Animator animator;
 
+    private MonsterBurn monsterBurn;
+
     public event Action<Monster> OnDeath;
 
     public bool IsDead { get; private set; }
@@ -29,6 +31,8 @@ public class Monster : MonoBehaviour
         castleHealth = FindObjectOfType<CastleHealth>();
 
         animator = GetComponent<Animator>();
+
+        monsterBurn = GetComponent<MonsterBurn>();
     }
 
     private void OnEnable()
@@ -97,6 +101,8 @@ public class Monster : MonoBehaviour
         if (IsDead) return;
 
         IsDead = true;
+
+        monsterBurn?.StopBurn();
 
         OnDeath?.Invoke(this);
 
@@ -189,5 +195,10 @@ public class Monster : MonoBehaviour
 
         monsterMovement.SetSpeed(finalBaseSpeed);
         monsterMovement.Setpath();
+
+        //스프라이트 방향 초기화
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        if (sr != null)
+            sr.flipX = false;
     }
 }

@@ -156,10 +156,5 @@ public class MonsterMovement : MonoBehaviour
         currentSpeed = moveSpeed;
 
         TravelDistance = 0f;
-
-        if (spriteRenderer != null)
-        {
-            spriteRenderer.flipX = false;
-        } 
     }
 }
