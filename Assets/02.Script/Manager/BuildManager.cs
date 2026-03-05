@@ -83,4 +83,19 @@ public class BuildManager : MonoSingleton<BuildManager>
 
         Debug.Log($"{currentData.towerName} -> {nextData.towerName} 진화 완료");
     }
+
+    //타일 선택 해제 함수
+    public void ClearTileSelection()
+    {
+        if (selectedTile != null)
+        {
+            selectedTile.SetHighlight(false);
+            selectedTile = null;
+        }
+
+        if (towerBuildUI != null)
+        {
+            towerBuildUI.Close();
+        }
+    }
 }

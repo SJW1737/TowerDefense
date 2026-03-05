@@ -92,7 +92,7 @@ public class WaveManager : MonoSingleton<WaveManager>
             Debug.Log($"Wave {currentWave} Ω√¿€");
 
             WaveData waveData = WaveGenerator.Generate(currentWave);
-            monsterSpawn.StartWave(waveData);
+            monsterSpawn.StartWave(waveData, currentWave);
 
             yield return WaitUntilAllMonsterDead();
 

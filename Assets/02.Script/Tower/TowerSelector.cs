@@ -26,6 +26,9 @@ public class TowerSelector : MonoBehaviour
 
     private void SelectTower(Tower tower)
     {
+        // 타일 선택 해제
+        BuildManager.Instance.ClearTileSelection();
+
         // 기존 선택된 타워 사거리 끄기
         if (selectedTower != null)
             selectedTower.ShowRange(false);
