@@ -83,7 +83,7 @@ public class WaveManager : MonoSingleton<WaveManager>
             }
 
             if (waveDelayUI != null)
-                waveDelayUI.StartCountdown(prepareTime);
+                waveDelayUI.StartCountdown(prepareTime, currentWave);
 
             yield return new WaitForSeconds(prepareTime);
 

@@ -19,15 +19,15 @@ public class WaveDelayUI : MonoBehaviour
         canvasGroup.alpha = 0f;
     }
 
-    public void StartCountdown(float time)
+    public void StartCountdown(float time, int currentWave)
     {
         if (routine != null)
             StopCoroutine(routine);
 
-        routine = StartCoroutine(CountdownRoutine(time));
+        routine = StartCoroutine(CountdownRoutine(time, currentWave));
     }
 
-    private IEnumerator CountdownRoutine(float time)
+    private IEnumerator CountdownRoutine(float time, int currentWave)
     {
         canvasGroup.alpha = 1f;
 
@@ -38,6 +38,6 @@ public class WaveDelayUI : MonoBehaviour
             time -= 1f;
         }
 
-        canvasGroup.alpha = 0f;
+        delayText.text = $"현재 웨이브 : {currentWave}";
     }
 }
