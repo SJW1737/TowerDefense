@@ -32,7 +32,7 @@ public class SummonUnit : MonoBehaviour
         if (ownerTower == null)
             return;
 
-        if (target == null || target.IsDead)
+        if (target == null || target.IsDead || !target.gameObject.activeInHierarchy)
         {
             MoveToStandby();
             FindNewTarget();

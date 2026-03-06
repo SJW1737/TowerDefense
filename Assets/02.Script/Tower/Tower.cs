@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Tower : MonoBehaviour
 {
@@ -42,7 +43,7 @@ public class Tower : MonoBehaviour
 
         attackTimer += Time.deltaTime;
 
-        if (currentTarget == null || currentTarget.IsDead)
+        if (currentTarget == null || currentTarget.IsDead || !currentTarget.gameObject.activeInHierarchy)
         {
             currentTarget = FindTarget();
         }
