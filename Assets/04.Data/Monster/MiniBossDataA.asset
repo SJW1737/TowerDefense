@@ -16,7 +16,6 @@ MonoBehaviour:
   monsterType: 4
   description: 
   maxHP: 80
-  damage: 2
+  damage: 5
   moveSpeed: 5
   rewardGold: 10
-  isBoss: 0

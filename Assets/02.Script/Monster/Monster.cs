@@ -125,9 +125,7 @@ public class Monster : MonoBehaviour
 
     public void OnDie()
     {
-        float goldMultiplier = DifficultyManager.Instance.GoldMultiplier;
-
-        int rewardGold = Mathf.RoundToInt(MonsterData.rewardGold * goldMultiplier);
+        int rewardGold = Mathf.RoundToInt(MonsterData.rewardGold);
 
         GoldManager.Instance.Add(rewardGold);
 
