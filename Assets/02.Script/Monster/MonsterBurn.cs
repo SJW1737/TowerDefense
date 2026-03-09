@@ -4,18 +4,24 @@ using UnityEngine;
 public class MonsterBurn : MonoBehaviour
 {
     private Coroutine burnRoutine;
-    public GameObject burnPrefab;
-    private GameObject burnInstance;
+
+    private SpriteRenderer spriteRenderer;
+    private Color originalColor;
+
+    private Color burnColor = new Color(0.7f, 0.1f, 0.1f, 1f);
+
 
     private void Awake()
     {
-        // 몬스터가 소환될 때 burnPrefab 자동 생성
-        if (burnPrefab != null)
-        {
-            burnInstance = Instantiate(burnPrefab, transform);
-            burnInstance.transform.localPosition = Vector3.zero;
-            burnInstance.SetActive(false);
-        }
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        if (spriteRenderer != null)
+            originalColor = spriteRenderer.color;
+    }
+
+    private void OnEnable()
+    {
+        ResetColor();
     }
 
     public void ApplyBurn(float damagePerTick, float duration, float interval)
@@ -23,14 +29,15 @@ public class MonsterBurn : MonoBehaviour
         if (!gameObject.activeInHierarchy) 
             return;
 
+        if (TryGetComponent(out Monster monster))
+        {
+            if (monster.IsDead) return;
+        }
+
         // 이미 Burn 중이면 Coroutine 종료 후 새로 시작
         if (burnRoutine != null)
         {
             StopCoroutine(burnRoutine);
-
-            // 이전 불꽃 끄기
-            if (burnInstance != null)
-                burnInstance.SetActive(false);
         }
 
         burnRoutine = StartCoroutine(BurnRoutine(damagePerTick, duration, interval));
@@ -41,22 +48,28 @@ public class MonsterBurn : MonoBehaviour
         float elapsed = 0f;
 
         // Burn 시작 -> 불꽃 켜기
-        if (burnInstance != null)
-            burnInstance.SetActive(true);
+        if (spriteRenderer != null)
+            spriteRenderer.color = burnColor;
 
         while (elapsed < duration)
         {
             if (TryGetComponent(out Monster monster))
+            {
+                if (monster.IsDead)
+                {
+                    burnRoutine = null;
+                    yield break;
+                }
+
                 monster.TakeDamage(damagePerTick);
+            }
 
             yield return new WaitForSeconds(interval);
             elapsed += interval;
         }
 
-        // Burn 종료 -> 불꽃 끄기
-        if (burnInstance != null)
-            burnInstance.SetActive(false);
-        
+        ResetColor();
+
         burnRoutine = null;
     }
 
@@ -69,8 +82,14 @@ public class MonsterBurn : MonoBehaviour
             burnRoutine = null;
         }
 
-        if (burnInstance != null)
-            burnInstance.SetActive(false);
+        ResetColor();
+    }
+
+    //화상 색상 초기화 함수
+    public void ResetColor()
+    {
+        if (spriteRenderer != null)
+            spriteRenderer.color = originalColor;
     }
 
     private void OnDisable()

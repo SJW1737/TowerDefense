@@ -103,6 +103,7 @@ public class Monster : MonoBehaviour
         IsDead = true;
 
         monsterBurn?.StopBurn();
+        monsterBurn?.ResetColor();
 
         OnDeath?.Invoke(this);
 
@@ -200,5 +201,8 @@ public class Monster : MonoBehaviour
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
         if (sr != null)
             sr.flipX = false;
+
+        monsterBurn?.StopBurn();
+        monsterBurn?.ResetColor();
     }
 }
