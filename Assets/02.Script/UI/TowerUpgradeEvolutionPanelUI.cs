@@ -119,9 +119,9 @@ public class TowerUpgradeEvolutionPanelUI : MonoSingleton<TowerUpgradeEvolutionP
         if (currentTower.TryUpgrade())
         {
             RefreshUI();
-        }
 
-        SoundManager.Instance.PlaySFX("Upgrade");
+            SoundManager.Instance.PlaySFX("Upgrade");
+        }
     }
 
     // Tier2 진화 버튼 클릭
@@ -132,8 +132,5 @@ public class TowerUpgradeEvolutionPanelUI : MonoSingleton<TowerUpgradeEvolutionP
 
         // index = 0,1,2 -> Tier2 분기
         BuildManager.Instance.EvolveTower(currentTower, index);
-        Close();
-
-        SoundManager.Instance.PlaySFX("Evolution");
     }
 }

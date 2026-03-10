@@ -57,9 +57,12 @@ public class TowerBuildUI : MonoSingleton<TowerBuildUI>
 
     private void OnClickBuildTower(TowerData data)
     {
-        BuildManager.Instance.BuildTower(data.towerPrefab, data.cost);
-        Close();
+        bool success = BuildManager.Instance.BuildTower(data.towerPrefab, data.cost);
 
+        if (!success)
+            return;
+
+        Close();
         SoundManager.Instance.PlaySFX("Build");
     }
 }
