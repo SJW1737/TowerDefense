@@ -19,4 +19,3 @@ MonoBehaviour:
   damage: 1
   moveSpeed: 3.5
   rewardGold: 2
-  isBoss: 0

@@ -15,4 +15,4 @@ MonoBehaviour:
   bossName: A
   monsterData: {fileID: 11400000, guid: 52e735d13d2361c4090b60f5fbeedaf4, type: 2}
   unlockWave: 5
-  cooldownTime: 5
+  cooldownTime: 40

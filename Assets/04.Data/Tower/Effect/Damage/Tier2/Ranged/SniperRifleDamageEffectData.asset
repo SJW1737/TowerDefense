@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: SniperRifleDamageEffectData
   m_EditorClassIdentifier: 
   damage: 6
-  damageGrowth: 6
+  damageGrowth: 3
