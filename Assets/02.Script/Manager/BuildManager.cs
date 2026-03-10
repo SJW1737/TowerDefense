@@ -29,18 +29,20 @@ public class BuildManager : MonoSingleton<BuildManager>
         towerBuildUI.Open();
     }
 
-    public void BuildTower(GameObject towerPrefab, int cost)
+    public bool BuildTower(GameObject towerPrefab, int cost)
     {
-        if (selectedTile == null) return;
-        if (!goldManager.CanSpend(cost)) return;
+        if (selectedTile == null) 
+            return false;
+        if (!goldManager.CanSpend(cost)) 
+            return false;
 
         goldManager.Spend(cost);
         selectedTile.BuildTower(towerPrefab);
 
         selectedTile.SetHighlight(false);
-
         selectedTile = null;
-        towerBuildUI.Close();
+
+        return true;
     }
 
     public void EvolveTower(Tower tower, int evolutionIndex)
@@ -80,6 +82,8 @@ public class BuildManager : MonoSingleton<BuildManager>
 
         // 5. UI 닫기
         TowerUpgradeEvolutionPanelUI.Instance.Close();
+
+        SoundManager.Instance.PlaySFX("Evolution");
 
         Debug.Log($"{currentData.towerName} -> {nextData.towerName} 진화 완료");
     }
