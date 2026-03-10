@@ -74,7 +74,7 @@ public class TowerUpgradeEvolutionPanelUI : MonoSingleton<TowerUpgradeEvolutionP
 
         if (!canUpgrade && isTier2)
         {
-            currentLevelText.text = "Lv. MAX (Cannot Evolve)";
+            currentLevelText.text = "Lv. MAX (진화불가)";
         }
         else if (!canUpgrade)
         {
